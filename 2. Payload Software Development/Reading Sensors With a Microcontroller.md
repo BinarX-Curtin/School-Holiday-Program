@@ -22,35 +22,35 @@ To begin our journey into learning how these complex devices are used, we first 
 
 1.	Download the *ReadSensWithMicro.proj.zip* file from the repository.
 
-Insert image of file with red box around it and another after it with a right clicked version with a red box around the download.
+**Insert image of file with red box around it and another after it with a right clicked version with a red box around the download.**
 
 2.	Unzip the STM32CubeIDE project file.
 
-Insert image of right clicked file with unzip highlighted
+**Insert image of right clicked file with unzip highlighted**
 
 3.	Open the STM32CubeIDE and navigate to File -> Open Project from File System… -> Directory
 
-Insert Image showing this location
+**Insert Image showing this location**
 
 4.	Find the project file in your download location commonly in “Downloads” folder.
 
-Insert image showing the selection of the project downloaded
+**Insert image showing the selection of the project downloaded**
 
 5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
 
-This is the configuration for the built in analogue to digital converter “ADC1”. This hardware peripheral measures analogue voltages and digitises them, storing the conversion result in a register for use in software. This allows you to write software that can respond to changing voltages or values from sensors that output their result as an analogue voltage level.
+    This is the configuration for the built in analogue to digital converter “ADC1”. This hardware peripheral measures analogue voltages and digitises them, storing the conversion result in a register for use in software. This allows you to write software that can respond to changing voltages or values from sensors that output their result as an analogue voltage level.
 
-6.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN17”. Click on the drop-down menu and select “Temperature Sensor Channel”.
+6.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN17”. Click on the drop-down     menu and select “Temperature Sensor Channel”.
 
-We’re going to read from the L4’s built in internal temperature sensor instead of connecting external circuity to the one of the ADC input pins.
+    We’re going to read from the L4’s built in internal temperature sensor instead of connecting external circuity to the one of the ADC input pins.
 
 7.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
 
 8.	 Right click on the “PB3” pin, and give it a user label: “LED”
 
-Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
+    Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
 
-The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
+    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
 
 9.	Left click on “PA2” and select “USART_2TX”. 
 
@@ -58,15 +58,15 @@ The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the bui
 
 11.	Now look to the left hand side and select the “connectivity” drop down menu and change the “mode” drop down the “Asynchronous”.
 
-The “PA2” and “PA15” pins in the pinout view should now turn green as they have a valid configuration. 
+    The “PA2” and “PA15” pins in the pinout view should now turn green as they have a valid configuration. 
 
-You’re pinout view should look like this:
+    You’re pinout view should look like this:
 
-Insert image of correct green pinout map
+**Insert image of correct green pinout map**
 
 12.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART2” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
 
-You’re now finished configuring STM32 for the rest of the session.
+    You’re now finished configuring STM32 for the rest of the session!
 
 ### 2.0 C Code Fundamentals
 
@@ -74,11 +74,11 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 
 1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
 
-Image of path and what you expect to see when you open it.
+**Image of path and what you expect to see when you open it.**
 
 2.	Find the while loop within the main function!
 
-Image of what we're looking for
+**Image of what we're looking for**
 
 3.	Using a combination of these commands and variables sequence code within the while loop to blink the led.
 
