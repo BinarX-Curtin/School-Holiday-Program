@@ -46,7 +46,7 @@ To begin our journey into learning how these complex devices are used, we first 
 
 7.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
 
-8.	 Right click on the “PB3” pin, and give it a user label: “LED”
+8.	 Right click on the “PB3” pin, and give it a user label: “LED”.
 
     Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
 
