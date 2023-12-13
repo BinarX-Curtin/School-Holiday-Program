@@ -73,9 +73,9 @@ You’re now finished configuring STM32 for the rest of the session.
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
 
 1. 
-
-' HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+'''
+HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 HAL_Delay (1000);   /* Insert delay 100 ms */
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-HAL_Delay (1000);   /* Insert delay 100 ms */ '
-
+HAL_Delay (1000);   /* Insert delay 100 ms */ 
+'''
