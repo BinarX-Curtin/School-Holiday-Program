@@ -12,7 +12,9 @@
 3. STM32L432KC Microcontroller with usb a to micro usb cable
 
 ## Resources
-
+- STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+- What is an ADC: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
+- Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
 ## Procedure
 # 1.0 STM32IDE Project Initialisation
@@ -67,4 +69,13 @@ Insert image of correct green pinout map
 You’re now finished configuring STM32 for the rest of the session.
 
 # 2.0 C Code Fundamentals
+
+This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
+
+1. 
+
+'HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+HAL_Delay (1000);   /* Insert delay 100 ms */
+HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+HAL_Delay (1000);   /* Insert delay 100 ms */'
 
