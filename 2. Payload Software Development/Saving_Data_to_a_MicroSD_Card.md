@@ -35,7 +35,7 @@
 
     then enable it by ticking "User-defined" in the middle pane:
 
-    ![Alt text](FATFS_user_defined.png)
+    ![FATFS User Defined Tick Box](FATFS_user_defined.png)
 
 1. Save, and generate code.
 
