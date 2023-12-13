@@ -125,7 +125,7 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 ```c
     /*
     Code in here
-    /*
+    */
 ```
 2. Insert a line to start the ADC using the blocking HAL function: 
 ```c
