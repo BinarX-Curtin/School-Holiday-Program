@@ -72,10 +72,33 @@ You’re now finished configuring STM32 for the rest of the session.
 
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
 
-1. 
-```
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-    HAL_Delay (1000);   /* Insert delay 100 ms */
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-    HAL_Delay (1000);   /* Insert delay 100 ms */ 
+1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
+
+Image of path and what you expect to see when you open it.
+
+2.	Find the while loop within the main function!
+
+Image of what we're looking for
+
+3.	Using a combination of these commands and variables sequence code within the while loop to blink the led.
+
+| Function/ Variable | Description |
+| ----------- | ----------- |
+| HAL_GPIO_WritePin(*GPIO PORT* , *PIN*, *PIN_STATE*) | Set the state of a GPIO PIN |
+| HAL_Delay (*TIME*) | Delay function in milliseconds |
+| LED_GPIO_Port | Variable for LED GPIO port |
+| LED_Pin | Variable for LED pin |
+| GPIO_PIN_RESET | Variable for OFF state of a GPIO pin |
+| GPIO_PIN_SET | Variable for ON state of a GPIO pin |
+
+<details>
+  <summary>Example Solution</summary>
+
 ```c
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay (1000);   /* Insert delay 1000 ms */
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+    HAL_Delay (1000);   /* Insert delay 1000 ms */ 
+```
+</details>
+
