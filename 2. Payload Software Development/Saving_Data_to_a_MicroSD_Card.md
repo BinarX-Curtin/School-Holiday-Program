@@ -26,3 +26,16 @@
 1. Set the prescaler to 128, which with the 16 MHz, HSE oscillator should give you a baud rate of 125 KBits/s:
 
     ![SPI Prescaler](SPI_prescaler.png)
+
+1. Move over to the "Clock Configuration" tab, and click "Resolve Clock Issues" if needed.
+
+1. In the left hand side, scroll down to "Middleware and Software Packs", click on FATFS:
+
+    ![FATFS Middleware](FATFS_middleware.png)
+
+    then enable it by ticking "User-defined" in the middle pane:
+
+    ![Alt text](FATFS_user_defined.png)
+
+1. Save, and generate code.
+
