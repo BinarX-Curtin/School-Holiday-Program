@@ -48,9 +48,7 @@ To begin our journey into learning how these complex devices are used, we first 
 
 8.	 Right click on the “PB3” pin, and give it a user label: “LED”.
 
-    Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
-
-    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
+    Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
 
 9.	Left click on “PA2” and select “USART_2TX”. 
 
