@@ -13,4 +13,4 @@
 
 1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
 
-![SPI2 Pins for MicroSD](./Saving_Data_to_a_MicroSD_Card.png)
+![SPI2 Pins for MicroSD](./SPI2_Pins_for_MicroSD.png)
