@@ -2,6 +2,7 @@
 
 ## Resources:
 - Tutorial by kiwih: "Tutorial: An SD card over SPI using STM32CubeIDE and FatFS" https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/.
+- https://controllerstech.com/sd-card-using-spi-in-stm32/
 
 ## Required Software & Equipment
 - BinarX Rocket Payload Microcontroller Board
