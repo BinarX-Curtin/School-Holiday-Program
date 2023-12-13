@@ -23,21 +23,25 @@ To begin our journey into learning how these complex devices are used, we first 
 1.	Download the *ReadSensWithMicro.proj.zip* file from the repository.
 
 **Insert image of file with red box around it and another after it with a right clicked version with a red box around the download.**
+
 ![Alt text](placeholder.jpeg)
 
 2.	Unzip the STM32CubeIDE project file.
 
 **Insert image of right clicked file with unzip highlighted**
+
 ![Alt text](placeholder.jpeg)
 
 3.	Open the STM32CubeIDE and navigate to File -> Open Project from File System… -> Directory
 
 **Insert Image showing this location**
+
 ![Alt text](placeholder.jpeg)
 
 4.	Find the project file in your download location commonly in “Downloads” folder.
 
 **Insert image showing the selection of the project downloaded**
+
 ![Alt text](placeholder.jpeg)
 
 5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
@@ -50,9 +54,9 @@ To begin our journey into learning how these complex devices are used, we first 
 
 7.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
 
-8.	 Right click on the “PB3” pin, and give it a user label: “LED”.
+8. Right click on the “PB3” pin, and give it a user label: “LED”.
 
- Now we're going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
+   Now we're going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
     
  The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
 
@@ -87,6 +91,7 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 2.	Find the while loop within the main function!
 
 **Image of what we're looking for**
+
 ![Alt text](placeholder.jpeg)
 
 3.	Using a combination of these commands and variables sequence code within the while loop to blink the led.
