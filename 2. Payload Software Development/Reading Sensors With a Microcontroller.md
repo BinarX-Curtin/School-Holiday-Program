@@ -52,9 +52,9 @@ To begin our journey into learning how these complex devices are used, we first 
 
 8.	 Right click on the “PB3” pin, and give it a user label: “LED”.
 
-    Now we’re going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
+ Now we're going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
     
-    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
+ The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
 
 9.	Left click on “PA2” and select “USART_2TX”. 
 
@@ -67,6 +67,7 @@ To begin our journey into learning how these complex devices are used, we first 
     You’re pinout view should look like this:
 
 **Insert image of correct green pinout map**
+
 ![Alt text](placeholder.jpeg)
 
 12.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART2” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
@@ -80,6 +81,7 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
 
 **Image of path and what you expect to see when you open it.**
+
 ![Alt text](placeholder.jpeg)
 
 2.	Find the while loop within the main function!
