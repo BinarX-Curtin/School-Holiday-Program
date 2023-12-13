@@ -21,4 +21,8 @@
 
 1. Configure PB12 as a "GPIO Output" and give it the label "uSD_CS":
 
-![uSD CS Pin GPIO Mode](uSD_CS_pin_GPIO_mode.png)
+    ![uSD CS Pin GPIO Mode](uSD_CS_pin_GPIO_mode.png)
+
+1. Set the prescaler to 128, which with the 16 MHz, HSE oscillator should give you a baud rate of 125 KBits/s:
+
+    ![SPI Prescaler](SPI_prescaler.png)
