@@ -18,4 +18,4 @@
 1. Set the "Data Size" to "8 bits":
 
 
-![8 Bit Data Size](./820%bit_data_size.png)
+![8 Bit Data Size](./8%20bit_data_size.png)
