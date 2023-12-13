@@ -1,4 +1,4 @@
-### Session 5: Reading Sensors With a Microcontroller
+# Session 5: Reading Sensors With a Microcontroller
 
 ## Objectives
 1. Download zip file with partially completed STM32 initialisation
@@ -17,7 +17,7 @@
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
 ## Procedure
-# 1.0 STM32IDE Project Initialisation
+### 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
 
 1.	Download the *ReadSensWithMicro.proj.zip* file from the repository.
@@ -68,14 +68,14 @@ Insert image of correct green pinout map
 
 You’re now finished configuring STM32 for the rest of the session.
 
-# 2.0 C Code Fundamentals
+### 2.0 C Code Fundamentals
 
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
 
 1. 
 
-'HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+' HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 HAL_Delay (1000);   /* Insert delay 100 ms */
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-HAL_Delay (1000);   /* Insert delay 100 ms */'
+HAL_Delay (1000);   /* Insert delay 100 ms */ '
 
