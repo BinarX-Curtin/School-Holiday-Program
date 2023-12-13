@@ -94,7 +94,8 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 
 ![Alt text](placeholder.jpeg)
 
-3.	Using a combination of these commands and variables sequence code within the while loop to blink the led.
+3.	Using a combination of these commands and variables sequence code within the while loop to blink the led. 
+    *Remember to comment each line to explain it's functionality*
 
 | Function/ Variable | Description |
 | ----------- | ----------- |
@@ -105,14 +106,31 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 | GPIO_PIN_RESET | Variable for OFF state of a GPIO pin |
 | GPIO_PIN_SET | Variable for ON state of a GPIO pin |
 
+**NOTE: DON'T FORGET YOUR SEMICOLONS!!!**
+
 <details>
   <summary>Example Solution</summary>
 
 ```c
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-    HAL_Delay (1000);   /* Insert delay 1000 ms */
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-    HAL_Delay (1000);   /* Insert delay 1000 ms */ 
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // Set LED to OFF
+    HAL_Delay (1000);   // Insert delay 1000 ms
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // Set LED to ON
+    HAL_Delay (1000);   // Insert delay 1000 ms 
 ```
 </details>
+
+## 3.0 ADC Implementation
+
+1. Comment out the LED blink code in the while loop using:
+```c
+    /*
+    Code in here
+    /*
+```
+2. Insert a line to start the ADC using the blocking HAL function: 
+```c
+    HAL_ADC_Start(&hadc1);
+```
+
+
 
