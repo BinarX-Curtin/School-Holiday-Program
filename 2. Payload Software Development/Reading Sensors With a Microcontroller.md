@@ -125,7 +125,7 @@ HAL_Delay (1000);   // Insert delay 1000 ms
 ```c
 /*
 Code in here
-/*
+*/
 ```
 2. Insert a line to start the ADC using the blocking HAL function and add a comment to it's function: 
 ```c
