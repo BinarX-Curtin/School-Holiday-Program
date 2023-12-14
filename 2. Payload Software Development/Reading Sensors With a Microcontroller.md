@@ -1,15 +1,14 @@
-# Session 5: Reading Sensors With a Microcontroller
+# Session 5: Reading Sensors With a Microcontroller <!-- omit from toc -->
 
-### Table of Contents
-- [Session 5: Reading Sensors With a Microcontroller](#session-5-reading-sensors-with-a-microcontroller)
-    - [Table of Contents](#table-of-contents)
-  - [Objectives](#objectives)
-  - [Requirements](#requirements)
-  - [Resources](#resources)
-  - [Procedure](#procedure)
-    - [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
-    - [2.0 C Code Fundamentals](#20-c-code-fundamentals)
-  - [3.0 ADC Implementation](#30-adc-implementation)
+### Table of Contents <!-- omit from toc -->
+- [Objectives](#objectives)
+- [Requirements](#requirements)
+- [Resources](#resources)
+- [Procedure](#procedure)
+- [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
+- [2.0 C Code Fundamentals](#20-c-code-fundamentals)
+- [3.0 ADC Implementation](#30-adc-implementation)
+- [4.0 Extension](#40-extension)
 
 ## Objectives
 1. Download zip file with partially completed STM32 initialisation
@@ -28,7 +27,7 @@
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
 ## Procedure
-### 1.0 STM32IDE Project Initialisation
+## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
 
 1.	Download the *ReadSensWithMicro.proj.zip* file from the repository.
@@ -59,23 +58,23 @@ To begin our journey into learning how these complex devices are used, we first 
 
     This is the configuration for the built in analogue to digital converter “ADC1”. This hardware peripheral measures analogue voltages and digitises them, storing the conversion result in a register for use in software. This allows you to write software that can respond to changing voltages or values from sensors that output their result as an analogue voltage level.
 
-6.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN17”. Click on the drop-down     menu and select “Temperature Sensor Channel”.
+1.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN17”. Click on the drop-down     menu and select “Temperature Sensor Channel”.
 
     We’re going to read from the L4’s built in internal temperature sensor instead of connecting external circuity to the one of the ADC input pins.
 
-7.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
+1.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
 
-8. Right click on the “PB3” pin, and give it a user label: “LED”.
+1. Right click on the “PB3” pin, and give it a user label: “LED”.
 
    Now we're going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
     
- The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
+    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
 
-9.	Left click on “PA2” and select “USART_2TX”. 
+1.	Left click on “PA2” and select “USART_2TX”. 
 
-10.	Left click on “PA15” and select “USART_2RX”.
+1.	Left click on “PA15” and select “USART_2RX”.
 
-11.	Now look to the left hand side and select the “connectivity” drop down menu and change the “mode” drop down the “Asynchronous”.
+1.	Now look to the left hand side and select the “connectivity” drop down menu and change the “mode” drop down the “Asynchronous”.
 
     The “PA2” and “PA15” pins in the pinout view should now turn green as they have a valid configuration. 
 
@@ -87,9 +86,9 @@ To begin our journey into learning how these complex devices are used, we first 
 
 12.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART2” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
 
-    You’re now finished configuring STM32 for the rest of the session!
+You’re now finished configuring STM32 for the rest of the session!
 
-### 2.0 C Code Fundamentals
+## 2.0 C Code Fundamentals
 
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
 
@@ -108,27 +107,23 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 3.	Using a combination of these commands and variables sequence code within the while loop to blink the led. 
     *Remember to comment each line to explain it's functionality*
 
-| Function/ Variable | Description |
-| ----------- | ----------- |
-| HAL_GPIO_WritePin(*GPIO PORT* , *PIN*, *PIN_STATE*) | Set the state of a GPIO PIN |
-| HAL_Delay (*TIME*) | Delay function in milliseconds |
-| LED_GPIO_Port | Variable for LED GPIO port |
-| LED_Pin | Variable for LED pin |
-| GPIO_PIN_RESET | Variable for OFF state of a GPIO pin |
-| GPIO_PIN_SET | Variable for ON state of a GPIO pin |
-
-**NOTE: DON'T FORGET YOUR SEMICOLONS!!!**
-
-<details>
-  <summary>Example Solution</summary>
-
 ```c
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // Set LED to OFF
 HAL_Delay (1000);   // Insert delay 1000 ms
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // Set LED to ON
 HAL_Delay (1000);   // Insert delay 1000 ms 
 ```
-</details>
+
+**NOTE: DON'T FORGET YOUR SEMICOLONS!!!**
+
+4. Rebuild your file (click the hammer icon) and in the “Console” window at the
+bottom of the screen you should see “Build Finished. 0 errors, 0 warnings.”
+
+**Image of hammer icon**
+
+![Alt text](placeholder.jpeg)
+
+5. Using the play button check to see if the code runs by watching LED3 to see if it begins flashing as programmed. 
 
 ## 3.0 ADC Implementation
 
@@ -138,29 +133,109 @@ HAL_Delay (1000);   // Insert delay 1000 ms
 Code in here
 */
 ```
-2. Insert a line to start the ADC using the blocking HAL function and add a comment to it's function: 
+2. Insert the line below to start the ADC using the blocking HAL function, in the while loop, and add a comment to define it's function.
+
 ```c
-HAL_ADC_Start(&hadc1);
+HAL_ADC_Start(&hadc1); // ADD COMMENT
 ```
 
-3. add 
+3. Add the poll for conversion command below to assign the ADC value to ADC1's address. Add comments to what *you* think the function does.
 ```c
-HAL_ADC_PollForConversion(&hadc1, 1); 
+HAL_ADC_PollForConversion(&hadc1, 1); // ADD COMMENT
 ```
 
-3. Declare statics in user code 1
+4. Declare static variables under "USER CODE BEGIN 1" to hold the temperature data and a string that can be used to print to serial
+
+    The term "static" is a variable initialisation prefix that ensures that it remains initialised no matter the scope.
+    
+    The "uint8_t" is a variable initialisation prefix defines the variable as an unsigned 8-bit integer. Similarly "uint32_t" defines a 32-bit integer.
+
+    Lastly, the square brackets after "serial_string" define the variable as an array which in most cases it's size must be defined for the compiler.
+
 ```c
 static uint8_t serial_string[51] = ""; // Static 50 character buffer for serial communication
 static uint32_t internal_temp = 0; //Static 32 bit unsigned integer to hold value for internal temperature
 ```
 
-4. add to while loop
+5. To record the current ADC value to "internal_temp" variable we need to use the function below to access the data at the memory location assigned to ADC1.
+
+```c
+internal_temp = HAL_ADC_GetValue(&hadc1);
+```
+
+6. To send the data to the console use the functions below.
+
+    The "sprintf" function writes the second string to the first string. The %d in the second string defines a variable integer value is to be substituted, hence, the "internal_temperature" value after.
+
+    To transfer the data to the computer the "HAL_UART_TRANSMIT" function is utilized such that the UART2 channel is employed.
+
+    Lastly, similar to the LED blink function a delay is added to reduce the amount of messages sent to the computer.
+
 ```c
 sprintf((char*) serial_string, "Temp: %d\n", internal_temp);
 
-HAL_UART_Transmit (&huart2, serial_string, sizeof(serial_string), 10);
+HAL_UART_Transmit(&huart2, serial_string, sizeof(serial_string), 10);
 HAL_Delay(500);
 ```
+
+7. To observe the intermittent sending to the computer, a console must be set up to observe the messages. firstly, click the debug button (which looks like a green bug) to compile you code and uploaded it to the STM32L4 via the ST-LINK debugger built into the development board:
+
+**Image of of the debug bug**
+
+![Alt text](placeholder.jpeg)
+
+    The “Edit Configuration” dialog will appear:
+
+**Image of image of where edit config is**
+
+![Alt text](placeholder.jpeg)
+
+8.  Click “OK” at the bottom of the window.
+
+1. Click on the “Console” tab at the bottom of the window:
+
+**Image of where the console tab is**
+
+![Alt text](placeholder.jpeg)
+
+
+10.  Click on the “Open Console” to the left of the “Minimise” and “Maximise” buttons near the top right of the console window:
+
+**Image of where the minimise/maximise buttons are**
+
+![Alt text](placeholder.jpeg)
+
+11. A menu will pop up; select the “Command Shell Console” option:
+
+**Image of command shell console option**
+
+![Alt text](placeholder.jpeg)
+
+12.  In the “Select Remote Connection” dialog that appears configure select “Serial Port” for the “Connection Type” and click the “New...” button
+
+1. Give the connection an name such as “STM32L4 VCP”, select the correct serial port.
+   
+    You may need to check which port is the correct device with device manager on Windows or some other method on other platforms.
+
+1. Check that the baud rate is the same as the one that was configured for USART2 in CubeMX. (You wrote it down in your notebook.) You can also check the other parameters if you wish or ar having problems.
+
+1. Click “Finish” and you’ll be returned to the “Select Remote Connection” dialog.
+
+1. Ensure your new connection is selected in “Connection Name” and press the “OK” button.
+   
+   You should now see the connected status message at the top left of your console window for your serial connection:
+   
+**Image of Serial connection name**
+
+![Alt text](placeholder.jpeg)
+
+
+17. Now run your code and you should see your temperature message in the console.
+
+## 4.0 Extension
+Connect the LED blink to a common temperature that you see using conditional statements in the while loop. This simulates a basic temperature control system which initiates once the internal temperature reaches a specific threshold in either direction.
+
+
 
 
 
