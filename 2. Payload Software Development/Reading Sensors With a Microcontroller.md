@@ -1,5 +1,16 @@
 # Session 5: Reading Sensors With a Microcontroller
 
+### Table of Contents
+- [Session 5: Reading Sensors With a Microcontroller](#session-5-reading-sensors-with-a-microcontroller)
+    - [Table of Contents](#table-of-contents)
+  - [Objectives](#objectives)
+  - [Requirements](#requirements)
+  - [Resources](#resources)
+  - [Procedure](#procedure)
+    - [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
+    - [2.0 C Code Fundamentals](#20-c-code-fundamentals)
+  - [3.0 ADC Implementation](#30-adc-implementation)
+
 ## Objectives
 1. Download zip file with partially completed STM32 initialisation
 2. Initialise internal temperature sensor
@@ -131,6 +142,7 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 ```c
     HAL_ADC_Start(&hadc1);
 ```
+
 
 
 
