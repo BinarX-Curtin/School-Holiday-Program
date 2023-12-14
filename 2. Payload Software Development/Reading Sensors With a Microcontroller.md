@@ -112,10 +112,10 @@ This section aims to complete the "Hello World" of micro controllers which is bl
   <summary>Example Solution</summary>
 
 ```c
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // Set LED to OFF
-    HAL_Delay (1000);   // Insert delay 1000 ms
-    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // Set LED to ON
-    HAL_Delay (1000);   // Insert delay 1000 ms 
+HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // Set LED to OFF
+HAL_Delay (1000);   // Insert delay 1000 ms
+HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // Set LED to ON
+HAL_Delay (1000);   // Insert delay 1000 ms 
 ```
 </details>
 
@@ -123,14 +123,35 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 
 1. Comment out the LED blink code in the while loop using:
 ```c
-    /*
-    Code in here
-    /*
+/*
+Code in here
+/*
 ```
-2. Insert a line to start the ADC using the blocking HAL function: 
+2. Insert a line to start the ADC using the blocking HAL function and add a comment to it's function: 
 ```c
-    HAL_ADC_Start(&hadc1);
+HAL_ADC_Start(&hadc1);
 ```
+
+3. add 
+```c
+HAL_ADC_PollForConversion(&hadc1, 1); 
+```
+
+3. Declare statics in user code 1
+```c
+static uint8_t serial_string[51] = ""; // Static 50 character buffer for serial communication
+static uint32_t internal_temp = 0; //Static 32 bit unsigned integer to hold value for internal temperature
+```
+
+4. add to while loop
+```c
+sprintf((char*) serial_string, "Temp: %d\n", internal_temp);
+
+HAL_UART_Transmit (&huart2, serial_string, sizeof(serial_string), 10);
+HAL_Delay(500);
+```
+
+
 
 
 
