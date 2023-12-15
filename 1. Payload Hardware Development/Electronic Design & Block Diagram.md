@@ -1,5 +1,3 @@
-![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/e5af864a-bd4e-4d8d-8549-2b6282f7b5cf)# Session 5: Reading Sensors With a Microcontroller <!-- omit from toc -->
-
 ### Table of Contents <!-- omit from toc -->
 - [Objectives](#objectives)
 - [Requirements](#requirements)
@@ -11,15 +9,16 @@
 - [4.0 Extension](#40-extension)
 
 ## Objectives
-1. Download zip file with partially completed STM32 initialisation
-1. Initialise internal temperature sensor
-1. Understand the role of an ADC in data acquisition 
-1. Read and display raw ADC data
+1. Familiarise ourselves with the funadmentals of electrical circuits.
+2. Familiarise ourselves with how to wire up basic digital ICs (integrated circuits) including decoupling capacitors.
+4. Build a basic circuit to turn an LED on and off.
+5. Wire up a temperature sensor for future use with the microcontroller.
+6. Use a multimeter to measure voltages in our circuits.
 
 ## Requirements
 1. STM32CubeIDE installed on device
-1. Pen and paper
-1. STM32L432KC Microcontroller with usb a to micro usb cable
+2. Pen and paper
+3. STM32L432KC Microcontroller with usb a to micro usb cable
 
 ## Resources
 - STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
@@ -71,4 +70,4 @@ Engagement (5 minutes)
 	- Explain schematics
 	- Explain breadboard
 	- Explain protoboard
-![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/6e170cd6-4202-46ba-bc57-bfd533286731)
+
