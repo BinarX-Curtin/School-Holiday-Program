@@ -1,4 +1,4 @@
-# Session 5: Reading Sensors With a Microcontroller <!-- omit from toc -->
+![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/e5af864a-bd4e-4d8d-8549-2b6282f7b5cf)# Session 5: Reading Sensors With a Microcontroller <!-- omit from toc -->
 
 ### Table of Contents <!-- omit from toc -->
 - [Objectives](#objectives)
@@ -29,3 +29,46 @@
 ## Procedure
 ## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
+
+---
+
+Staff:
+Meg
+Fergus
+Will
+
+Session Objectives:
+
+Understand the basics of electronic design principles and block diagrams.
+Create and interpret block diagrams for simple electronic circuits.
+
+
+Activity outline:
+
+Materials Needed (do a full BOM from the electronics component):
+
+Whiteboard and markers (or a computer with a projector for digital presentations)
+Handouts with example block diagrams
+Basic electronic components (e.g., resistors, capacitors, LEDs)
+Breadboards and jumper wires
+Multimeter (optional)
+
+Lesson Outline:
+
+Introduction (15 minutes)
+
+Engagement (5 minutes)
+
+	- Explain
+		○ Current divides around branches (water analogy)
+		○ Ohms law
+		○ Power (voltage x current)
+	- How to wire up a basic digital chip
+		○ Power
+		○ Ground
+		○ Decoupling Capacitor (little power supply buffer - look for a good analogy)
+		○ Explain 2 circuits - resistor/divider (aka voltage divider) and Op-Amp (the swiss army knife of electrical components) amplifier
+	- Explain schematics
+	- Explain breadboard
+	- Explain protoboard
+![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/6e170cd6-4202-46ba-bc57-bfd533286731)
