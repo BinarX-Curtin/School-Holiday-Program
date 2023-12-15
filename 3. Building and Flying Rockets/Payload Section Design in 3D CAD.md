@@ -94,9 +94,9 @@ TBD if we use this section
    - **Improving Print Quality** by supporting overhangs it allows for the print to have a smoother more accurate finish as it prevents drooping of filament during printing.
    - lastly, support can **Prevent Print Failures** as it stabilizes the structure, reducing the risk of parts moving or becoming detached from the bed during printing.
 
-1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is to the quality we expect from a prototype rocket nosecone.
+1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is what we expect from a prototype rocket nosecone.
 
-1. 
+1. Refer to [PrusaSlicer custom support guide](https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258)
 
 
 
