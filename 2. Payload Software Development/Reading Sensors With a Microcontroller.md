@@ -12,14 +12,14 @@
 
 ## Objectives
 1. Download zip file with partially completed STM32 initialisation
-2. Initialise internal temperature sensor
-3. Understand the role of an ADC in data acquisition 
-4. Read and display raw ADC data
+1. Initialise internal temperature sensor
+1. Understand the role of an ADC in data acquisition 
+1. Read and display raw ADC data
 
 ## Requirements
 1. STM32CubeIDE installed on device
-2. Pen and paper
-3. STM32L432KC Microcontroller with usb a to micro usb cable
+1. Pen and paper
+1. STM32L432KC Microcontroller with usb a to micro usb cable
 
 ## Resources
 - STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
