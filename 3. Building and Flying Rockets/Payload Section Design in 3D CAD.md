@@ -18,19 +18,17 @@
 1. Edit Nose Cone Shape
 1. Add STL files to Fusion 360 
 1. Export nosecone as STL
-1. Add custom supports in *NAME* Slicer
+1. Add custom supports in PrusaSlicer
 1. Adding threads to model
 
 ## Requirements
 1. Fusion 360 installed on device
-1. Pen and paper
-1. Slicer on device
 
 ## Resources
 - Fusion 360 self learning link: https://help.autodesk.com/view/fusion360/ENU/courses/
 - Insert STL file into Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.
 - Exporting as STL from Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html
-- SLICER RESOURCES
+- PrusaSlicer RESOURCES
 
 ## Procedure
 
