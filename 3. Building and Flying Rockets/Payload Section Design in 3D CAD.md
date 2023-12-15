@@ -48,7 +48,23 @@
 
 ## 2.0 Nosecone Reshaping
 
+1. scroll through the timeline and find sketch 4: 
+![Alt text](Fusion360_sketch4.png)
 
+1. Double click the sketch to bring up the editor
+![Alt text](Fusion360_sketch4_edit.png)
+
+### Sectional Analysis <!-- omit from toc -->
+
+1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool as shown below.
+
+![Alt text](<selecting sectional view.gif>)
+
+1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
+
+![Alt text](<sectional view.gif>)
+
+If there are no intersections we've successfully changed our nosecone shape!
 
 ## 3.0 Thread for insert
 

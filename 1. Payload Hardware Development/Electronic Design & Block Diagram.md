@@ -56,6 +56,7 @@ Lesson Outline:
 
 Introduction (15 minutes)
 
+POWERPOINT
 Engagement (5 minutes)
 
 	- Explain
@@ -71,3 +72,6 @@ Engagement (5 minutes)
 	- Explain breadboard
 	- Explain protoboard
 
+MD
+- circuit diagram of LED
+- circuit diagram of Temp sensor
