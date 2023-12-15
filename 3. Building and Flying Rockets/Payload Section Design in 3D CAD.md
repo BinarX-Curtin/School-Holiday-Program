@@ -10,7 +10,7 @@
 - [3.0 Thread for insert](#30-thread-for-insert)
 - [4.0 Adding STL files](#40-adding-stl-files)
 - [5.0 Saving/Exporting as STL](#50-savingexporting-as-stl)
-- [6.0 Creating custom supports for nosecone](#60-creating-custom-supports-for-nosecone)
+- [6.0 Creating custom supports for nosecone in PrusaSlicer](#60-creating-custom-supports-for-nosecone-in-prusaslicer)
 
 
 ## Objectives
@@ -23,24 +23,65 @@
 
 ## Requirements
 1. Fusion 360 installed on device
+2. Fusion 360 Educational license set up
 
 ## Resources
 - Fusion 360 self learning link: https://help.autodesk.com/view/fusion360/ENU/courses/
 - Revolving Solid Bodies: https://help.autodesk.com/view/fusion360/ENU/?guid=GUID-D74BB28A-9570-43AD-97A4-E094021C036B
 - Insert STL file into Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.
 - Exporting as STL from Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html
-- PrusaSlicer RESOURCES
+- PrusaSlicer custom support guide: https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258
 
 ## Procedure
 
 ## 1.0 Fusion 360 Project Installation
 
+1. Download the project attached to the github lesson named "nosecone.f3z"
+
+1. Open Fusion 360 and click on the file button -> open
+![Alt text](Fusion360_open_file.png)
+
+1. Open from my computer then find and select the downloaded .f3z file
+![Alt text](Fusion360_open_fmc.png)
+
+1. Now that were are on the file it is best to check "Fusion 360 self learning link" to get an understanding of how to navigate the program.
+
 ## 2.0 Nosecone Reshaping
+
+
 
 ## 3.0 Thread for insert
 
+TBD if we use this section
+
 ## 4.0 Adding STL files
+
+1. Refer to the "Insert STL file into Fusion 360" resource provided.
+
+1. STL nosecone implementations below:
+
+    Nosecone with frogs
+
+    ![Alt text](placeholder.jpeg)
+
 
 ## 5.0 Saving/Exporting as STL
 
-## 6.0 Creating custom supports for nosecone 
+1. Refer to the "Exporting as STL from Fusion 360" resource provided.
+
+1. Place STL file on USB? ready for slicing.
+
+## 6.0 Creating custom supports for nosecone in PrusaSlicer
+
+1. What are supports and why are they used in 3D printing?
+   - The main reason for supports is to **Support Overhangs** as 3D printing with the (Prusa MK3?) is an additive process meaning it builds upon the lower layers slowly climbing up the nosecone. This means that if there are any overhangs they would be printed in mid air and due to gravity plummet onto the print bed which isn't what we're after. Therefore, support allows for parts to build out and up without any other part of the model beneath them.
+   - **Improving Print Quality** by supporting overhangs it allows for the print to have a smoother more accurate finish as it prevents drooping of filament during printing.
+   - lastly, support can **Prevent Print Failures** as it stabilizes the structure, reducing the risk of parts moving or becoming detached from the bed during printing.
+
+1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is to the quality we expect from a prototype rocket nosecone.
+
+1. 
+
+
+
+
