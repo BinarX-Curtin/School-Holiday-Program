@@ -26,6 +26,7 @@
 
 ## Resources
 - Fusion 360 self learning link: https://help.autodesk.com/view/fusion360/ENU/courses/
+- Revolving Solid Bodies: https://help.autodesk.com/view/fusion360/ENU/?guid=GUID-D74BB28A-9570-43AD-97A4-E094021C036B
 - Insert STL file into Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.
 - Exporting as STL from Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html
 - PrusaSlicer RESOURCES
