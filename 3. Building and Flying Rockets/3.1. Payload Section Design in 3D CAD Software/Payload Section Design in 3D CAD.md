@@ -72,7 +72,10 @@ TBD if we use this section
 
 ## 4.0 Adding STL files
 
-1. Refer to the [Insert STL file into Fusion 360]( https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.html) resource provided.
+1. Refer to the [Insert STL file into Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.html) resource to insert STL models into the project.
+   Use 3D model resources like [Thingiverse](https://www.thingiverse.com/) to add decorative STL models to the nosecone.
+
+   **NOTE: Follow part 2's sectional analysis to ensure that the model doesnt clash with the payload and that the STL is securely connected to the nose cone**
 
 1. STL nosecone implementations below:
 
@@ -83,7 +86,7 @@ TBD if we use this section
 
 ## 5.0 Saving/Exporting as STL
 
-1. Refer to the [Exporting as STL from Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html) resource provided.
+1. Use the guide to [Exporting as STL from Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html) resource provided to export the nosecone file as an STL ready to be used on the slicer. Focus on "Use the Export function" section of the guide.
 
 1. Place STL file on USB? ready for slicing.
 
@@ -96,7 +99,8 @@ TBD if we use this section
 
 1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is what we expect from a prototype rocket nosecone.
 
-1. Refer to [PrusaSlicer custom support guide](https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258)
+1. The [PrusaSlicer custom support guide](https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258) outlines the potential of custom supports.
+    Request the tutors computer or use your own device to add custom supports to the decorations added.
 
 
 
