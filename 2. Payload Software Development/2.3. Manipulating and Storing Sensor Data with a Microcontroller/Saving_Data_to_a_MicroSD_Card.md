@@ -52,4 +52,9 @@ On our rocket payload microcontroller board, the SPI interface that is connected
 
 1. Save, and generate code.
 
+<video loop src="https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/448ba34d-c790-4e87-bf11-20757312fbbc">  video </video> 
+
+
+https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/448ba34d-c790-4e87-bf11-20757312fbbc
+
 
