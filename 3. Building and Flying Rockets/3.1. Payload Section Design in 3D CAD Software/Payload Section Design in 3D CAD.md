@@ -60,7 +60,9 @@
 
 2. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
-https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/32c9e801-6322-4fb3-ac99-694811608b02
+
+https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/331e45f6-6a4a-4a18-ba0a-df4a00c4146b
+
 
 If there are no intersections we've successfully changed our nosecone shape!
 
