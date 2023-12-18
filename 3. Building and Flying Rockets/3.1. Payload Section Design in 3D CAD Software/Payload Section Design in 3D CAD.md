@@ -64,7 +64,7 @@
 
 <!--![Alt text](<sectional view.gif>) -->
 
-<video src="1080p_Sectional_Analysis.mp4" controls title="Sectional Analysis Guide"></video>
+![Alt text](<1080p_Sectional_Analysis.mp4>)
 
 If there are no intersections we've successfully changed our nosecone shape!
 
