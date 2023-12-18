@@ -53,19 +53,19 @@
         <details>
         <summary>**Answers**</summary>
         <br>
-        The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br>The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs from the X, Y and Z directions. You will need to handle these inputs via the microcontroller.
+        The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br>The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs for the X, Y and Z directions. You will need to handle these inputs via the microcontroller. Note these signals are analog in nature and the microcontroller will need to handle this.
         </details>
 <br>
 
 2. Referring to the microcontroller pinout, you will need to select the correct pins to use for these inputs and outputs. Think about what type of signal these inputs and outputs are, are they a digital or analog signal?
         <details>
         <summary>**Microcontroller I/O Pinout**</summary>
+        ![Alt text](image-17.png)
         ![Alt text](image-3.png)
-        ![Alt text](image-4.png)
             <details>
             <summary>**Answers**</summary>
             <br>
-            Looking at the specifcations document for the ADXL326, we can see the outputs for the X, Y, and Z channels are an analog voltage signal (i.e not a discrete 0 or 1). Hence, we know we have to select pins capable of using the analog to digital converter (ADC). This will allow the microcontroller to interpret the analog voltage signals as a digital value. Meaning, the only avaliable pins are PA0 to PA4.<br>The inputs are much more simple, you'll need to connect the COM pin to the GND pin on the microcontroller. You'll then need to connect the +3V pin to the +3V3 supply on the microcontroller.<br>
+            Looking at the specifcations document for the ADXL326, we can see the outputs for the X, Y, and Z channels are an analog voltage signal (i.e not a discrete 0 or 1). Hence, we know we have to select pins capable of using the analog to digital converter (ADC). This will allow the microcontroller to interpret the analog voltage signals as a digital value. Meaning, the only avaliable pins are PA0 to PA4. These are the ADC1_IN5 to ADC1_IN9 pins.<br>The inputs for the ADXL326 are much more simple, you'll need to connect the COM pin to the GND pin on the microcontroller. You'll then need to connect the +3V pin to the +3V3 supply on the microcontroller.<br> Also consider the use of a general input/output pin for the self-test option. You could use any of the free pins, for example PB1, or PB2.
             </details>
         </details>
 <br>
@@ -74,7 +74,7 @@
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
-        ![Alt text](<Circuit Diagrams.png>)
+        ![Alt text](Circuit Diagrams.png)
         </details>
 <br>
 
@@ -83,10 +83,6 @@
 <br>
 
 2. Double check all your connections before proceeding to the next task. Verify with a subject matter expert if needed.
-        <details>
-        <summary>**Answers**</summary>
-        TEXT
-        </details>
 <br>
 
 ### 4. Setting up the STM32 environment for the STM32L433CBT7
