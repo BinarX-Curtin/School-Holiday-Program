@@ -74,7 +74,7 @@
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
-        ![Alt text](image-18.png)
+        ![Alt text](Circuit Diagrams.png)
         </details>
 <br>
 
