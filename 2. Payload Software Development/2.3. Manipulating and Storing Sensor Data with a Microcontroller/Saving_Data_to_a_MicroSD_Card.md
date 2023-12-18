@@ -13,9 +13,17 @@
 
 ## Procedure
 
+### Configure the SPI Hardware for operation with a MicroSD Card
+
+SPI or serial peripheral interface is a common serial interface for connecting sensors and peripherals to a processor or two processors or controllers to each other. It's called a serial interface as the bits of information are sent one after another down a single line or single pair of lines (instead of bits alongside each other which would be called a parallel interface).
+
+On our rocket payload microcontroller board, the SPI interface that is connected to the MicroSD card slot is ```SPI2```.
+
 1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
 
     ![SPI2 Pins for MicroSD](./SPI2_pins_for_microSD.png)
+
+   You can find an article explaining SPI signal names and why they have changed recently here if you are interested: https://www.sparkfun.com/spi_signal_names.
 
 1. Set the "Data Size" to "8 bits":
 
