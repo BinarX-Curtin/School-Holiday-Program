@@ -1,4 +1,10 @@
-### ADXL326 Lesson Plan 
+# ADXL326 Lesson Plan
+
+### Table of Contents
+- [Objectives](#objectives)
+- [Requirements](#requirements)
+- [Resources](#resources)
+- [Procedure](#procedure)
 
 ## Objectives
 1. Understand the component.
@@ -13,6 +19,11 @@
 2. Datasheet for ADXL326.
 3. Datasheet for STM32L433xx.
 
+## Resources
+- ADXL326 Datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL326.pdf
+- STM32L433CBT7 Datasheet: https://au.mouser.com/datasheet/2/389/stm32l433cc-1696557.pdf
+- Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- The basics on capacitors: https://www.matsusada.com/column/capacitor.html 
 
 ## Procedure
 
@@ -74,7 +85,12 @@
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
-        ![Alt text](Circuit Diagrams.png)
+        ![Alt text](<Circuit Diagrams.png>)
+                <details>
+                <summary>**Important Tips**</summary>
+                <br>
+                Notice how IN8 has been used instead of IN7 for the ADC. This is because later on the PA2 pin (or ADC1_IN7) will be utilised by another subsystem on the chip. This will be made clearer on task 4.3, where the USART system onboard the microcontroller is turned on. This will save time later.
+                </details>
         </details>
 <br>
 
@@ -86,47 +102,42 @@
 <br>
 
 ### 4. Setting up the STM32 environment for the STM32L433CBT7
-1. You will now need to setup the an STM32cubeIDE project to interface with the ADXL326 using the payload development board.
+1. You will now need to setup the an STM32cubeIDE project to interface with the ADXL326 using the payload development board. This board utilises the STM32L433CBT7 microcontroller. To verify this, you can read the writing on the top of the chip in the centre of the board.
 <br>
 
-2. First you'll need to open up STM32cubeIDE and start a new project:
-![Alt text](image-6.png)
+2. First you'll need to open up STM32cubeIDE and start a new project:<br>![Alt text](image-6.png)
 <br>
 
-3. You'll need to select the correct board next. The microcontroller onboard the payload development kit is a 'STM32L433CBT7'. Once you have found the correct board, click 'Next'.
-![Alt text](image-7.png)
+3. You'll need to select the correct board next. The microcontroller onboard the payload development kit is a 'STM32L433CBT7'. Once you have found the correct board, click 'Next'.<br>![Alt text](image-7.png)
 <br>
 
-4. Next you can name the project what you would like, and select the C++ programming language option. Then you can select finish.
-![Alt text](image-8.png)
+4. Next you can name the project what you would like, and select the C++ programming language option. Then you can select finish.<br>![Alt text](image-8.png)
 <br>
 
-5. You will then be presented with the pinout for the microcontroller you'll be running! However, to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Serial Wire' option for debugging. This tells the method of communication that will be used for debugging the chip.
-![Alt text](image-9.png)
+5. You will then be presented with the pinout for the microcontroller you'll be running! This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Serial Wire' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](image-9.png)
 <br>
 
-6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART2' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART2 pins to communicate from the laptop to the microcontroller.
-![Alt text](image-10.png)
+6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART2' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART2 pins to communicate from the laptop to the microcontroller.<br>![Alt text](image-10.png)
 <br>
 
-7. Knowing we need three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram. Here you may notice the yellow and pink highlighted options.<br>The yellow is saying that selecting this pin will limit the options available to other active peripheries.<br>The pink is saying that this pin is limited by other active peripheries.
-![Alt text](image-11.png)
+7. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram. Here you may notice the yellow and pink highlighted options.<br>The yellow is saying that selecting this pin will limit the options available to other currently active peripheries.<br>The pink is saying that this pin is being limited by other currently active peripheries.<br>![Alt text](image-11.png)
 <br> 
 
-8. Because we have three seperate lines into the one ADC, we need to set up a method of polling all the values from the ADC at once. First, we need to let the ADC know there are three converions:
-![Alt text](image-12.png)
+8. Because we have three seperate data lines going into one ADC, we need to set up a method of polling all the values from the ADC at once. First, we need to let the ADC know there are three converions occuring. This setting can be found in the "Configuration" window and the value you need to change is the "Number Of Conversion".<br>After this, you'll need to allocate the different ADC channels to the generated "Rank" settings. This is detailed in the image bellow.<br>![Alt text](image-12.png)
 <br>
 
-9.  Next, we need to change the Direct Memory Access settings (DMA settings) by adding a DMA request for ADC1.
-![Alt text](image-13.png)
+9.  Next, we need to change the Direct Memory Access settings (DMA settings) by adding a DMA request for ADC1.<br>![Alt text](image-13.png)
+        <details>
+        <summary>**What is DMA?**</summary>
+        <br>
+        Direct Memory Access bypasses the need for the data to be handled through the CPU. This means that the data the ADC generates is sent directly to memory, which can then be accessed straight away by the CPU for use in the flashed code on the microcontroller.
+        </details>
 <br>
 
-10. Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:
-![Alt text](image-14.png)
+10. Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](image-14.png)
 <br>
 
-11. Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.
-![Alt text](image-15.png)
+11. Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](image-15.png)
         <details>
         <summary>**Why is this?**</summary>
         The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated.<br>For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
@@ -136,11 +147,10 @@
 12. Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 
 ### 5. Writing the code
-1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:
-![Alt text](image-16.png)
+1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:<br>![Alt text](image-16.png)
 <br>
 
-2. First of all we must include the required header files for the project. As we will be using lots of integers, I/O, and strings, the following header files have been used:
+2. First of all we must include the required header files for the project. As we will be using integers, I/O, and strings, the following header files have been used:
 <br>
 ```C++
 /*USER CODE BEGIN Includes*/
@@ -154,7 +164,7 @@
 <br>
         <details>
         <summary>**Why is it a 32 bit integer?**</summary>
-        After reading the ADC HAL functions it was found that they all utilise 32 bit integers. Though the ADC is a 12 bit ADC, it seems that the ADC is able to output 32 bit numbers.
+        After reading the ADC HAL functions it was found that they all utilise 32 bit integers. Though the ADC is a 12 bit ADC, it seems that the ADC is able to output 32 bit numbers. Here is an interesting thread that discusses it: https://stackoverflow.com/questions/76127376/stm32-why-does-hal-adc-start-dma-want-data-buffer-to-be-cast-as-uint32-t
         </details>
 ```C++
 /*USER CODE BEGIN 0*/
