@@ -54,10 +54,10 @@ Multimeter (optional)
 
 Lesson Outline:
 
-Introduction (15 minutes)
+Introduction 
 
 POWERPOINT
-Engagement (5 minutes)
+Engagement
 
 	- Explain
 		○ Current divides around branches (water analogy)
