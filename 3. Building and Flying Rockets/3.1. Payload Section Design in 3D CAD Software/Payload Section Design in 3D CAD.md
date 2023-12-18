@@ -62,12 +62,6 @@
 
 2. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
-![Alt text](<sectional view.gif>)
-
-![Alt text](https://clipchamp.com/watch/9zVXKXuyPEw)
-
-<video src="720p_Sectional_Analysis.mp4" controls="controls" stlye="max-width: 730px;"></video>
-
 https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/32c9e801-6322-4fb3-ac99-694811608b02
 
 If there are no intersections we've successfully changed our nosecone shape!
