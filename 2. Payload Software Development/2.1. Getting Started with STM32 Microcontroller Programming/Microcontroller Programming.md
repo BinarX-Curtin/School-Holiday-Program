@@ -46,23 +46,23 @@ Conditional statements allow for coders to have dynamic pathways throughout thei
 
 Logic statements allow for the comparison between two boolean (1 and 0) values.
 
-|Symbol|word|Definition|
-|:-----|------|-------:|
-|&&|AND|needs both one variables to be TRUE to output TRUE|
-|\|\||OR|needs at least one variable to be TRUE to output TRUE|
+| Symbol | word |                                            Definition |
+| :----- | ---- | ----------------------------------------------------: |
+| &&     | AND  |    needs both one variables to be TRUE to output TRUE |
+| \|\|   | OR   | needs at least one variable to be TRUE to output TRUE |
 
 
 **Logic Conditions**
 
 On the other hand, logic conditions allow for the comparison between singular numerical values
-| Symbol | Definition |
-|:-----|------:|
-|<|Less than|
-|<=|Less than OR equal to|
-|>|Greater than|
-|>=|Greater than OR equal to|
-|==|Equal to|
-|!=|NOT equal to|
+| Symbol |               Definition |
+| :----- | -----------------------: |
+| <      |                Less than |
+| <=     |    Less than OR equal to |
+| >      |             Greater than |
+| >=     | Greater than OR equal to |
+| ==     |                 Equal to |
+| !=     |             NOT equal to |
 
 1. **IF Statements**
     
@@ -110,6 +110,16 @@ On the other hand, logic conditions allow for the comparison between singular nu
 
 2. **SWITCH Statements**
 
+These are unlikely to be used within this development but if you're interested they're described effectively [here](https://www.w3schools.com/cpp/cpp_switch.asp).
 
+
+### Loops <!-- omit from toc -->
+loops allow for the coder to further simplify operations that need to completed multiple times. 
+
+**WHILE**
+
+**DO WHILE**
+
+**FOR**
 
 ## 3.0 STM32CubeIDE
