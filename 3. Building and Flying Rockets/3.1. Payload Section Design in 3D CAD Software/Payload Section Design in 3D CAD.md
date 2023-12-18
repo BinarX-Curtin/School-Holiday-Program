@@ -58,8 +58,6 @@
 
 1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool.
 
-<!--![Alt text](<selecting sectional view.gif>)-->
-
 2. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
 https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/32c9e801-6322-4fb3-ac99-694811608b02
