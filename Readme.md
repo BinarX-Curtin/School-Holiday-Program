@@ -19,7 +19,7 @@
 - Bring a Microsoft Windows based laptop if you can.
 
 ### Before the First Day:
-- Create an Autodesk account and sign up for a Fusion360 personal use license: https://www.autodesk.com/products/fusion-360/personal.
+- Create an Autodesk account and sign up for a Fusion360 education or personal use license: https://www.autodesk.com/products/fusion-360/personal.
 - Sign up for a my.st.com account: https://www.st.com/content/st_com/en/user-registration.html.
 - Install Fusion 360 (https://www.autodesk.com/products/fusion-360/personal) on your Windows based laptop, if you're bringing one.
 - Install STM32CubeIDE on your Windows, Mac or Linux based laptop, if you're bringing one (https://www.st.com/en/development-tools/stm32cubeide.html).
