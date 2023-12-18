@@ -64,7 +64,7 @@
         <details>
         <summary>**Answers**</summary>
         <br>
-        The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br>The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs for the X, Y and Z directions. You will need to handle these inputs via the microcontroller. Note these signals are analog in nature and the microcontroller will need to handle this.
+        -The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br><br>- The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs for the X, Y and Z directions. You will need to handle these inputs via the microcontroller. Note these signals are analog in nature and the microcontroller will need to handle this.
         </details>
 <br>
 
@@ -76,12 +76,12 @@
             <details>
             <summary>**Answers**</summary>
             <br>
-            Looking at the specifcations document for the ADXL326, we can see the outputs for the X, Y, and Z channels are an analog voltage signal (i.e not a discrete 0 or 1). Hence, we know we have to select pins capable of using the analog to digital converter (ADC). This will allow the microcontroller to interpret the analog voltage signals as a digital value. Meaning, the only avaliable pins are PA0 to PA4. These are the ADC1_IN5 to ADC1_IN9 pins.<br>The inputs for the ADXL326 are much more simple, you'll need to connect the COM pin to the GND pin on the microcontroller. You'll then need to connect the +3V pin to the +3V3 supply on the microcontroller.<br> Also consider the use of a general input/output pin for the self-test option. You could use any of the free pins, for example PB1, or PB2.
+            - Looking at the specifcations document for the ADXL326, we can see the outputs for the X, Y, and Z channels are an analog voltage signal (i.e not a discrete 0 or 1). Hence, we know we have to select pins capable of using the analog to digital converter (ADC). This will allow the microcontroller to interpret the analog voltage signals as a digital value. Meaning, the only avaliable pins are PA0 to PA4. These are the ADC1_IN5 to ADC1_IN9 pins.<br><br>- The inputs for the ADXL326 are much more simple, you'll need to connect the COM pin to the GND pin on the microcontroller. You'll then need to connect the +3V pin to the +3V3 supply on the microcontroller.<br><br>- Also consider the use of a general input/output pin for the self-test option. You could use any of the free pins, for example PB1, or PB2.
             </details>
         </details>
 <br>
 
-3. Draw a circuit of your proposed solution. Does it meet the requirements of the ADXL326? Check it against the below example diagrams.
+3. Draw a circuit of your proposed solution. Does it meet the requirements of the ADXL326? Check it against the below example diagrams. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
@@ -89,7 +89,7 @@
                 <details>
                 <summary>**Important Tips**</summary>
                 <br>
-                Notice how IN8 has been used instead of IN7 for the ADC. This is because later on the PA2 pin (or ADC1_IN7) will be utilised by another subsystem on the chip. This will be made clearer on task 4.3, where the USART system onboard the microcontroller is turned on. This will save time later.
+                - Notice how IN8 has been used instead of IN7 for the ADC. This is because later on the PA2 pin (or ADC1_IN7) will be utilised by another subsystem on the chip. This will be made clearer on task 4.3, where the USART system onboard the microcontroller is turned on. This will save time later.<br><br>- A capacitor is used between ground and supply voltage to smooth our any voltage drops from the microcontroller. As the device needs to power itself and supply power to other logical outputs, the power it outputs can fluctuate. Adding a capacitor is a common passive component that is capable of storing electrical charge and discharge when less power is being supplied. This allows the circuit to operate at a steady and constant voltage.<br><br>- It also means that noisy signals can be smoothed out. This is because capacitors suck up voltage, meaning they can take out large peaks in signals. However, if the signal starts to lessen in voltage they will start to supply voltage. This hence produces a signal that is smoother, because the peaks and troughs are brought closer together.
                 </details>
         </details>
 <br>
@@ -140,7 +140,7 @@
 11. Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](image-15.png)
         <details>
         <summary>**Why is this?**</summary>
-        The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated.<br>For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
+        The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated. For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
         </details>
 <br>
 
@@ -164,6 +164,7 @@
 <br>
         <details>
         <summary>**Why is it a 32 bit integer?**</summary>
+        <br> 
         After reading the ADC HAL functions it was found that they all utilise 32 bit integers. Though the ADC is a 12 bit ADC, it seems that the ADC is able to output 32 bit numbers. Here is an interesting thread that discusses it: https://stackoverflow.com/questions/76127376/stm32-why-does-hal-adc-start-dma-want-data-buffer-to-be-cast-as-uint32-t
         </details>
 ```C++
@@ -197,7 +198,10 @@ while(1)
 
 ### 6. Transferring the circuit to the payload kit
 1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you will need to adjust your code to account for another axes to now be resisting the effects of gravity.
+<br>
+
 2. Once the circuit has been correctly transferred to the development kit, you will need to adjust and retest the code you previous developed in task 4.4. 
+<br>
 
 ### 7. Interpretting the results from the code
 1. Once you have recoreded the raw data from the payload you will need to think of a way to convert the raw ninary numbers into Gs. Note the accelerometer should read between +/- 16Gs.
