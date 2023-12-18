@@ -52,3 +52,4 @@ On our rocket payload microcontroller board, the SPI interface that is connected
 
 1. Save, and generate code.
 
+./spi2_configuration_for_microsd_card.mp4
