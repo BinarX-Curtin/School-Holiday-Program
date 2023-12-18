@@ -34,3 +34,4 @@ In order to participate in the program you must return the permission form to Cu
     - WA Schools Involved in the BinarX Program, and
     - The WA Department of Jobs, Tourism, Science and Innovation.
 - Both the participants and parents or carers being contacted with communications from Curtin University related to the program.
+- Bus the students to the launch site in the Perth area in the event that the launch is not at Curtin.
