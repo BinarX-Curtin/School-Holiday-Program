@@ -19,6 +19,9 @@ SPI or serial peripheral interface is a common serial interface for connecting s
 
 On our rocket payload microcontroller board, the SPI interface that is connected to the MicroSD card slot is ```SPI2```.
 
+![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/951834b1-ebd9-4ac7-87b8-b52da0b2c874)
+
+
 1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
 
     ![SPI2 Pins for MicroSD](./SPI2_pins_for_microSD.png)
