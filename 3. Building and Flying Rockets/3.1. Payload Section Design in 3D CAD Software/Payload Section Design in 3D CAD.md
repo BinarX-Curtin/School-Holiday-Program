@@ -77,11 +77,19 @@ TBD if we use this section
 
    **NOTE: Follow part 2's sectional analysis to ensure that the model doesnt clash with the payload and that the STL is securely connected to the nose cone**
 
-1. STL nosecone implementations below:
+1. Remesh the newly added mesh, reducing the amount of faces on complex models.
 
-    Nosecone with frogs
+   ![Alt text](Fusion360_remesh.png)
 
-    ![Alt text](placeholder.jpeg)
+1. Convert the mesh to a body using the convert mesh function, this will take significantly longer if the number of faces is too large.
+
+   ![Alt text](Fusion360_convert_mesh.png)
+
+2. STL nosecone implementations below:
+
+    Nosecone with frog
+
+    ![Alt text](Fusion360_frog.png)
 
 
 ## 5.0 Saving/Exporting as STL
