@@ -66,7 +66,7 @@
 
 ![Alt text](https://clipchamp.com/watch/9zVXKXuyPEw)
 
-<video src="720p_Sectional_Analysis.mp4" controls title="Title"></video>
+<video src="720p_Sectional_Analysis.mp4" controls="controls" stlye="max-width: 730px;"></video>
 
 If there are no intersections we've successfully changed our nosecone shape!
 
