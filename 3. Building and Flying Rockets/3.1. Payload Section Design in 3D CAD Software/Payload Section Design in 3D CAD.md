@@ -56,13 +56,15 @@
 
 ### Sectional Analysis <!-- omit from toc -->
 
-1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool as shown below.
+1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool.
 
-![Alt text](<selecting sectional view.gif>)
+<!--![Alt text](<selecting sectional view.gif>)-->
 
-1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
+2. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
-![Alt text](<sectional view.gif>)
+<!--![Alt text](<sectional view.gif>) -->
+
+<video src="1080p_Sectional_Analysis.mp4" controls title="Sectional Analysis Guide"></video>
 
 If there are no intersections we've successfully changed our nosecone shape!
 
