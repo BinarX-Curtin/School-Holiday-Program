@@ -58,11 +58,11 @@
 
 1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool.
 
-![Alt text](<figures/Fusion360_sectional_analysis.gif>)
+![Alt text](figures/Fusion360_sectional_analysis.gif)
 
 1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
-![Alt text](<figures/Fusion360_sectional_analysis2.gif>)
+![Alt text](figures/Fusion360_sectional_analysis2.gif)
 
 https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/331e45f6-6a4a-4a18-ba0a-df4a00c4146b
 
