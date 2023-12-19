@@ -25,7 +25,13 @@
 ## Procedure
 ## 1.0 What is a Microcontroller
 
-## 2.0 Coding in C++
+## 2.0 STM32CubeIDE
+
+### Navigating
+
+### 
+
+## 3.0 Coding in C++
 
 ### What is code? <!-- omit from toc -->
 
@@ -121,5 +127,3 @@ loops allow for the coder to further simplify operations that need to completed 
 **DO WHILE**
 
 **FOR**
-
-## 3.0 STM32CubeIDE
