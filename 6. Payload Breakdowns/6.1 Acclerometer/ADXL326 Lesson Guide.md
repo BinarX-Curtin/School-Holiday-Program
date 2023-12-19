@@ -64,7 +64,7 @@
         <details>
         <summary>**Answers**</summary>
         <br>
-        -The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br><br>- The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs for the X, Y and Z directions. You will need to handle these inputs via the microcontroller. Note these signals are analog in nature and the microcontroller will need to handle this.
+        - The microcontroller will need to supply 3 volts and a ground to the ADXL326. Remember, the chip is expecting these inputs. You may also want to consider that the chip can also be supplied a self test signal, which is another input that the microcontroller will need to handle.<br><br>- The microcontroller needs to take in three analog readings from the ADXL326. These are the voltages the chip outputs for the X, Y, and Z directions. You will need to handle these inputs via the microcontroller. Note these signals are analog in nature and the microcontroller will need to handle this.
         </details>
 <br>
 
@@ -81,7 +81,7 @@
         </details>
 <br>
 
-3. Draw a circuit of your proposed solution.<br><br>Does it meet the requirements of the ADXL326? Check it against the below example diagrams. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?<br><br>To ensure that the output from the X, Y and Z pins in smoothed and within the correct frequency band the data sheet recommends the following values. How should they be connected to the ADXL326?
+3. Draw a circuit of your proposed solution.<br><br>Does it meet the requirements of the ADXL326? Check it against the answer below. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?<br><br>To ensure that the output from the X, Y, and Z pins is smoothed and within the correct frequency band the data sheet recommends the following values. How should they be connected to the ADXL326? What passive component uses the value of Farads?
 ![Alt text](image-18.png)
         <details>
         <summary>**Answers**</summary>
@@ -90,7 +90,7 @@
                 <details>
                 <summary>**Important Tips**</summary>
                 <br>
-                - Notice how IN8 has been used instead of IN7 for the ADC. This is because later on the PA2 pin (or ADC1_IN7) will be utilised by another subsystem on the chip. This will be made clearer on task 4.3, where the USART system onboard the microcontroller is turned on. This will save time later.<br><br>- A capacitor is used between ground and supply voltage to smooth our any voltage drops from the microcontroller. As the device needs to power itself and supply power to other logical outputs, the power it outputs can fluctuate. Adding a capacitor is a common passive component that is capable of storing electrical charge and discharge when less power is being supplied. This allows the circuit to operate at a steady and constant voltage.<br><br>- It also means that noisy signals can be smoothed out. This is because capacitors suck up voltage, meaning they can take out large peaks in signals. However, if the signal starts to lessen in voltage they will start to supply voltage. This hence produces a signal that is smoother, because the peaks and troughs are brought closer together.
+                - A capacitor is used between ground and supply voltage to smooth our any voltage drops from the microcontroller. As the device needs to power itself and supply power to other logical outputs, the power it outputs can fluctuate. Adding a capacitor is a common method used to storing electrical charge and discharge when less power is being supplied. This allows the circuit to operate at a steady and constant voltage.<br><br>- It also means that noisy signals can be smoothed out. This is because capacitors suck up voltage, meaning they can take out large peaks in signals. However, if the signal starts to lessen in voltage they will start to supply voltage. This hence produces a signal that is smoother, because the peaks and troughs are brought closer together.
                 </details>
         </details>
 <br>
@@ -118,10 +118,10 @@
 5. You will then be presented with the pinout for the microcontroller you'll be running! This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Serial Wire' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](image-9.png)
 <br>
 
-6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART2' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART2 pins to communicate from the laptop to the microcontroller.<br>![Alt text](image-10.png)
+6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller.<br>![Alt text](image-10.png)
 <br>
 
-7. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram. Here you may notice the yellow and pink highlighted options.<br>The yellow is saying that selecting this pin will limit the options available to other currently active peripheries.<br>The pink is saying that this pin is being limited by other currently active peripheries.<br>![Alt text](image-11.png)
+7. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram.<br>![Alt text](image-11.png)
 <br> 
 
 8. Because we have three seperate data lines going into one ADC, we need to set up a method of polling all the values from the ADC at once. First, we need to let the ADC know there are three converions occuring. This setting can be found in the "Configuration" window and the value you need to change is the "Number Of Conversion".<br>After this, you'll need to allocate the different ADC channels to the generated "Rank" settings. This is detailed in the image bellow.<br>![Alt text](image-12.png)
@@ -135,17 +135,17 @@
         </details>
 <br>
 
-10. Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](image-14.png)
+10.  Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](image-14.png)
 <br>
 
-11. Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](image-15.png)
+11.  Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](image-15.png)
         <details>
         <summary>**Why is this?**</summary>
         The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated. For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
         </details>
 <br>
 
-12. Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+12.  Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 
 ### 5. Writing the code
 1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:<br>![Alt text](image-16.png)
@@ -170,7 +170,7 @@
         </details>
 ```C++
 /*USER CODE BEGIN 0*/
-uint32_t ADC_Values[3];
+uint32_t ADC_Value[3];
 uint8_t Print_Buffer[50];
 /*USER CODE END 0*/
 ```
@@ -179,7 +179,7 @@ uint8_t Print_Buffer[50];
 <br>
 ```C++
 /*USER CODE BEGIN 2*/
-HAL_ADC_Start_DMA(&hadc, ADC_Values, 3);
+HAL_ADC_Start_DMA(&hadc1, ADC_Value, 3);
 /*USER CODE END 2*/
 ```
 
@@ -189,8 +189,8 @@ HAL_ADC_Start_DMA(&hadc, ADC_Values, 3);
 /* USER CODE BEGIN WHILE */
 while(1)
 {
-        sprintf((char *)test_buffer, "C1: %d C2: %d C3: %d\r\n", (int)value[0], (int)value[1], (int)value[2]);
-        HAL_UART_Transmit(&huart2, test_buffer, 50, 10);
+        sprintf((char *)Print_Buffer, "C1: %d C2: %d C3: %d\r\n", (int)ADC_Value[0], (int)ADC_Value[1], (int)ADC_Value[2]);
+        HAL_UART_Transmit(&huart1, Print_Buffer, 50, 10);
         HAL_Delay(500);
 }
 ```
