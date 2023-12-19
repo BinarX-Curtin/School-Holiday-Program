@@ -39,27 +39,30 @@
 1. Download the project attached to the github lesson named "nosecone.f3z"
 
 1. Open Fusion 360 and click on the file button -> open
-![Alt text](Fusion360_open_file.png)
+![Alt text](figures/Fusion360_open_file.png)
 
 1. Open from my computer then find and select the downloaded .f3z file
-![Alt text](Fusion360_open_fmc.png)
+![Alt text](figures/Fusion360_open_fmc.png)
 
 1. Now that were are on the file it is best to check "Fusion 360 self learning link" to get an understanding of how to navigate the program.
 
 ## 2.0 Nosecone Reshaping
 
 1. scroll through the timeline and find sketch 4: 
-![Alt text](Fusion360_sketch4.png)
+![Alt text](figures/Fusion360_sketch4.png)
 
 1. Double click the sketch to bring up the editor
-![Alt text](Fusion360_sketch4_edit.png)
+![Alt text](figures/Fusion360_sketch4_edit.png)
 
 ### Sectional Analysis <!-- omit from toc -->
 
 1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool.
 
-2. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
+![Alt text](figures/Fusion360_sectional_analysis.gif)
 
+1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
+
+![Alt text](figures/Fusion360_sectional_analysis2.gif)
 
 https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/331e45f6-6a4a-4a18-ba0a-df4a00c4146b
 
@@ -77,11 +80,19 @@ TBD if we use this section
 
    **NOTE: Follow part 2's sectional analysis to ensure that the model doesnt clash with the payload and that the STL is securely connected to the nose cone**
 
-1. STL nosecone implementations below:
+1. Remesh the newly added mesh, reducing the amount of faces on complex models.
 
-    Nosecone with frogs
+   ![Alt text](figures/Fusion360_remesh.png)
 
-    ![Alt text](placeholder.jpeg)
+1. Convert the mesh to a body using the convert mesh function, this will take significantly longer if the number of faces is too large.
+
+   ![Alt text](figures/Fusion360_convert_mesh.png)
+
+2. STL nosecone implementations below:
+
+    Nosecone with frog
+
+    ![Alt text](figures/Fusion360_frog.png)
 
 
 ## 5.0 Saving/Exporting as STL
