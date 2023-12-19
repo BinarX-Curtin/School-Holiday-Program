@@ -52,7 +52,7 @@
         </details>
 <br>
 
-3. Further details you will need to consider later on in the devlopment of code and testing of the component can be found in the specifcations table in the data sheet for the ADXL326. You can refer to this table later, to help tune your code that will run the ADXL326.
+3. Further details you will need to consider are included in the specifications table from the ADXL326 datasheet. Important to note is the frequency response of the output channels. These are the frequencies at which the data can be produced at, we will need to filter this later though, as it is recommended by the datasheet. This will make more sense later in section 2.
         <details>
         <summary>**Specifications table**</summary>
         ![Alt text](image-2.png)
@@ -81,7 +81,8 @@
         </details>
 <br>
 
-3. Draw a circuit of your proposed solution. Does it meet the requirements of the ADXL326? Check it against the below example diagrams. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?
+3. Draw a circuit of your proposed solution.<br><br>Does it meet the requirements of the ADXL326? Check it against the below example diagrams. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?<br><br>To ensure that the output from the X, Y and Z pins in smoothed and within the correct frequency band the data sheet recommends the following values. How should they be connected to the ADXL326?
+![Alt text](image-18.png)
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
