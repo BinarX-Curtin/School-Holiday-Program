@@ -24,31 +24,31 @@ On our rocket payload microcontroller board, the SPI interface that is connected
 
 1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
 
-    ![SPI2 Pins for MicroSD](./SPI2_pins_for_microSD.png)
+    ![SPI2 Pins for MicroSD](figures/SPI2_pins_for_microSD.png)
 
    You can find an article explaining SPI signal names and why they have changed recently here if you are interested: https://www.sparkfun.com/spi_signal_names.
 
 1. Set the "Data Size" to "8 bits":
 
-    ![8 Bit Data Size](./8_bit_data_size.png)
+    ![8 Bit Data Size](figures/8_bit_data_size.png)
 
 1. Configure PB12 as a "GPIO Output" and give it the label "uSD_CS":
 
-    ![uSD CS Pin GPIO Mode](uSD_CS_pin_GPIO_mode.png)
+    ![uSD CS Pin GPIO Mode](figures/uSD_CS_pin_GPIO_mode.png)
 
 1. Set the prescaler to 128, which with the 16 MHz, HSE oscillator should give you a baud rate of 125 KBits/s:
 
-    ![SPI Prescaler](SPI_prescaler.png)
+    ![SPI Prescaler](figures/SPI_prescaler.png)
 
 1. Move over to the "Clock Configuration" tab, and click "Resolve Clock Issues" if needed.
 
 1. In the left hand side, scroll down to "Middleware and Software Packs", click on FATFS:
 
-    ![FATFS Middleware](FATFS_middleware.png)
+    ![FATFS Middleware](figures/FATFS_middleware.png)
 
     then enable it by ticking "User-defined" in the middle pane:
 
-    ![FATFS User Defined Tick Box](FATFS_user_defined.png)
+    ![FATFS User Defined Tick Box](figures/FATFS_user_defined.png)
 
 1. Save, and generate code.
 
