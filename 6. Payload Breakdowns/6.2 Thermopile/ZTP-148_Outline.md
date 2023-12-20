@@ -19,6 +19,8 @@
 ## Resources
 - STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- Thermopile TI exploration: https://www.ti.com/document-viewer/lit/html/SSZT108#:~:text=By%20maximizing%20the%20amount%20of,resolution%20of%20your%20thermopile%20application.
+- 
 
 ## Procedure
 
@@ -26,7 +28,18 @@
 
 ### 1.1 Block Diagram
 
+
+**Signal Flowchart**
+
+![Alt text](Thermopile_signal_flowchart.png)
+
 ### 1.2 Schematic/Breadboard Diagram
+
+![Alt text](circuit_diagram.png)
+
+**Pin Map**
+
+![Alt text](Thermopile_pinmap.png)
 
 ### 1.3 Breadboard Circuit
 
@@ -42,9 +55,63 @@
 
 ### 2.1 Pseudo code?
 
+```
+loop indefinitely
+    
+    poll ADC 
+    read ADC value and assign to Temp_variable
+
+    print value to serial (for testing)
+
+    print value in csv to SD card
+
+```
+
 ### 2.2 STM32CubeIDE Initialisation
 
 ### 2.3 CODE!
+
+```c++
+UINT bytes_written;
+
+fr = f_open(&f, "data.csv", FA_WRITE | FA_OPEN_APPEND);
+if(fr == FR_OK) {
+    sprintf(string_buffer, "Opened data.csv for writing (appending lines)\r\n");
+    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+}
+else {
+    sprintf(string_buffer, "f_open error (%i)\r\n", fr);
+    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+}
+```
+```c++
+while(1)
+{
+    HAL_ADC_Start(&hadc1); // ADD COMMENT
+    HAL_ADC_PollForConversion(&hadc1, 1); // ADD COMMENT
+
+    internal_temp = HAL_ADC_GetValue(&hadc1);
+
+    sprintf(*serial_string, "Current Temperature: %d \r\n", internal_temp); //Assign string buffer to the temperature value
+
+    HAL_UART_Transmit(&huart1, (uint8_t *)serial_string, sizeof(serial_string), 10); //transmit serial_string using USART1
+
+    sprintf(string_buffer, "An additional line.\r\n");
+    fr = f_write(&f, string_buffer, strlen(string_buffer), &bytes_written);
+    if (fr == FR_OK) {
+        sprintf(string_buffer, "Wrote %i bytes to data.csv.\r\n", bytes_written);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+    else {
+        sprintf(string_buffer, "f_write error (%i)\r\n", fr);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+    
+
+    HAL_Delay(500);
+}
+```
+
 
 ### 2.4 SAVE TO CSV
 
