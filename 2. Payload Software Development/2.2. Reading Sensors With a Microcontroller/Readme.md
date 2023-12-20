@@ -19,18 +19,18 @@
 ## Requirements
 1. STM32CubeIDE installed on device
 1. Pen and paper
-1. STM32L432KC Microcontroller with usb a to micro usb cable
+1. BinarX Rocket Payload Controller Microcontroller Board with STM32L433CBT7 microcontroller
 
 ## Resources
-- STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
-- What is an ADC: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
+- STM32L4 reference manual: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+- What is an ADC article by SparkFun Electronics: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
 ## Procedure
 ## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
 
-1.	Open the STM32CubeIDE file we were working on in the previous session (3.1)
+1.	Open the STM32CubeIDE file we were working on in the [previous session (3.1)](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming)
 
 5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
 
