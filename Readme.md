@@ -18,6 +18,7 @@
 - Bring a USB flash drive.
 - Bring a Microsoft Windows based laptop if you can.
 - Bring a set of headphones.
+- Bring some pen and paper (or a tablet & stylus).
 
 ### Before the First Day:
 - Create an Autodesk account and sign up for a Fusion360 education use license: https://www.autodesk.com/products/fusion-360/personal. (if you can't get a education use license, a personal license is applicable)
