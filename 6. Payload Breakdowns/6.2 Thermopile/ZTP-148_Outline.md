@@ -22,14 +22,41 @@
 
 ## Procedure
 
-### Software debugging tips <!-- omit from toc -->
-- Observe bug, what is the signs or symptoms of the bug.
-- ​**Isolate.** Separate code into sections and verify each section works as intended.
-- Create test case, smallest test case which replicates the bug.
-- Inspect and analyse the bug to find solution.
+## 1.0 Elecrical
 
-### Common things to remember <!-- omit from toc -->
-- Data types, check no data type conflicts or integer overflow is occurring.
-- Use print statements to check program states.
-- Log debugging test cases and results.
-- Check hardware.
+### 1.1 Block Diagram
+
+### 1.2 Schematic/Breadboard Diagram
+
+### 1.3 Breadboard Circuit
+
+**SOFTWARE TIME!**
+
+**1.3.1 TESTING/DEBUGGING**
+
+### 1.4 Protoboard Circuit
+
+**1.3.1 TESTING/DEBUGGING**
+
+## 2.0 Software
+
+### 2.1 Pseudo code?
+
+### 2.2 STM32CubeIDE Initialisation
+
+### 2.3 CODE!
+
+### 2.4 SAVE TO CSV
+
+## 3.0 Data Processing
+
+### 3.1 Reading CSV
+
+### 3.2 Human Readable Information
+
+### 3.3 Graphs
+
+### 3.4 Statistics
+- Highest/lowest measurement
+- Average measurement
+- Other cool stats

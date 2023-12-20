@@ -30,61 +30,41 @@
 ## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
 
-1.	Download the *ReadSensWithMicro.proj.zip* file from the repository.
-
-**Insert image of file with red box around it and another after it with a right clicked version with a red box around the download.**
-
-![Alt text](placeholder.jpeg)
-
-2.	Unzip the STM32CubeIDE project file.
-
-**Insert image of right clicked file with unzip highlighted**
-
-![Alt text](placeholder.jpeg)
-
-3.	Open the STM32CubeIDE and navigate to File -> Open Project from File System… -> Directory
-
-**Insert Image showing this location**
-
-![Alt text](placeholder.jpeg)
-
-4.	Find the project file in your download location commonly in “Downloads” folder.
-
-**Insert image showing the selection of the project downloaded**
-
-![Alt text](placeholder.jpeg)
+1.	Open the STM32CubeIDE file we were working on in the previous session (3.1)
 
 5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
 
     This is the configuration for the built in analogue to digital converter “ADC1”. This hardware peripheral measures analogue voltages and digitises them, storing the conversion result in a register for use in software. This allows you to write software that can respond to changing voltages or values from sensors that output their result as an analogue voltage level.
 
-1.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN17”. Click on the drop-down     menu and select “Temperature Sensor Channel”.
+![Alt text](figures/analog_config.png)
 
-    We’re going to read from the L4’s built in internal temperature sensor instead of connecting external circuity to the one of the ADC input pins.
+3.	Scroll through the ADC1 “Mode and Configuration” tab that just appeared and search for “IN5”. Click on the drop-down menu and select “IN5 Single-ended”.
 
-1.	We’re also going to use a GPIO pin as an output to turn drive the Nucleo board’s built in LED. In the “Pinout view” left click on the pin connected to “PB3” LED and select “GPIO_Output”.
+    We’re going to read from a external temperature sensor connecting external circuity to the one of the ADC input pins.
 
-1. Right click on the “PB3” pin, and give it a user label: “LED”.
+![Alt text](figures/Single_ended_ADC.png)
+
+4.	We’re also going to use a GPIO pin as an output to drive an external LED. In the “Pinout view” left click on the pin connected to “PB1” LED and select “GPIO_Output”.
+
+5. Right click on the “PB1” pin, and give it a user label: “LED”.
 
    Now we're going to set up the UART (universal asynchronous receiver-transmitter) serial communication peripheral which we will use to send messages to the computer to help with software development. 
     
-    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA2” and “PA15” pins on the L4.
+    The “VCP” (virtual com port) TX (transmit) and RX (receive) lines in the built in ST-LINK debugger are connected are connected to the “PA9” and “PA10” pins on the L4.
 
-1.	Left click on “PA2” and select “USART_2TX”. 
+6.	Left click on “PA9” and select “USART1_TX”. 
 
-1.	Left click on “PA15” and select “USART_2RX”.
+7.	Left click on “PA10” and select “USART1_RX”.
 
-1.	Now look to the left hand side and select the “connectivity” drop down menu and change the “mode” drop down the “Asynchronous”.
+8.	Now look to the left hand side and select the “connectivity” drop down menu and change the “mode” drop down the “Asynchronous”.
 
-    The “PA2” and “PA15” pins in the pinout view should now turn green as they have a valid configuration. 
+    The “PA9” and “PA10” pins in the pinout view should now turn green as they have a valid configuration. 
 
     You’re pinout view should look like this:
 
-**Insert image of correct green pinout map**
+![Alt text](figures/green_pinout.png)
 
-![Alt text](placeholder.jpeg)
-
-12.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART2” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
+9.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART1” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
 
 You’re now finished configuring STM32 for the rest of the session!
 
@@ -94,15 +74,11 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 
 1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
 
-**Image of path and what you expect to see when you open it.**
-
-![Alt text](placeholder.jpeg)
+![Alt text](figures/main_path.png)
 
 2.	Find the while loop within the main function!
 
-**Image of what we're looking for**
-
-![Alt text](placeholder.jpeg)
+![Alt text](figures/while_loop.png)
 
 3.	Using a combination of these commands and variables sequence code within the while loop to blink the led. 
     *Remember to comment each line to explain it's functionality*
@@ -119,9 +95,8 @@ HAL_Delay (1000);   // Insert delay 1000 ms
 4. Rebuild your file (click the hammer icon) and in the “Console” window at the
 bottom of the screen you should see “Build Finished. 0 errors, 0 warnings.”
 
-**Image of hammer icon**
+![Alt text](figures/build.png)
 
-![Alt text](placeholder.jpeg)
 
 5. Using the play button check to see if the code runs by watching LED3 to see if it begins flashing as programmed. 
 
@@ -172,17 +147,16 @@ internal_temp = HAL_ADC_GetValue(&hadc1);
     Lastly, similar to the LED blink function a delay is added to reduce the amount of messages sent to the computer.
 
 ```c
-sprintf((char*) serial_string, "Temp: %d\n", internal_temp);
+sprintf(*serial_string, "Current Temperature: %d \r\n", internal_temp); //Assign string buffer to the temperature value
 
-HAL_UART_Transmit(&huart2, serial_string, sizeof(serial_string), 10);
+HAL_UART_Transmit(&huart1, (uint8_t *)serial_string, sizeof(serial_string), 10); //transmit serial_string with a 10ms timeout using USART1
 HAL_Delay(500);
 ```
 
+<!-- 
 7. To observe the intermittent sending to the computer, a console must be set up to observe the messages. firstly, click the debug button (which looks like a green bug) to compile you code and uploaded it to the STM32L4 via the ST-LINK debugger built into the development board:
 
-**Image of of the debug bug**
-
-![Alt text](placeholder.jpeg)
+![Alt text](figures/debug.png)
 
     The “Edit Configuration” dialog will appear:
 
@@ -190,47 +164,52 @@ HAL_Delay(500);
 
 ![Alt text](placeholder.jpeg)
 
-8.  Click “OK” at the bottom of the window.
+1.  Click “OK” at the bottom of the window.
 
-1. Click on the “Console” tab at the bottom of the window:
+-->
+
+7. Click on the “Console” tab at the bottom of the window:
 
 **Image of where the console tab is**
 
-![Alt text](placeholder.jpeg)
+![Alt text](figures/console.png)
 
 
-10.  Click on the “Open Console” to the left of the “Minimise” and “Maximise” buttons near the top right of the console window:
+8.  Click on the “Open Console” to the left of the “Minimise” and “Maximise” buttons near the top right of the console window:
 
-**Image of where the minimise/maximise buttons are**
+![Alt text](figures/console_shell_button.png)
 
-![Alt text](placeholder.jpeg)
+9.  A menu will pop up; select the “Command Shell Console” option:
 
-11. A menu will pop up; select the “Command Shell Console” option:
+![Alt text](figures/console_location.png)
 
-**Image of command shell console option**
+10.   In the “Select Remote Connection” dialog that appears configure select “Serial Port” for the “Connection Type” and click the “New...” button
 
-![Alt text](placeholder.jpeg)
+![Alt text](figures/console_config_serial_port.png)
 
-12.  In the “Select Remote Connection” dialog that appears configure select “Serial Port” for the “Connection Type” and click the “New...” button
+![Alt text](figures/console_config_new.png)
 
-1. Give the connection an name such as “STM32L4 VCP”, select the correct serial port.
+11. Give the connection an name such as “STM32L4 VCP”, select the correct serial port.
    
     You may need to check which port is the correct device with device manager on Windows or some other method on other platforms.
 
-1. Check that the baud rate is the same as the one that was configured for USART2 in CubeMX. (You wrote it down in your notebook.) You can also check the other parameters if you wish or ar having problems.
+12. Check that the baud rate is the same as the one that was configured for USART1 in CubeMX. (You wrote it down in your notebook.) You can also check the other parameters if you wish or ar having problems.
 
-1. Click “Finish” and you’ll be returned to the “Select Remote Connection” dialog.
+![Alt text](figures/new_serial_connection.png)
 
-1. Ensure your new connection is selected in “Connection Name” and press the “OK” button.
+13. Click “Finish” and you’ll be returned to the “Select Remote Connection” dialog.
+
+14. Ensure your new connection is selected in “Connection Name” and press the “OK” button.
    
    You should now see the connected status message at the top left of your console window for your serial connection:
    
-**Image of Serial connection name**
+![Alt text](figures/remote_connection_final.png)
 
-![Alt text](placeholder.jpeg)
+15. Now run your code and you should see your temperature message in the console.
 
+16. You can pin the console using the console with the green pin symbol shown below:
 
-17. Now run your code and you should see your temperature message in the console.
+![Alt text](figures/pin_console.png)
 
 ## 4.0 Extension
 Connect the LED blink to a common temperature that you see using conditional statements in the while loop. This simulates a basic temperature control system which initiates once the internal temperature reaches a specific threshold in either direction.

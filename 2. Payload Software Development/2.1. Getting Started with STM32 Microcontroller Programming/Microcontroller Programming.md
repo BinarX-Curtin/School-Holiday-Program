@@ -24,8 +24,21 @@
 
 ## Procedure
 ## 1.0 What is a Microcontroller
+A microcontroller is a small computer on a single integrated circuit. A microcontroller contains one or more CPUs along with memory and programmable input/output peripherals.
+
+On the other hand, a microprocessor is just an integrated circuit that contains all the functions of a central processing unit of a computer.
+
+### Microcontroller vs Microprocessor
+| Heading        |                                                                                                                                     Microcontroller                                                                                                                                      |                                                                                                                                                                                  Microprocessor |
+| :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Functionality  | A microcontroller is an integrated circuit designed to perform a specific task in an embedded system. It typically includes a processor, memory and input/output peripherals on a single chip. it's designed to be an all-in-one solution for controlling devices in an embedded system. | A microprocessor is essentially the CPU or processing unit of a computer system. It therefore, doesn't include the additional features a microcontroller has such as memory or I/O peripherals. |
+| Applications   |                                                          Used in devices where automation of a specific task is needed. Such as home appliances, automobiles, medical devices, space craft, and other various embedded systems.                                                          |                                                                                                  Utilized when there is a high computing demand in devices such as, PC's, smartphones, servers. |
+| Complexity     |                                                                                             A less complex processor but depending on the additional features could be a more complex chip.                                                                                              |                                                                                               Due to the one dimensional purpose the processing side of this chip is considerably more complex. |
+| Memory/Storage |                                                                             Has small amounts of onboard memory and storage, limited but typically sufficient for the application it is designed to perform.                                                                             |                                                                                        Relies on external memory and storage allowing for greater capacity in a larger and more complex system. |
+
 
 ## 2.0 STM32CubeIDE
+
 
 ### Navigating
 
@@ -70,7 +83,7 @@ On the other hand, logic conditions allow for the comparison between singular nu
 | ==     |                 Equal to |
 | !=     |             NOT equal to |
 
-1. **IF Statements**
+1. **```if``` Statements**
     
     If statements are the most common type of conditional statements as they see if the boolean value inside the brackets is true to proceed.
 
