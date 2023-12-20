@@ -19,7 +19,7 @@
 ## Requirements
 1. STM32CubeIDE installed on device
 1. Pen and paper
-1. STM32L432KC Microcontroller with usb a to micro usb cable
+1. BinarX Rocket Payload Controller Microcontroller Board with STM32L433CBT7 microcontroller
 
 ## Resources
 - STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
