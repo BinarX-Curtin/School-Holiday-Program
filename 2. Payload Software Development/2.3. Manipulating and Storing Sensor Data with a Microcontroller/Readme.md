@@ -15,11 +15,36 @@
 
 ### Configure the SPI Hardware for operation with a MicroSD Card
 
-SPI or serial peripheral interface is a common serial interface for connecting sensors and peripherals to a processor or two processors or controllers to each other. It's called a serial interface as the bits of information are sent one after another down a single line or single pair of lines (instead of bits alongside each other which would be called a parallel interface).
+SPI or serial peripheral interface is a common serial interface for connecting sensors and peripherals to a processor or two processors or controllers to each other. It's called a serial interface as the bits of information are sent one after another down a single line or single pair of lines (instead of bits alongside each other which is called a parallel interface).
 
-On our rocket payload microcontroller board, the SPI interface that is connected to the MicroSD card slot is ```SPI2```.
+On our rocket payload microcontroller board, the MicroSD card slot is connected to the ```SPI2``` serial peripheral interface. (This microcontroller has three, ```SPI1```, ```SPI2``` and ```SPI3```, although the board is only specifically configured for ```SPI1```and ```SPI2```.) This SPI connection is how the payload data is transferred to the microSD card for us to process on the ground after the flight.
 
-![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/951834b1-ebd9-4ac7-87b8-b52da0b2c874)
+You can see the connections on the MicroSD card holder:
+![sd card connections](./figures/micro_sd_card_connections.png)
+
+You can also see that SPI1 and SPI2 are brocken out to the female header connectors that go to your payload prototyping board:
+![header connections](./figures/header_connections.png)
+
+It is possible to connect multiple devices to one SPI peripheral by using a separate GPIO pin for each device's CS line, but for your payloads we recommend you keep things simple, and use ```SPI1``` for any sensors and leave ```SPI2``` for just the microSD card.
+
+You can see how all these lines connect to the microcontroller itself below. We call this assignment the "pin mapping":
+
+![microcontroller io connections](./figures/micro_io_connections.png)
+
+__It's important that the pin mapping in your software (specifically the STM32CubeMX .ioc file inside STM32CubeIDE) match up with the board, otherwise your software won't work as expected.__
+
+The reason that we have to do this step is because the STM32 microcontrollers offer a lot of flexibility in terms of which pins the built in peripherals are connected to. They can be remapped in software, which helps maximise the usefulness of the constrained number of pins, but does mean that you have to keep track of how you have have connected them in hardware and make sure the software pin mapping matches up.
+
+The fully mapped out pin assignment in CubeMX for the BinarX Rocket Payload Microcontroller Board looks like this:
+![cubemx full pin mapping](cubemx_full_pin_mapping.png)
+
+It's not required that you assign all of these pins in CubeMX (the intialisation code generator that is part of STM32CubeIDE), however. You only need to assign the pins that are used by your design. At a minimum, this would be:
+
+- the HSE oscillator pins as the HSE oscillator is being used as your clock source,
+- the SWD pins for programming and debugging,
+- the USART1 pins for the debug UART so you can get debugging messages from your board during software development,
+- the SPI2 & card detect pins for the microSD card holder, so you can save your payload data to the microSD card, and
+- whatever pins are required for your payload sensor (likely ACD, I2C or SPI pins).
 
 
 1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
