@@ -36,7 +36,7 @@
 
 ## 1.0 Fusion 360 Project Installation
 
-1. Download the project attached to the github lesson named "nosecone.f3z"
+1. Download the project attached to the github lesson named "Green Eggs Rocket with Simplified Payload Section v63.f3z"
 
 1. Open Fusion 360 and click on the file button -> open
 ![Alt text](figures/Fusion360_open_file.png)
