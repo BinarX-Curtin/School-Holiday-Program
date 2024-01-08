@@ -105,7 +105,7 @@ On the other hand, logic conditions allow for the comparison between singular nu
     }
     else
     {
-        printf("a < b");
+        printf("a <= b");
     }
     ```
 
