@@ -137,6 +137,59 @@ loops allow for the coder to further simplify operations that need to completed 
 
 **WHILE**
 
+A while loop allows for a piece of code to be continuously looped until a preset condition is met.
+A simple demonstration of a while loop is incrementing a number:
+```c++
+x = 0;
+while (x <= 10)
+{
+    x = x + 1;
+}
+```
+The previous code block first sets x to 0 then enters into the while loop where it checks if the statement (x < 10) is true. If the statement is true then the code inside the while loop will be run, which in this case is to
+increment x by one. Once the program reaches the bottom of the while loop it will jump back to the top and check if the previously mentioned statement is still true now that changes have been made. The while loop will continue to run and x will continue to be incremented until the while statement is no longer true; when x is greater than 10. If the while loop statment is not true the while loop will be skipped over. 
+
 **DO WHILE**
 
+A do while loop is very similar to while loop with the key difference being that a do while loop will always run through the loop at least once even if the loop statement is not true/met. 
+For example:
+```c++
+x = 15;
+do
+{
+    x = x + 1;
+} while (x <= 10);
+```
+In the above code block example the program will first set x to 15, increment x by 1 and then check if the statement (x <= 10) is true. In this case as the do while statement is false the loop will only be ran once. 
+
 **FOR**
+
+A for loop is a method of looping code that allows the program to be looped a specific amount of times. Where a while loop and a do while loop can run on continuously until the loop's statements/conditions are met, a for loop can have a chosen number of loops.
+For example:
+```c++
+for (int x = 0; x < 5; x = x + 1)
+{
+    printf("Hello There");
+}
+```
+The for loop can be broken down into 3 main statements/conditions.
+
+   for (_statement1_; _statement2_; _statement3)
+
+statement1 is the starting condition of the loop, in the previous example x was intialised as an integer number and set to 0.
+
+statement2 is the ending condition of the lopp, as seen in the previous example the loop will continue until x is greater than 3.
+
+statement3 is the incrementing value of the loop, once the loop reaches the bottom it will increment by the amount set by statement3, in the previous example x will be increased by one once it reaches the bottom of the loop.
+
+Therefore the previous for loop will print Hello There 5 times. 
+
+Although the previous for loop has been written to show an incremental change in x. The loop can be modified to allow for a decremental change in x.
+
+```c++
+for (int x = 10; x > 5; x = x - 1)
+{
+    printf("Hello There");
+}
+```
+
