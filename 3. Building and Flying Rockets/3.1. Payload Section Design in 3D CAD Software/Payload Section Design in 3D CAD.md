@@ -7,10 +7,10 @@
 - [Procedure](#procedure)
 - [1.0 Fusion 360 Project Installation](#10-fusion-360-project-installation)
 - [2.0 Nose Cone Reshaping](#20-nose-cone-reshaping)
-- [3.0 Thread for Insert](#30-thread-for-insert)
-- [4.0 Adding STL Files](#40-adding-stl-files)
-- [5.0 Saving/Exporting as STL](#50-savingexporting-as-stl)
-- [6.0 Creating Custom Supports for Nose Cone in PrusaSlicer](#60-creating-custom-supports-for-nose-cone-in-prusaslicer)
+- [3.0 Adding STL Files](#30-adding-stl-files)
+- [4.0 Saving/Exporting as STL](#40-savingexporting-as-stl)
+- [5.0 Creating Custom Supports for Nose Cone in PrusaSlicer](#50-creating-custom-supports-for-nose-cone-in-prusaslicer)
+- [6.0 EXTENSION: Thread Nose Cone for Insert](#60-extension-thread-nose-cone-for-insert)
 
 
 ## Objectives
@@ -108,11 +108,7 @@
 
 If there are no intersections we've successfully changed our nose cone shape!
 
-## 3.0 Thread for Insert
-
-TBD if we use this section
-
-## 4.0 Adding STL Files
+## 3.0 Adding STL Files
 
 **Mesh Shortcuts**
 | Action  | Shortcut |
@@ -151,13 +147,13 @@ TBD if we use this section
     ![Alt text](figures/Fusion360_frog.png)
 
 
-## 5.0 Saving/Exporting as STL
+## 4.0 Saving/Exporting as STL
 
 1. Use the guide to [Exporting as STL from Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html) resource provided to export the nose cone file as an STL ready to be used on the slicer. Focus on "Use the Export function" section of the guide.
 
 1. Place STL file on USB? ready for slicing.
 
-## 6.0 Creating Custom Supports for Nose Cone in PrusaSlicer
+## 5.0 Creating Custom Supports for Nose Cone in PrusaSlicer
 
 1. What are supports and why are they used in 3D printing?
    - The main reason for supports is to **Support Overhangs** as 3D printing with the (Prusa MK3?) is an additive process meaning it builds upon the lower layers slowly climbing up the nose cone. This means that if there are any overhangs they would be printed in mid air and due to gravity plummet onto the print bed which isn't what we're after. Therefore, support allows for parts to build out and up without any other part of the model beneath them.
@@ -168,6 +164,10 @@ TBD if we use this section
 
 1. The [PrusaSlicer custom support guide](https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258) outlines the potential of custom supports.
     Request the tutors computer or use your own device to add custom supports to the decorations added.
+
+## 6.0 EXTENSION: Thread Nose Cone for Insert
+
+With the assistance of the lab staff attempt to complete the threading step following [this guide.](https://www.autodesk.com/products/fusion-360/blog/how-to-create-threads-in-fusion-360/)
 
 
 
