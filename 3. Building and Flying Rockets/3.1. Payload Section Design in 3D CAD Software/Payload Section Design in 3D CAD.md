@@ -1,5 +1,3 @@
-<base target="_blank">
-
 # Payload Section Design in 3D CAD <!-- omit from toc -->
 
 ### Table of Contents <!-- omit from toc -->
@@ -36,6 +34,14 @@
 
 ## Procedure
 
+**Basic Actions**
+| Action  |             Shortcut |
+| :------ | -------------------: |
+| pan     |  middle mouse button |
+| revolve | shift + middle mouse |
+| zoom    |         scroll wheel |
+
+
 ## 1.0 Fusion 360 Project Installation
 
 1. Download the project attached to the github lesson named "Green Eggs Rocket with Simplified Payload Section v63.f3z"
@@ -66,15 +72,25 @@
 
 ## 2.0 Nosecone Reshaping
 
+**Sketch Shortcuts**
+| Action          | Shortcut |
+| :-------------- | -------: |
+| line            |        l |
+| dimension       |        d |
+| rectangle       |        r |
+| trim            |        t |
+| circle (centre) |        c |
+
+
 1. scroll through the timeline and find sketch 4 (Nose Cone): 
    
    ![Alt text](figures/Fusion360_sketch4.png)
 
-1. Double click the sketch to bring up the editor
+2. Double click the sketch to bring up the editor
    
    ![Alt text](figures/Fusion360_sketch4_edit.png)
 
-2. Click on the dimensions to change the sizes. 
+3. Click on the dimensions to change the sizes. 
 
    To be more creative with the shape you can edit the sketch refering to the [sketch guide!](https://help.autodesk.com/view/fusion360/ENU/?guid=GUID-91E892FC-BE5D-4AAB-A823-61BFF7A7B663)
    
@@ -98,20 +114,37 @@ TBD if we use this section
 
 ## 4.0 Adding STL files
 
+**Mesh Shortcuts**
+| Action  | Shortcut |
+| :------ | -------: |
+| move    |        m |
+| measure |        i |
+
+
 1. Refer to the [Insert STL file into Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.html) resource to insert STL models into the project.
    Use 3D model resources like [Thingiverse](https://www.thingiverse.com/) to add decorative STL models to the nosecone.
 
    **NOTE: Follow part 2's sectional analysis to ensure that the model doesnt clash with the payload and that the STL is securely connected to the nose cone**
 
-1. Remesh the newly added mesh, reducing the amount of faces on complex models.
+2. Remesh the newly added mesh, reducing the amount of faces on complex models.
+
+   Adjust the density and shape preservation until the mesh has a reduced amount of faces (the lower the number the faces the better the performance of Fusion360 and the printer only has an accuracy of 0.4mm)
 
    ![Alt text](figures/Fusion360_remesh.png)
 
-1. Convert the mesh to a body using the convert mesh function, this will take significantly longer if the number of faces is too large.
+   An example of parameters that helped me add a frog to the payload are below.
+
+   ![Alt text](figures/Fusion360_remeshsize.png)
+
+3. Reduce the size of the mesh to also increase the performance of Fusion360 and avoid warnings.
+
+   ![Alt text](figures/reducemesh.png)
+
+4. Convert the mesh to a body using the convert mesh function, this will take significantly longer if the number of faces is too large.
 
    ![Alt text](figures/Fusion360_convert_mesh.png)
 
-2. STL nosecone implementations below:
+5. STL nosecone implementations below:
 
     Nosecone with frog
 
