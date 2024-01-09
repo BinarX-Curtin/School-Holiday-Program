@@ -1,3 +1,5 @@
+<base target="_blank">
+
 # Payload Section Design in 3D CAD <!-- omit from toc -->
 
 ### Table of Contents <!-- omit from toc -->
@@ -38,21 +40,45 @@
 
 1. Download the project attached to the github lesson named "Green Eggs Rocket with Simplified Payload Section v63.f3z"
 
+1. Create a new project. 
+   
+   Goto Data panel:
+
+   ![Alt text](figures/datapanel.png)
+
+1. Click new project.
+   
+   ![Alt text](figures/newproject.png)
+
+1. Title the project something meaningful, click enter and open the project. 
+
+   ![Alt text](figures/nameproject.png)
+
 1. Open Fusion 360 and click on the file button -> open
-![Alt text](figures/Fusion360_open_file.png)
+
+   ![Alt text](figures/Fusion360_open_file.png)
 
 1. Open from my computer then find and select the downloaded .f3z file
-![Alt text](figures/Fusion360_open_fmc.png)
+
+   ![Alt text](figures/Fusion360_open_fmc.png)
 
 1. Now that were are on the file it is best to check "Fusion 360 self learning link" to get an understanding of how to navigate the program.
 
 ## 2.0 Nosecone Reshaping
 
-1. scroll through the timeline and find sketch 4: 
-![Alt text](figures/Fusion360_sketch4.png)
+1. scroll through the timeline and find sketch 4 (Nose Cone): 
+   
+   ![Alt text](figures/Fusion360_sketch4.png)
 
 1. Double click the sketch to bring up the editor
-![Alt text](figures/Fusion360_sketch4_edit.png)
+   
+   ![Alt text](figures/Fusion360_sketch4_edit.png)
+
+2. Click on the dimensions to change the sizes. 
+
+   To be more creative with the shape you can edit the sketch refering to the [sketch guide!](https://help.autodesk.com/view/fusion360/ENU/?guid=GUID-91E892FC-BE5D-4AAB-A823-61BFF7A7B663)
+   
+   **NOTE: the lines have to be black to show that they're fully constrained**
 
 ### Sectional Analysis <!-- omit from toc -->
 
@@ -63,9 +89,6 @@
 1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
 
 ![Alt text](figures/Fusion360_sectional_analysis2.gif)
-
-https://github.com/BinarX-Curtin/School-Holiday-Program/assets/127168753/331e45f6-6a4a-4a18-ba0a-df4a00c4146b
-
 
 If there are no intersections we've successfully changed our nosecone shape!
 
