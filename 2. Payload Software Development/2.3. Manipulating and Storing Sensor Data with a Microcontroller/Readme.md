@@ -80,9 +80,9 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
     - "PB14" as "SPI_MISO" and
     - "PB13" as "SPI2_SCK".
 
-    Depending on how you have configured the other pins on the microcontroller, it's likely that "PB15" and "PB14" are configured to the
+    Depending on how you have configured the other pins on the microcontroller, it's likely that "PB15" and "PB14" are configured correctly when you enable SPI2, but you'll have to manually click on "PB13" and select "SPI2_SCK" from the list of pin functionalities:
 
-![pb13 spi clock](figures/pb13_spi2_sck.png)
+    ![pb13 spi clock](figures/pb13_spi2_sck.png)
 
 5. In the configuration panel in the lower middle of the screen, set the "Data Size" to "8 bits":
 
@@ -106,7 +106,11 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
     
 8. Then, right click on it and give it the label "uSD_CS":
 
-    ![usd_cs_pin_label](figures/usd_cs_pin_label.png)
+    ![usd_cs_pin_label](figures/usd_cs_pin_label.png)\
+
+    "PB12"-"PB15" should now look like this:
+
+    ![pb12 to pb15](figures/pb12_to_pb15.png)
 
 9. We're now going to set up a GPIO input to detect the presence of the microSD card in the slot. Click on "PC13" in the right hand pane, and select "GPIO Input":
 
