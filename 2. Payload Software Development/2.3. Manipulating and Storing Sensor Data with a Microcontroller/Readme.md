@@ -52,7 +52,7 @@ It's not required that you assign all of these pins in CubeMX (the intialisation
 
 You should have configured these pins in CubeMX in the previous sessions: [2.1. Getting Started with STM32 Microcontroller Programming](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming/Readme.md) and [2.2. Reading Sensors With a Microcontroller](/2.%20Payload%20Software%20Development/2.2.%20Reading%20Sensors%20With%20a%20Microcontroller/Readme.md).
 
-## 2.0 Configure the SPI Hardware for operation with a MicroSD Card
+## 2.0 Configure the SPI Hardware for Operation With a microSD Card
 
 Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow the steps below to configure the the SPI2 peripheral for use with a MicroSD card.
 
@@ -68,15 +68,27 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
     In the second drop down ("Hardware NSS Signal") select "Disable" as the library we will be using to write to the MicroSD card controls the chip select line from software (requiring it to be configures as a GPIO output, not configured through the SPI2 peripheral). (Note that "slave select" and the abbreviations "SS" or "NSS" are the former terms for "chip select" with the abbreviation "CS".)
 
-    ![SPI2 Pins for MicroSD](figures/SPI2_pins_for_microSD.png)
+    The "Mode" options should look like this:
 
-   You can find an article explaining SPI signal names and why they have changed recently here if you are interested: https://www.sparkfun.com/spi_signal_names.
+    ![spi mode options](figures/spi2_mode_options.png)
 
-4. In the configuration panel in the lower middle of the screen, set the "Data Size" to "8 bits":
+   If you would like more information on SPI signal names and why they have changed recently, you can read this SparkFun Electronics article : https://www.sparkfun.com/spi_signal_names.
 
-    ![8 Bit Data Size](figures/8_bit_data_size.png)
+4. To match up with the pin mapping shown above in the "Microcontroller Input-Output Connections" part of the schematic we need to configure
 
-5. Then, set the prescaler to 256:
+    - "PB15" as "SPI2_MOSI",
+    - "PB14" as "SPI_MISO" and
+    - "PB13" as "SPI2_SCK".
+
+    Depending on how you have configured the other pins on the microcontroller, it's likely that "PB15" and "PB14" are configured to the
+
+![pb13 spi clock](figures/pb13_spi2_sck.png)
+
+5. In the configuration panel in the lower middle of the screen, set the "Data Size" to "8 bits":
+
+    ![spi data size](figures/spi2_data_size.png))
+
+6. Then, set the prescaler to 256:
 
     ![spi prescaler](figures/spi_prescaler.png)
 
@@ -86,29 +98,80 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
    ![spi2 configuration](figures/spi2_config.png)
 
-6. Now we need to set up a pin as the GPIO output to control the chip select (CS) line. Click on "PB12" in the right hand pane and select"GPIO Output".
+7. Now we need to set up a pin as the GPIO output to control the chip select (CS) line for the micro SD card. Click on "PB12" in the right hand pane, and select "GPIO Output".
 
     The pin should now look like this:
     
     ![pb12 gpio output](figures/pb12_gpio_output.png)
     
-7. Then, right click on it and give it the label "uSD_CS":
+8. Then, right click on it and give it the label "uSD_CS":
 
-    ![uSD CS Pin GPIO Mode](figures/uSD_CS_pin_GPIO_mode.png)
+    ![usd_cs_pin_label](figures/usd_cs_pin_label.png)
 
-6. In the left hand side, scroll down to "Middleware and Software Packs", click on FATFS:
+9. We're now going to set up a GPIO input to detect the presence of the microSD card in the slot. Click on "PC13" in the right hand pane, and select "GPIO Input":
 
-    ![FATFS Middleware](figures/FATFS_middleware.png)
+    ![pc13 gpio input](figures/pc13_gpio_input.png)
 
-    then enable it by ticking "User-defined" in the middle pane:
+10. Right click on "PC13", select "Enter User Label" and give the pin the user label "uSD_CD":
 
-    ![FATFS User Defined Tick Box](figures/FATFS_user_defined.png)
+    ![Alt text](figures/usd_cd_label.png).
 
-7. Save, and generate code.
+The hardware connections are now configured to use the microSD card with the STM32 microcontroller. The next step is to add the middleware layer to the project that includes the filesystem that will allow us to create files on the microSD card.
 
-<video loop src="https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/448ba34d-c790-4e87-bf11-20757312fbbc">  video </video> 
+## 3.0 Add FATFS Filesystem Middleware to the Project
+
+In order to write files to the microSD card, we need to use a filesystem. ST makes it fairly easy to add the FATFS filesystem.
+
+1. Still in CubeMX, in "Categories" on the left hand side, scroll down to "Middleware and Software Packs" at the bottom and click on FATFS:
+
+    ![fatfs middleware](figures/fatfs_middleware.png)
+
+2. Then, enable it by ticking the "User-defined" tick box in the "Mode" section in in the middle pane:
+
+    ![fatfs user defined tick box](figures/fatfs_user_defined.png)!
+
+    No changes are required in the "Configuration" section.
+
+3. Now, save either by pressing the save icon in the menu bar, or by pressing Ctrl+S.
+
+   You should be asked, "Do you want to generated Code?".
+
+   Click "Yes" to generate the initilisation code for your project.
 
 
-https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/448ba34d-c790-4e87-bf11-20757312fbbc
+4. If you weren't prompted to generate code. You can complete this step manually, but clicking on the "Generate Code" button in the toolbar, which looks like a yellow cog on a grey shaft:
 
+    ![generate code button](figures/generate_code_button.png)
+
+    or navigating to the "Project>Generate Code" command, via the main menu.
+
+Our initialisation code has now been generated and we're nearly ready to begin using the microSD card to store data. First we need to make some adjustments to the FATFS filesystem library.
+
+## 4.0 Making changes to the FATFS Filesystem Library for use with a microSD Card.
+
+The FATFS library as provided by ST is designed for use with microcontrollers' internal flash memory. We need to make some changes in order to use it with the microSD card. Luckily for us, someone else has made most of the changes for us, and we just need to configure a couple of options, and provide the pin labels used for our microSD card.
+
+This part is based on kiwih's tutorial here: https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/ and builds upon code written by ChaN (http://elm-chan.org/fsw/ff/).
+
+1. In the "Project Explorer" pane on the left hand side of STM32CubeIDE there should now be a new "Middlewares" directory (below a new "FATFS" directory).
+
+Expand this "Middlewares" directory which should reveal a subdirectory called "Third_Party":
+
+![third party directory](figures/third_party_directory.png)
+
+Right click on the "Third_Party" directory and select "New>Folder.
+
+Title the new folder "cubeide-sd-card":
+
+![create cubeide sd card folder](figures/create_cubeide_sd_card_folder.png)
+
+2. Download both of these files from GitHub and put them in the "cubeide-sd-card" folder that you just created:
+
+https://github.com/kiwih/cubeide-sd-card/blob/master/cubeide-sd-card/FATFS/Target/user_diskio_spi.c
+
+https://github.com/kiwih/cubeide-sd-card/blob/master/cubeide-sd-card/FATFS/Target/user_diskio_spi.h
+
+You can drag and drop the files from your file explorer into the folder in STM32CubeIDE, if prompted to copy or link the files, choose to copy them.
+
+3. 
 
