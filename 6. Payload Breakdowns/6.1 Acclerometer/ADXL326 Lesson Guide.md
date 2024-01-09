@@ -31,7 +31,7 @@
 1. Review the "functional block diagram" for the ADXL326. How many inputs does the chip have? How many outputs does the circuit have?
         <details>
         <summary>**The functional block diagram**</summary>
-        ![Alt text](image.png)
+        ![Alt text](Images/image.png)
             <details>
             <summary>**Answers**</summary>
             <br>
@@ -43,7 +43,7 @@
 2. Review the "pin configuration and function descriptions" diagram and table. What are the important requirements for the input pins? Notice how the X, Y, and Z axes are denoted on the diagram (would be wise to keep a note of this).
         <details>
         <summary>**The pin configuration and function descriptions diagram**</summary>
-        ![Alt text](image-1.png)
+        ![Alt text](Images/image-1.png)
             <details>
             <summary>**Answers**</summary>
             <br>
@@ -55,7 +55,7 @@
 3. Further details you will need to consider are included in the specifications table from the ADXL326 datasheet. Important to note is the frequency response of the output channels. These are the frequencies at which the data can be produced at, we will need to filter this later though, as it is recommended by the datasheet. This will make more sense later in section 2.
         <details>
         <summary>**Specifications table**</summary>
-        ![Alt text](image-2.png)
+        ![Alt text](Images/image-2.png)
         </details>
 <br>
 
@@ -71,8 +71,8 @@
 2. Referring to the microcontroller pinout, you will need to select the correct pins to use for these inputs and outputs. Think about what type of signal these inputs and outputs are, are they a digital or analog signal?
         <details>
         <summary>**Microcontroller I/O Pinout**</summary>
-        ![Alt text](image-17.png)
-        ![Alt text](image-3.png)
+        ![Alt text](Images/image-17.png)
+        ![Alt text](Images/image-3.png)
             <details>
             <summary>**Answers**</summary>
             <br>
@@ -82,11 +82,11 @@
 <br>
 
 3. Draw a circuit of your proposed solution.<br><br>Does it meet the requirements of the ADXL326? Check it against the answer below. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?<br><br>To ensure that the output from the X, Y, and Z pins is smoothed and within the correct frequency band the data sheet recommends the following values. How should they be connected to the ADXL326? What passive component uses the value of Farads?
-![Alt text](image-18.png)
+![Alt text](Images/image-18.png)
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
-        ![Alt text](<Circuit Diagrams.png>)
+        ![Alt text](Images/Circuit Diagrams.png)
                 <details>
                 <summary>**Important Tips**</summary>
                 <br>
