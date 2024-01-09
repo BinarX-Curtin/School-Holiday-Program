@@ -1,48 +1,102 @@
-### Saving Data to A MicroSD Card
+# Saving Data to A MicroSD Card
 
-## Resources:
+# Objectives
+1. Configure the SPI subsystem on the microcontroller to communicate with an SD card.
+2. Write sensor data to the SD card in a format that will be readable by the data processing software you will develop in the future.
+
+
+# Resources:
 - Tutorial by kiwih: "Tutorial: An SD card over SPI using STM32CubeIDE and FatFS" https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/.
-- https://controllerstech.com/sd-card-using-spi-in-stm32/
 - "SPI Signal Names" by SparkFun Electronics: https://www.sparkfun.com/spi_signal_names
 
-## Required Software & Equipment
+# Required Software & Equipment
 - BinarX Rocket Payload Microcontroller Board
 - MicroSD Card
 - STM32CubeIDE
-- STLink STM32 Dubugger & Programmer
+- STLink STM32 Debugger & Programmer
 
-## Procedure
+# Procedure
 
-### Configure the SPI Hardware for operation with a MicroSD Card
+## 1.0 Introduction to SPI & MicroSD Card Connections
 
-SPI or serial peripheral interface is a common serial interface for connecting sensors and peripherals to a processor or two processors or controllers to each other. It's called a serial interface as the bits of information are sent one after another down a single line or single pair of lines (instead of bits alongside each other which would be called a parallel interface).
+SPI or serial peripheral interface is a common serial interface for connecting sensors and peripherals to a processor or two processors or controllers to each other. It's called a serial interface as the bits of information are sent one after another down a single line or single pair of lines (instead of bits alongside each other which is called a parallel interface).
 
-On our rocket payload microcontroller board, the SPI interface that is connected to the MicroSD card slot is ```SPI2```.
+On our rocket payload microcontroller board, the MicroSD card slot is connected to the SPI2 serial peripheral interface. (This microcontroller has three, SPI1, SPI2 and SPI3 peripherals, although the board is only configured for SPI1 and SPI2.) This SPI connection is how the payload data is transferred to the microSD card for us to process on the ground after the flight.
 
-![image](https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/951834b1-ebd9-4ac7-87b8-b52da0b2c874)
+You can see the connections on the MicroSD card holder:
+![sd card connections](./figures/micro_sd_card_connections.png)
 
+You can also see that SPI1 and SPI2 are broken out to the female header connectors that go to your payload prototyping board:
+![header connections](./figures/header_connections.png)
 
-1. Configure the SPI2 periphral for "Full Duplex Controller" (formerly known as "Full Duplex Master") with no chip select ("CS") signal (sometimes formerly referred to as slave select, "SS" or "NSS")
+It is possible to connect multiple devices to one SPI peripheral by using a separate GPIO pin for each device's CS line, but for your payloads we recommend you keep things simple, and use SPI1 for any sensors and leave SPI2 for just the microSD card.
+
+You can see how all these lines connect to the microcontroller itself below. We call this assignment the "pin mapping":
+
+![microcontroller io connections](./figures/micro_io_connections.png)
+
+> It's important that the pin mapping in your software (specifically the STM32CubeMX .ioc file inside STM32CubeIDE) match up with the board, otherwise your software won't work as expected.
+
+The reason that we have to do this step is because the STM32 microcontrollers offer a lot of flexibility in terms of which pins the built in peripherals are connected to. They can be remapped in software, which helps maximise the usefulness of the constrained number of pins, but does mean that you have to keep track of how you have have connected them in hardware and make sure the software pin mapping matches up.
+
+The fully mapped out pin assignment in CubeMX for the BinarX Rocket Payload Microcontroller Board looks like this:
+![cubemx full pin mapping](cubemx_full_pin_mapping.png)
+
+It's not required that you assign all of these pins in CubeMX (the intialisation code generator that is part of STM32CubeIDE), however. You only need to assign the pins that are used by your design. At a minimum, this would be:
+
+- the HSE oscillator pins as the HSE oscillator is being used as your clock source,
+- the SWD pins for programming and debugging,
+- the USART1 pins for the debug UART so you can get debugging messages from your board during software development,
+- the SPI2 & card detect pins for the microSD card holder, so you can save your payload data to the microSD card, and
+- whatever pins are required for your payload sensor (likely ADC, I2C or SPI pins).
+
+You should have configured these pins in CubeMX in the previous sessions: [2.1. Getting Started with STM32 Microcontroller Programming](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming/Readme.md) and [2.2. Reading Sensors With a Microcontroller](/2.%20Payload%20Software%20Development/2.2.%20Reading%20Sensors%20With%20a%20Microcontroller/Readme.md).
+
+## 2.0 Configure the SPI Hardware for operation with a MicroSD Card
+
+Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow the steps below to configure the the SPI2 peripheral for use with a MicroSD card.
+
+1. Open STM32CubeMX in STM32CubeIDE by double clicking on the .ioc file in the project explorer on the left hand side of STM32CubeIDE:
+
+    ![ioc file in project explorer](figures/ioc_file.png)
+
+2. Expand the "Connectivity" section in "Categories" on the left hand side and click on "SPI2":
+
+    ![SPI2 section](figures/spi2_section.png)
+
+3. In the middle pane, click on the "Mode" drop down at the top and change the mode to "Full Duplex Master" to configure the SPI2 subsystem as an SPI controller in full duplex mode. (Note that in SMT32CubeIDE the former term "master" is used instead of the up-to-date term "controller". For more information on the recent changes to SPI signal naming, please see this article by SparkFun Electronics: https://www.sparkfun.com/spi_signal_names.)
+
+    In the second drop down ("Hardware NSS Signal") select "Disable" as the library we will be using to write to the MicroSD card controls the chip select line from software (requiring it to be configures as a GPIO output, not configured through the SPI2 peripheral). (Note that "slave select" and the abbreviations "SS" or "NSS" are the former terms for "chip select" with the abbreviation "CS".)
 
     ![SPI2 Pins for MicroSD](figures/SPI2_pins_for_microSD.png)
 
    You can find an article explaining SPI signal names and why they have changed recently here if you are interested: https://www.sparkfun.com/spi_signal_names.
 
-1. Set the "Data Size" to "8 bits":
+4. In the configuration panel in the lower middle of the screen, set the "Data Size" to "8 bits":
 
     ![8 Bit Data Size](figures/8_bit_data_size.png)
 
-1. Configure PB12 as a "GPIO Output" and give it the label "uSD_CS":
+5. Then, set the prescaler to 256:
+
+    ![spi prescaler](figures/spi_prescaler.png)
+
+   > If your baud rate is showing up as more than 400 KBits/s. You may need to make changes in the "Clock Configuration" tab. Request assistance from the facilitators with this step.
+
+   Your SPI2 configuration should look like this:
+
+   ![spi2 configuration](figures/spi2_config.png)
+
+6. Now we need to set up a pin as the GPIO output to control the chip select (CS) line. Click on "PB12" in the right hand pane and select"GPIO Output".
+
+    The pin should now look like this:
+    
+    ![pb12 gpio output](figures/pb12_gpio_output.png)
+    
+7. Then, right click on it and give it the label "uSD_CS":
 
     ![uSD CS Pin GPIO Mode](figures/uSD_CS_pin_GPIO_mode.png)
 
-1. Set the prescaler to 128, which with the 16 MHz, HSE oscillator should give you a baud rate of 125 KBits/s:
-
-    ![SPI Prescaler](figures/SPI_prescaler.png)
-
-1. Move over to the "Clock Configuration" tab, and click "Resolve Clock Issues" if needed.
-
-1. In the left hand side, scroll down to "Middleware and Software Packs", click on FATFS:
+6. In the left hand side, scroll down to "Middleware and Software Packs", click on FATFS:
 
     ![FATFS Middleware](figures/FATFS_middleware.png)
 
@@ -50,7 +104,7 @@ On our rocket payload microcontroller board, the SPI interface that is connected
 
     ![FATFS User Defined Tick Box](figures/FATFS_user_defined.png)
 
-1. Save, and generate code.
+7. Save, and generate code.
 
 <video loop src="https://github.com/BinarX-Curtin/School-Holiday-Program/assets/12658669/448ba34d-c790-4e87-bf11-20757312fbbc">  video </video> 
 

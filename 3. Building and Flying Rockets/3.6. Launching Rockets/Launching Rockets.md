@@ -12,7 +12,7 @@
 1. 
 
 ## Resources
-- 
+- Estes "How a Rocket Works" video explaing the operation of model rocket motors: https://www.youtube.com/watch?v=GXZEw7m-kIc
 
 ## Procedure
 ## 1.0 STM32IDE Project Initialisation
