@@ -4,8 +4,11 @@
 - [Resources](#resources)
 - [Procedure](#procedure)
 - [1.0 What is a Microcontroller](#10-what-is-a-microcontroller)
-- [2.0 Coding in C++](#20-coding-in-c)
-- [3.0 STM32CubeIDE](#30-stm32cubeide)
+  - [Microcontroller vs Microprocessor](#microcontroller-vs-microprocessor)
+- [2.0 STM32CubeIDE](#20-stm32cubeide)
+  - [Navigating](#navigating)
+  - [](#)
+- [3.0 Coding in C++](#30-coding-in-c)
 
 ## Objectives
 1. Understanding the purpose of a Microcontroller
@@ -105,7 +108,7 @@ On the other hand, logic conditions allow for the comparison between singular nu
     }
     else
     {
-        printf("a < b");
+        printf("a <= b");
     }
     ```
 
