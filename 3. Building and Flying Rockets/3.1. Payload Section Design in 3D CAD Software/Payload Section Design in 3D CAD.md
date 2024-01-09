@@ -6,18 +6,18 @@
 - [Resources](#resources)
 - [Procedure](#procedure)
 - [1.0 Fusion 360 Project Installation](#10-fusion-360-project-installation)
-- [2.0 Nosecone Reshaping](#20-nosecone-reshaping)
-- [3.0 Thread for insert](#30-thread-for-insert)
-- [4.0 Adding STL files](#40-adding-stl-files)
+- [2.0 Nose Cone Reshaping](#20-nose-cone-reshaping)
+- [3.0 Thread for Insert](#30-thread-for-insert)
+- [4.0 Adding STL Files](#40-adding-stl-files)
 - [5.0 Saving/Exporting as STL](#50-savingexporting-as-stl)
-- [6.0 Creating custom supports for nosecone in PrusaSlicer](#60-creating-custom-supports-for-nosecone-in-prusaslicer)
+- [6.0 Creating Custom Supports for Nose Cone in PrusaSlicer](#60-creating-custom-supports-for-nose-cone-in-prusaslicer)
 
 
 ## Objectives
 1. Download and open existing Fusion 360 Project
 1. Edit Nose Cone Shape
 1. Add STL files to Fusion 360 
-1. Export nosecone as STL
+1. Export nose cone as STL
 1. Add custom supports in PrusaSlicer
 1. Adding threads to model
 
@@ -70,7 +70,7 @@
 
 1. Now that were are on the file it is best to check "Fusion 360 self learning link" to get an understanding of how to navigate the program.
 
-## 2.0 Nosecone Reshaping
+## 2.0 Nose Cone Reshaping
 
 **Sketch Shortcuts**
 | Action          | Shortcut |
@@ -98,21 +98,21 @@
 
 ### Sectional Analysis <!-- omit from toc -->
 
-1. We need to ensure that our new nosecone fits with the payload. To ensure this we use the sectional analysis tool.
+1. We need to ensure that our new nose cone fits with the payload. To ensure this we use the sectional analysis tool.
 
 ![Alt text](figures/Fusion360_sectional_analysis.gif)
 
-1. Move the arrow up and down to check if there is any intersection between the payload and the nosecone.
+1. Move the arrow up and down to check if there is any intersection between the payload and the nose cone.
 
 ![Alt text](figures/Fusion360_sectional_analysis2.gif)
 
-If there are no intersections we've successfully changed our nosecone shape!
+If there are no intersections we've successfully changed our nose cone shape!
 
-## 3.0 Thread for insert
+## 3.0 Thread for Insert
 
 TBD if we use this section
 
-## 4.0 Adding STL files
+## 4.0 Adding STL Files
 
 **Mesh Shortcuts**
 | Action  | Shortcut |
@@ -122,9 +122,9 @@ TBD if we use this section
 
 
 1. Refer to the [Insert STL file into Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.html) resource to insert STL models into the project.
-   Use 3D model resources like [Thingiverse](https://www.thingiverse.com/) to add decorative STL models to the nosecone.
+   Use 3D model resources like [Thingiverse](https://www.thingiverse.com/) to add decorative STL models to the nose cone.
 
-   **NOTE: Follow part 2's sectional analysis to ensure that the model doesnt clash with the payload and that the STL is securely connected to the nose cone**
+   **NOTE: Follow part 2's sectional analysis to ensure that the model doesn't clash with the payload and that the STL is securely connected to the nose cone**
 
 2. Remesh the newly added mesh, reducing the amount of faces on complex models.
 
@@ -144,27 +144,27 @@ TBD if we use this section
 
    ![Alt text](figures/Fusion360_convert_mesh.png)
 
-5. STL nosecone implementations below:
+5. STL nose cone implementations below:
 
-    Nosecone with frog
+    Nose cone with frog
 
     ![Alt text](figures/Fusion360_frog.png)
 
 
 ## 5.0 Saving/Exporting as STL
 
-1. Use the guide to [Exporting as STL from Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html) resource provided to export the nosecone file as an STL ready to be used on the slicer. Focus on "Use the Export function" section of the guide.
+1. Use the guide to [Exporting as STL from Fusion 360](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html) resource provided to export the nose cone file as an STL ready to be used on the slicer. Focus on "Use the Export function" section of the guide.
 
 1. Place STL file on USB? ready for slicing.
 
-## 6.0 Creating custom supports for nosecone in PrusaSlicer
+## 6.0 Creating Custom Supports for Nose Cone in PrusaSlicer
 
 1. What are supports and why are they used in 3D printing?
-   - The main reason for supports is to **Support Overhangs** as 3D printing with the (Prusa MK3?) is an additive process meaning it builds upon the lower layers slowly climbing up the nosecone. This means that if there are any overhangs they would be printed in mid air and due to gravity plummet onto the print bed which isn't what we're after. Therefore, support allows for parts to build out and up without any other part of the model beneath them.
+   - The main reason for supports is to **Support Overhangs** as 3D printing with the (Prusa MK3?) is an additive process meaning it builds upon the lower layers slowly climbing up the nose cone. This means that if there are any overhangs they would be printed in mid air and due to gravity plummet onto the print bed which isn't what we're after. Therefore, support allows for parts to build out and up without any other part of the model beneath them.
    - **Improving Print Quality** by supporting overhangs it allows for the print to have a smoother more accurate finish as it prevents drooping of filament during printing.
    - lastly, support can **Prevent Print Failures** as it stabilizes the structure, reducing the risk of parts moving or becoming detached from the bed during printing.
 
-1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is what we expect from a prototype rocket nosecone.
+1. Using the PrusaSlicer we're able to create custom supports which allow us to be selective with out placement, density, patterns, and configuration options to ensure the print is what we expect from a prototype rocket nose cone.
 
 1. The [PrusaSlicer custom support guide](https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258) outlines the potential of custom supports.
     Request the tutors computer or use your own device to add custom supports to the decorations added.
