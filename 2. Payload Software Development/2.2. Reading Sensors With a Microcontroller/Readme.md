@@ -26,6 +26,12 @@
 - What is an ADC article by SparkFun Electronics: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
+## Component Links
+- Red LED: https://www.altronics.com.au/p/z0751a-red-800mcd-3mm-led/
+- Blue LED: https://www.altronics.com.au/p/z0869-blue-1000mcd-5mm-led/
+- White LED: https://www.altronics.com.au/p/z0876e-white-22500mcd-5mm-led/
+- UV LED: https://www.altronics.com.au/p/z0883-uv-1600mcd-5mm-clear-led/
+
 ## Procedure
 ## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
@@ -66,11 +72,15 @@ To begin our journey into learning how these complex devices are used, we first 
 
 9.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART1” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
 
+10. Save your project and make sure to allow the regeneration of code.
+
 You’re now finished configuring STM32 for the rest of the session!
 
 ## 2.0 C Code Fundamentals
 
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
+
+**LAB INSTRUCTORS WILL SHOW PHYSICAL CIRCUIT**
 
 1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
 
@@ -81,9 +91,10 @@ This section aims to complete the "Hello World" of micro controllers which is bl
 ![Alt text](figures/while_loop.png)
 
 3.	Using a combination of these commands and variables sequence code within the while loop to blink the led. 
+    
     *Remember to comment each line to explain it's functionality*
 
-```c
+```c++
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET); // Set LED to OFF
 HAL_Delay (1000);   // Insert delay 1000 ms
 HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET); // Set LED to ON
@@ -97,25 +108,24 @@ bottom of the screen you should see “Build Finished. 0 errors, 0 warnings.”
 
 ![Alt text](figures/build.png)
 
-
-5. Using the play button check to see if the code runs by watching LED3 to see if it begins flashing as programmed. 
+5. Using the play button check to see if the code runs by watching the LED to see if it begins flashing as programmed. 
 
 ## 3.0 ADC Implementation
 
 1. Comment out the LED blink code in the while loop using:
-```c
+```c++
 /*
-Code in here
+LED blink code in here
 */
 ```
 2. Insert the line below to start the ADC using the blocking HAL function, in the while loop, and add a comment to define it's function.
 
-```c
+```c++
 HAL_ADC_Start(&hadc1); // ADD COMMENT
 ```
 
 3. Add the poll for conversion command below to assign the ADC value to ADC1's address. Add comments to what *you* think the function does.
-```c
+```c++
 HAL_ADC_PollForConversion(&hadc1, 1); // ADD COMMENT
 ```
 
@@ -129,13 +139,13 @@ HAL_ADC_PollForConversion(&hadc1, 1); // ADD COMMENT
 
 ```c
 static uint8_t serial_string[51] = ""; // Static 50 character buffer for serial communication
-static uint32_t internal_temp = 0; //Static 32 bit unsigned integer to hold value for internal temperature
+static uint32_t sensor_temp = 0; //Static 32 bit unsigned integer to hold value for sensors temperature
 ```
 
-5. To record the current ADC value to "internal_temp" variable we need to use the function below to access the data at the memory location assigned to ADC1.
+5. To record the current ADC value to "sensor_temp" variable we need to use the function below to access the data at the memory location assigned to ADC1.
 
 ```c
-internal_temp = HAL_ADC_GetValue(&hadc1);
+sensor_temp = HAL_ADC_GetValue(&hadc1);
 ```
 
 6. To send the data to the console use the functions below.
@@ -146,8 +156,8 @@ internal_temp = HAL_ADC_GetValue(&hadc1);
 
     Lastly, similar to the LED blink function a delay is added to reduce the amount of messages sent to the computer.
 
-```c
-sprintf(*serial_string, "Current Temperature: %d \r\n", internal_temp); //Assign string buffer to the temperature value
+```c++
+sprintf(*serial_string, "Current Temperature: %d \r\n", sensor_temp); //Assign string buffer to the temperature value
 
 HAL_UART_Transmit(&huart1, (uint8_t *)serial_string, sizeof(serial_string), 10); //transmit serial_string with a 10ms timeout using USART1
 HAL_Delay(500);
