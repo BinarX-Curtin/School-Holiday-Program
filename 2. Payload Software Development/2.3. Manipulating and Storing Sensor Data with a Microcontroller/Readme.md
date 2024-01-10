@@ -1,13 +1,13 @@
-# Saving Data to A MicroSD Card
+# Manipulating and Storing Sensor Data with a Microcontroller
 
 # Objectives
 1. Configure the SPI subsystem on the microcontroller to communicate with an SD card.
 2. Write sensor data to the SD card in a format that will be readable by the data processing software you will develop in the future.
 
-
 # Resources:
 - Tutorial by kiwih: "Tutorial: An SD card over SPI using STM32CubeIDE and FatFS" https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/.
 - "SPI Signal Names" by SparkFun Electronics: https://www.sparkfun.com/spi_signal_names
+- STM32L4 HAL Documentation: https://www.st.com/resource/en/user_manual/um1884-description-of-stm32l4l4-hal-and-lowlayer-drivers-stmicroelectronics.pdf
 
 # Required Software & Equipment
 - BinarX Rocket Payload Microcontroller Board
@@ -40,7 +40,8 @@ You can see how all these lines connect to the microcontroller itself below. We 
 The reason that we have to do this step is because the STM32 microcontrollers offer a lot of flexibility in terms of which pins the built in peripherals are connected to. They can be remapped in software, which helps maximise the usefulness of the constrained number of pins, but does mean that you have to keep track of how you have have connected them in hardware and make sure the software pin mapping matches up.
 
 The fully mapped out pin assignment in CubeMX for the BinarX Rocket Payload Microcontroller Board looks like this:
-![cubemx full pin mapping](cubemx_full_pin_mapping.png)
+
+![cubemx full pin mapping](figures/cubemx_full_pin_mapping.png)
 
 It's not required that you assign all of these pins in CubeMX (the intialisation code generator that is part of STM32CubeIDE), however. You only need to assign the pins that are used by your design. At a minimum, this would be:
 
@@ -442,3 +443,146 @@ Title the new folder "cubeide-sd-card":
 
     Try to fix the issue on your own or with one of your peers, and then seek assistance from your facilitators if you can't resolve the problem yourself.
 
+## 5.0 Writing Sensor Data to a .csv File on the microSD Card
+
+In order to save our payload data to the microSD card we will use the "sprintf" function to assemble ASCII strings which we will then write line by line into a file.
+
+We're going to save the data in the .csv or "comma separated value" format, where each column of data is separated by a commma (",") and each row is on a new line (separated by "\r\n").
+
+Later on, we will then develop data processing software in Python to read these files and process them and produce visual outputs including graphs to answer our science questions. You can also open .csv files in standard spreadsheet applications such as Microsoft Excel.
+
+1. Navigate to "Core/Src/main.c" in your project explorer and double click on the file to open it for editing.
+
+We're now going to add the code required to mount the microSD card's filesystem so that we can write files to it to save our data.
+
+2. Scroll down to  the "2" user code section around line 98.
+
+    Between the "USER CODE BEGIN 2" and "USER CODE END 2" bookends, insert the following code to open a file and write some data:
+
+    ```c++
+    HAL_Delay(1000); //delay to let SD card finish initialisation
+
+    sprintf(string_buffer, "Finished SD card initialisation delay.\r\n"); //load serial string buffer
+    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+
+    //some variables for FatFs
+    FATFS FatFs; 	//Fatfs handle
+    FIL f; 		//File handle
+    FRESULT fr; //Result after operations
+
+    //Open the file system
+    fr = f_mount(&FatFs, "", 1); //1=mount now
+    if (fr != FR_OK) {
+        sprintf(string_buffer, "File mount error: (%i)\r\n", fr);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+        while(1); // stop here if there was an error
+    }
+
+    //Let's get some statistics from the SD card
+    DWORD free_clusters, free_sectors, total_sectors;
+
+    FATFS* getFreeFs;
+
+    fr = f_getfree("", &free_clusters, &getFreeFs);
+    if (fr != FR_OK) {
+        sprintf(string_buffer, "f_getfree error (%i)\r\n", fr);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+        while(1); // stop here if there was an error
+    }
+
+    //Formula comes from ChaN's documentation
+    total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
+    free_sectors = free_clusters * getFreeFs->csize;
+
+    sprintf(string_buffer, "SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
+    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+
+    fr = f_open(&f, "data.csv", FA_WRITE | FA_OPEN_APPEND);
+    if(fr == FR_OK) {
+        sprintf(string_buffer, "Opened data.csv for writing (appending lines)\r\n");
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+    else {
+        sprintf(string_buffer, "f_open error (%i)\r\n", fr);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+
+    UINT bytes_written;
+    //Build data header line, update as needed for your payload
+    sprintf(string_buffer, "Column 1 (Column 1 Units), Column 2 (Column 2 Units), Column 3 (Column 3 Units), Column 4 (Column 4 Units) \r\n");
+    fr = f_write(&f, string_buffer, strlen(string_buffer), &bytes_written);
+    if (fr == FR_OK) {
+        sprintf(string_buffer, "Wrote %i bytes to data.csv.\r\n", bytes_written);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+    else {
+        sprintf(string_buffer, "f_write error (%i)\r\n", fr);
+        HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    }
+
+    f_close(&f);
+    ```
+
+    Note that for this code to work you'll need to have configure USART1 (which is connected to the STLink Virtual Com Port) in CubeMX, and have included the following libaries up in your "Includes" user code section (around line 24):
+
+    ```c++
+    #include <stdio.h> //for sprintf()
+    #include <string.h> //for strlen()
+    ```
+
+    as well as delcared a static file scope string called "string_buffer" in the "PV" user code section (around line 50):
+
+    ```c++
+    static char string_buffer[201] = ""; //static character string buffer for use with sprintf serial transmission & .csv file creation
+    ```
+
+## 6.0 Writing the .csv Header Line
+
+Now we'll want to update the header line written to the microSD card to match the data that you're planning to produce.
+
+The .csv file is a table format and for each time step, a new row of data will be added to the table.
+
+We reccomend using the first column for your timestep, which can either be incremental, or the elapsed time since the recording began or the microcontroller was powered on.
+
+1. Think what measurements you will record in your .csv file and what units the values will be recorded in. Also think about what units your time data will be recorded in.
+
+2. Discuss this amongst your payload group, then update the code that builds the first line for your .csv file and contains the header information for your table. This code uses the "sprintf" function to build the string and looks like this:
+
+    ```c++
+      //Build data header line, update as needed for your payload
+      sprintf(string_buffer, "Column 1 (Column 1 Units), Column 2 (Column 2 Units), Column 3 (Column 3 Units), Column 4 (Column 4 Units) \r\n");
+    ```
+
+    After the string is assembled and saved into the string variable called "string_buffer", the characters inside "string_buffer" are written to the .csv file using the "f_write" function. (You don't need to make any changes to the "f_write" code, however.)
+
+3. Once you've discussed what data you're going to save and the units and updated the code, discuss your decisions with one of the facilitators and get them to have a look at your "sprintf" line.
+
+## 7.0 Writing Your Sensor Data
+
+Discuss with your group how many data points per second you think you'll need to capture for your payload.
+
+Take the on the code you've previously developed in [2.2. Reading Sensors With a Microcontroller](/2.%20Payload%20Software%20Development/2.2.%20Reading%20Sensors%20With%20a%20Microcontroller/Readme.md) and modify it to write your sensor data to the microSD card instead of to the STLink Virtual Com Port.
+
+You'll probably want to keep saving the data to the microSD card until the battery is disconnected, so this code should go inside your main loop in the "WHILE" user code section (inside the "while (1)" loop)"
+
+# TODO 
+
+https://deepbluembedded.com/stm32-adc-read-example-dma-interrupt-polling/
+
+```c++
+// Calibrate The ADC On Power-Up For Better Accuracy
+HAL_ADCEx_Calibration_Start(&hadc1);
+
+HAL_TIM_PWM_.....
+```
+
+## Extension
+
+You might want to make some of the following improvements to your code to improve performance or make it more user friendly:
+
+- Improve the precision of the timing accuracy by triggering the data measurements using one of microcontroller's built in timers.
+- Modify the code so that it starts writing the measurements to the microSD card once the user switch pushbutton is pressed instead of when the microcontroller is powered on.
+- Modify the code so that it stops recording and closes the .csv file when the user switch pushbutton is held down for two seconds.
+- Add an LED switched by a transistor to your prototyping area and modify the code to illuminate the LED when the .csv file has been correctly opened for writing. (This could help prevent you conducting a flight where no data is collected due to a problem with the microSD card or filestystem).
+- Make the LED flicker when data is being written to the microSD card.
+- Improve the efficicency of the microSD card writing process by writing 20 (or more) lines in one "f_write" operation instead of 20 separate operations. You'll need to create a larger string buffer variable to accomplish this. Take a look at the memory usage statistics on compile time to see how close you are coming to using up all of the available memeory. (This change may enable you to achieve higher sample rates which may be useful for some payloads such as the accelerometer.)
