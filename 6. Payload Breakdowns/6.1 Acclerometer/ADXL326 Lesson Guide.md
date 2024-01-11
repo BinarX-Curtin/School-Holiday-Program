@@ -120,7 +120,7 @@
 4. You will then be presented with the pinout for the microcontroller you'll be running. This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Trace Asynchronous Sw' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](Images/image-9.png)
 <br>
 
-5. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller.<br>![Alt text](Images/image-10.png)
+5. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller. This communication will occur through the STLINK-V3 debuggers.<br>![Alt text](Images/image-10.png)
 <br>
 
 6. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram.<br>![Alt text](Images/image-11.png)
@@ -140,14 +140,14 @@
 9.   Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](Images/image-14.png)
 <br>
 
-10.   Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](Images/image-15.png)
+1.    Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](Images/image-15.png)
         <details>
         <summary>**Why is this?**</summary>
         The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated. For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
         </details>
 <br>
 
-11.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+1.    Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 
 ### 5. Writing the code
 1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:<br>![Alt text](Images/image-16.png)
