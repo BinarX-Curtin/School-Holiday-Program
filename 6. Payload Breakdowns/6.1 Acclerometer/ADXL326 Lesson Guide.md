@@ -24,6 +24,8 @@
 - STM32L433CBT7 Datasheet: https://au.mouser.com/datasheet/2/389/stm32l433cc-1696557.pdf
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 - The basics on capacitors: https://www.matsusada.com/column/capacitor.html 
+- What is an ISR? https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/ 
+- STM32 NVIC: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf 
 
 ## Procedure
 
@@ -140,14 +142,26 @@
 9.   Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](Images/image-14.png)
 <br>
 
-1.    Now all the ADC settings are selected, we need to adjust the clock settings. Go to the 'Clock Configuration' tab and select 'Yes' on the prompt asking to run the automatic clock solver. This will solve all our problems for us. If this does not work, click the 'Resolve Clock Issues' button.<br>![Alt text](Images/image-15.png)
+10. You will likely need to trigger the polling of your data collection by presing the user button (SW2 on your payload microcontroller). To do this you will need to access an interupt service routine (ISR). To access this service you will need to use the 'NVIC' settings, which are found under the 'system core' tab again.<br>![Alt text](Images/image-15.png)
         <details>
-        <summary>**Why is this?**</summary>
-        The ADC onboard the microcontroller cannot continuiously converted the voltages outputted by the ADXL326. This is because the microcontroller operates in discrete time, meaning its components are told when to process information and at what rate by clocks on the board. These clocks can be configured however, to allowing the user to set the polling rate of the ADC to match the data rate of the sensor that provides analog values. Hence, when we configure the ADC1 pins in cubeIDE, it must be updated. For the ADXL326, it does not have a specific data production rate (you'll notice nothing is mentioned in the specifications from task 1.3)
+        <summary>**ISR?? NVIC??**</summary>
+        <br> 
+        - An ISR is a very handy tool embedded systems engineers use all the time. It breaks the flow of code to quickly execute a small line of code, typically a boolean flag to trigger something bigger in the main code. As it interupts the initial flow of code the commands executed inside an ISR have to be very simple and quick. If they are not it can cause more issues with the controller. For more details check out this link: https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/<br>
+        - NVIC is a special ISR container developed by STMicro for their own chips. It is fairly complicated...for more details check out this link: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf<br>
         </details>
 <br>
 
-1.    Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+11. Now that the interupt services are active you need to select the correct pin that is attached to SW2. This is shown on the schematic for the microcontroller. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as GPIO_EXTI, as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
+        <details>
+        <summary>**Answer**</summary>
+        <br> 
+        ![Alt text](Images/image-20.png)
+        The button is attached to PA8.
+        </details>
+
+12. We will also need to configure a timer, to keep track of when the samples are taken and 
+
+12.    Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 
 ### 5. Writing the code
 1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:<br>![Alt text](Images/image-16.png)
