@@ -28,7 +28,7 @@
 ## Procedure
 
 ### 1. Understanding the component
-1. Review the "functional block diagram" for the ADXL326. How many inputs does the chip have? How many outputs does the circuit have?
+1. Review the "functional block diagram" for the ADXL326. What are the inputs for the chip have? What are the outputs for chip?
         <details>
         <summary>**The functional block diagram**</summary>
         ![Alt text](Images/image.png)
@@ -40,7 +40,7 @@
         </details>
 <br>
 
-2. Review the "pin configuration and function descriptions" diagram and table. What are the important requirements for the input pins? Notice how the X, Y, and Z axes are denoted on the diagram (would be wise to keep a note of this).
+2. Review the "pin configuration and function descriptions" diagram and table. What supply voltage can this device handle? Are we within its limits?<br><br>(Also Notice how the X, Y, and Z axes are denoted on the diagram, it would be wise to keep a note of this).
         <details>
         <summary>**The pin configuration and function descriptions diagram**</summary>
         ![Alt text](Images/image-1.png)
@@ -86,11 +86,12 @@
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
-        ![Alt text](Images/Circuit Diagrams.png)
+                ![Alt text](<Images/Circuit Diagrams.png>)
+                <br>
                 <details>
                 <summary>**Important Tips**</summary>
                 <br>
-                - A capacitor is used between ground and supply voltage to smooth our any voltage drops from the microcontroller. As the device needs to power itself and supply power to other logical outputs, the power it outputs can fluctuate. Adding a capacitor is a common method used to storing electrical charge and discharge when less power is being supplied. This allows the circuit to operate at a steady and constant voltage.<br><br>- It also means that noisy signals can be smoothed out. This is because capacitors suck up voltage, meaning they can take out large peaks in signals. However, if the signal starts to lessen in voltage they will start to supply voltage. This hence produces a signal that is smoother, because the peaks and troughs are brought closer together.
+                - A capacitor is used between ground and supply voltage to smooth our any voltage drops from the microcontroller. As the device needs to power itself and supply power to other logical outputs, the power it outputs can fluctuate. Adding a capacitor is a common method used to store electrical charge and discharge it when less power is being supplied. This allows the circuit to operate at a steady and constant voltage.<br><br>- It also means that noisy signals can be smoothed out. This is because capacitors suck up voltage, meaning they can take out large peaks in signals. However, if the signal starts to lessen in voltage they will start to supply voltage. This hence produces a signal that is smoother, because the peaks and troughs are brought closer together.
                 </details>
         </details>
 <br>
@@ -103,7 +104,7 @@
 <br>
 
 ### 4. Setting up the STM32 environment for the STM32L433CBT7
-1. You will now need to setup the an STM32cubeIDE project to interface with the ADXL326 using the payload development board. This board utilises the STM32L433CBT7 microcontroller. To verify this, you can read the writing on the top of the chip in the centre of the board.
+1. You will now need to setup an STM32cubeIDE project to interface with the ADXL326 using the payload development board. This board utilises the STM32L433CBT7 microcontroller. To verify this, you can read the writing on the top of the chip in the centre of the board.
 <br>
 
 2. First you'll need to open up STM32cubeIDE and start a new project:<br>![Alt text](Images/image-6.png)
@@ -115,7 +116,7 @@
 4. Next you can name the project what you would like, and select the C++ programming language option. Then you can select finish.<br>![Alt text](Images/image-8.png)
 <br>
 
-5. You will then be presented with the pinout for the microcontroller you'll be running! This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Serial Wire' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](Images/image-9.png)
+5. You will then be presented with the pinout for the microcontroller you'll be running. This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Trace Asynchronous Sw' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](Images/image-9.png)
 <br>
 
 6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller.<br>![Alt text](Images/image-10.png)
