@@ -4,7 +4,6 @@
 - [Resources](#resources)
 - [Procedure](#procedure)
 - [1.0 What is a Microcontroller](#10-what-is-a-microcontroller)
-  - [Microcontroller vs Microprocessor](#microcontroller-vs-microprocessor)
 - [2.0 STM32CubeIDE](#20-stm32cubeide)
   - [Navigating](#navigating)
   - [](#)
@@ -14,7 +13,6 @@
 1. Understanding the purpose of a Microcontroller
 1. Understanding the fundamentals of C++ code
 1. Getting started with STM32CubeIDE
-1. 
 
 ## Requirements
 1. STM32CubeIDE installed
@@ -23,7 +21,7 @@
 
 ## Resources
 - STM32MCU Basics: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32MCU_basics
--  
+- C++ Tutorials: https://www.w3schools.com/cpp/default.asp
 
 ## Procedure
 ## 1.0 What is a Microcontroller
@@ -31,7 +29,7 @@ A microcontroller is a small computer on a single integrated circuit. A microcon
 
 On the other hand, a microprocessor is just an integrated circuit that contains all the functions of a central processing unit of a computer.
 
-### Microcontroller vs Microprocessor
+### Microcontroller vs Microprocessor <!-- omit from toc -->
 | Heading        |                                                                                                                                     Microcontroller                                                                                                                                      |                                                                                                                                                                                  Microprocessor |
 | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | Functionality  | A microcontroller is an integrated circuit designed to perform a specific task in an embedded system. It typically includes a processor, memory and input/output peripherals on a single chip. it's designed to be an all-in-one solution for controlling devices in an embedded system. | A microprocessor is essentially the CPU or processing unit of a computer system. It therefore, doesn't include the additional features a microcontroller has such as memory or I/O peripherals. |
@@ -42,6 +40,87 @@ On the other hand, a microprocessor is just an integrated circuit that contains 
 
 ## 2.0 STM32CubeIDE
 
+<!-- From: AERO3001 Spacecraft Project Week 5 Laboratories 1 & 2
+    Introduction to Microcontroller Embedded Software Development
+    By: Robert Howie -->
+STM32CubeMX is a initialisation code generator for STM32 embedded software development provided by STMicroelectronics. It makes getting started with STM32 software much faster as you can generate code to configure the hardware quickly and easily from a graphical user interface instead of having to reading bit values from the reference manual.
+
+Software development with CubeMX isn’t as simple as a higher level software framework such as Arduino or RTOS (real-time operating system) and framework as ARM Mbed, but it significantly easier than starting from scratch without code generation, and, as a first party solution provided by ST, it does allow you to utilise all of the microcontroller functionality.
+
+CubeMX will generates code using either of ST’s hardware APIs (application programming interfaces): the higher level hardware abstraction layer (“HAL”) which offers input checking and similar usage across STM32 device families or the lower level (“LL”) API which is closer to the hardware, more optimised but less portable and requires deeper knowledge of the microcontroller and peripheral hardware. We’ll be using the HAL but you’re free to use the lower level functions if you wish.
+
+Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube hardware abstraction layer (HAL) is a good way to start as it helps you understand the tight coupling between hardware and software in (microcontroller) embedded software development, and it allows you to familiarise yourself with the STM32Cube APIs which are usually still available for specific hardware functionality in high level software frameworks such as ARM Mbed or Zephyr. The graphical initialisation code generation offered by STM32CubeMX significantly reduces the barrier to getting started, and is useful for pin mapping and to figure out possible hardware configurations even if you’re using a higher level software framework.
+
+### 2.1 Creating a project <!-- omit from toc -->
+1. Open STM32CubeIDE
+2. Select "File>New>STM32 Project" to create a new STM32 project using CubeMX:
+
+   ![Alt text](figures/STM32_CreateProject.png)
+
+    You may have to wait for new hardware information to be downloaded.
+
+3. In the "Commercial Part Number" box type "L433CBT7
+
+   ![Alt text](figures/STM32_TargetSelection.png)
+
+4. Click the item and then "Next"
+5. Give your project a relevant name such as "Wills L433CBT7 CubeMX Project"
+6. Select C++ as the targeted language.
+   
+   ![Alt text](figures/STM32_ProjectName.png)
+
+7. Select "Finish" and wait for the API files to download.
+
+    Once Complete you should be presented with this screen:
+
+    ![Alt text](figures/STM32_PinoutInitial.png)
+
+### 2.2 Configuring Debug and Hardware Peripheral Pinout <!-- omit from toc -->
+
+1. Expand the “System Core” category on the left side of the window and click on “SYS”.
+2. Click the “Debug” dropdown and click “Trace Asynchronous Sw” 
+
+    This is the option for debugging via serial wire debug (SWD) with the SWO (serial wire output) enabled using only Three pins: SWDIO, SWCLK and SWO.
+
+    You should now see a green tick in the “SYS” category: 
+
+    ![Alt text](figures/STM32_SYStick.png)
+
+    In the pinout view, two pins should have been assigned for the debug connections. These pins will turn green and labels will appear next to them:
+
+    ![Alt text](figures/STM32_SYSPinoutView.png)
+
+3. Now, expand the RCC category as we want to initialise the external clock crystals.
+
+    Set both the High Speed Clock (HSE) and the Low Speed Clock (LSE) to "Crystal/Ceramic Resonator".
+
+    ![Alt text](figures/STM32_RCCSetup.png)
+
+    Soon we'll set up the external clocks more thoroughly.
+
+### 2.3 Clock Configuration <!-- omit from toc -->
+
+1. Click on the Clock Configuration tab at the top
+
+    ![Alt text](figures/STM32_ClockConfig.png)
+
+1. We want to utilize the HSE such that we need to select "HSE" under the "PLL Source Mux" and "PLLCLK" under "System Clock Mux". This allows us to have different clock speeds whilst maintaining an output clock tied to the HSE.
+
+    ![Alt text](figures/STM32_PSMSCM.png)
+
+2. Next we need to set the speed to 16MHz by writing it in the "Input frequency" text box
+
+    ![Alt text](figures/STM32_HSEInputFreq.png)
+
+1. Lastly, change the *N to X10 to make the output from "System Clock Mux" equal 80MHz
+   
+   ![Alt text](figures/STM32_NStarValue.png)
+
+2. at the end should look like this:
+
+    ![Alt text](figures/STM32_FinalCLKConfig.png)
+
+We've now finished the setup ready for peripheral additions.
 
 ### Navigating
 
@@ -56,9 +135,32 @@ On the other hand, a microprocessor is just an integrated circuit that contains 
 ### why code? <!-- omit from toc -->
 
 ### Variables <!-- omit from toc -->
+
+Variables hold information and allow for the programmer to store and manipulate data. Each variable may have a different type depending on the information you want to store and how you want to manipulate the data.
+
 1. **Integers**
-1. **Arrays**
-1. **Strings**
+   
+   ```c++
+   int x = 0;
+   ```
+
+2. **Arrays**
+
+    ```c++
+   int x[] = {0,1,2,3,4};
+   ```
+
+3. **Strings**
+
+    ```c++
+    string x = "BinarX";
+    ```
+
+**Tips for variables**
+- ensure you name them with a meaningful name
+- ensure the variable type is appropriate for the use case  
+
+Find out more [here.](https://www.w3schools.com/cpp/cpp_variables.asp)
 
 ### Conditional Statements <!-- omit from toc -->
 
@@ -91,7 +193,8 @@ On the other hand, logic conditions allow for the comparison between singular nu
     If statements are the most common type of conditional statements as they see if the boolean value inside the brackets is true to proceed.
 
     **Note:** the "if" statement sequentially checks each statement to be TRUE and follows that path first. Meaning if multiple statements would be TRUE it will enter the one closest to the top.
-    Example 1
+
+    **Example 1**
     ```c++
     if(a < b || a > b)
     {
@@ -100,7 +203,7 @@ On the other hand, logic conditions allow for the comparison between singular nu
     ```
     *find which logic condition would simplify the above statement*
 
-    Example 2
+    **Example 2**
     ```c++
     if(a > b)
     {
@@ -112,7 +215,7 @@ On the other hand, logic conditions allow for the comparison between singular nu
     }
     ```
 
-    Example 3
+    **Example 3**
     ```c++
     if(a > b && a > c)
     {
@@ -150,7 +253,7 @@ while (x <= 10)
 }
 ```
 The previous code block first sets x to 0 then enters into the while loop where it checks if the statement (x < 10) is true. If the statement is true then the code inside the while loop will be run, which in this case is to
-increment x by one. Once the program reaches the bottom of the while loop it will jump back to the top and check if the previously mentioned statement is still true now that changes have been made. The while loop will continue to run and x will continue to be incremented until the while statement is no longer true; when x is greater than 10. If the while loop statment is not true the while loop will be skipped over. 
+increment x by one. Once the program reaches the bottom of the while loop it will jump back to the top and check if the previously mentioned statement is still true now that changes have been made. The while loop will continue to run and x will continue to be incremented until the while statement is no longer true; when x is greater than 10. If the while loop statement is not true the while loop will be skipped over. 
 
 **DO WHILE**
 
@@ -181,7 +284,7 @@ The for loop can be broken down into 3 main statements/conditions.
 
 statement1 is the starting condition of the loop, in the previous example x was intialised as an integer number and set to 0.
 
-statement2 is the ending condition of the lopp, as seen in the previous example the loop will continue until x is greater than 3.
+statement2 is the ending condition of the loop, as seen in the previous example the loop will continue until x is greater than 3.
 
 statement3 is the incrementing value of the loop, once the loop reaches the bottom it will increment by the amount set by statement3, in the previous example x will be increased by one once it reaches the bottom of the loop.
 

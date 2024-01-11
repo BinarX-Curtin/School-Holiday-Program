@@ -169,6 +169,8 @@ If there are no intersections we've successfully changed our nose cone shape!
 
 With the assistance of the lab staff attempt to complete the threading step following [this guide.](https://www.autodesk.com/products/fusion-360/blog/how-to-create-threads-in-fusion-360/)
 
+**NOTE: The thread size may be of irregular size which will require a surface offset for tolerance reasons.**
+
 
 
 
