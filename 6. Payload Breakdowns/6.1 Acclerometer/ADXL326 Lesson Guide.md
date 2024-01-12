@@ -1,8 +1,7 @@
 # ADXL326 Lesson Plan
 
-### Table of Contents
+### Table of Contents   <!-- omit from toc -->
 - [ADXL326 Lesson Plan](#adxl326-lesson-plan)
-    - [Table of Contents](#table-of-contents)
   - [Objectives](#objectives)
   - [Requirements](#requirements)
   - [Resources](#resources)
@@ -27,6 +26,8 @@
 1. Understanding of CubeMX environment.
 2. Datasheet for ADXL326.
 3. Datasheet for STM32L433xx.
+4. STM32L4 microcontroller board
+5. USB-A to USB-C cable
 
 ## Resources
 - ADXL326 Datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL326.pdf
