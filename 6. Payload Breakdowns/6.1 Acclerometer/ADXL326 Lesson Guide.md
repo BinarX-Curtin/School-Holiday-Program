@@ -35,7 +35,8 @@
 - The basics on capacitors: https://www.matsusada.com/column/capacitor.html 
 - What is an ISR? https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/ 
 - STM32 NVIC: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf
-- STM32 Timer Explained: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx 
+- STM32 Timers Explained: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx 
+- XOR operation in C++: https://www.geeksforgeeks.org/toggling-k-th-bit-number/
 
 ## Procedure
 
@@ -200,7 +201,10 @@
         <details>
         <summary>**What is bit flipping?**</summary>
         <br>
-        It is done using whats called an 'exclusive OR' gate (XOR gate). Here is how the XOR operator works on single bits compared to a regular OR operator.<br>XOR Results:<br>
+        It is done using whats called an 'exclusive OR' gate (XOR gate). Here is how the XOR operator works on single bits compared to a regular OR operator.<br>
+        ![Alt text](Images/image-22.png)
+        <br>
+        You can see that it only returns 1 when the input is 1 and 0. This means that if you have a flag set to 0 and you XOR it with 1, it will return 1. To flip it back you use the same operation, which is awesome! The same flag (now with value 1) XOR'd with 1 will return 0. Check this link out for more: https://www.geeksforgeeks.org/toggling-k-th-bit-number/ 
         </details>
 <br>
 
