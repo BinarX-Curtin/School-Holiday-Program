@@ -25,7 +25,8 @@
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 - The basics on capacitors: https://www.matsusada.com/column/capacitor.html 
 - What is an ISR? https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/ 
-- STM32 NVIC: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf 
+- STM32 NVIC: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf
+- STM32 Timer Explained: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx 
 
 ## Procedure
 
@@ -84,7 +85,7 @@
 <br>
 
 3. Draw a circuit of your proposed solution.<br><br>Does it meet the requirements of the ADXL326? Check it against the answer below. To ensure that the chip has a constant and steady supply of power, what passive electronic component should be used?<br><br>To ensure that the output from the X, Y, and Z pins is smoothed and within the correct frequency band the data sheet recommends the following values. How should they be connected to the ADXL326? What passive component uses the value of Farads?
-![Alt text](Images/image-18.png)
+<br>![Alt text](Images/image-18.png)
         <details>
         <summary>**Answers**</summary>
         Your proposed solution should look something like this:
@@ -135,7 +136,7 @@
         <details>
         <summary>**What is DMA?**</summary>
         <br>
-        Direct Memory Access bypasses the need for the data to be handled through the CPU. This means that the data the ADC generates is sent directly to memory, which can then be accessed straight away by the CPU for use in the flashed code on the microcontroller.
+        Direct Memory Access bypasses the need for the data to be handled through the CPU. This means that the data the ADC generates is sent directly to memory, which can then be accessed straight away by the CPU for use in the flashed code on the microcontroller. For further details refer to this link: https://wiki.st.com/stm32mcu/wiki/Getting_started_with_DMA 
         </details>
 <br>
 
@@ -151,17 +152,25 @@
         </details>
 <br>
 
-11. Now that the interupt services are active you need to select the correct pin that is attached to SW2. This is shown on the schematic for the microcontroller. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as GPIO_EXTI, as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
+11. Now that the interupt services are active you need to select the correct pin that is attached to SW2. This is shown on the schematic for the payload development kit. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as 'GPIO_EXTIx', as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
         <details>
         <summary>**Answer**</summary>
         <br> 
-        ![Alt text](Images/image-20.png)
+        ![Alt text](Images/image-20.png)<br>
         The button is attached to PA8.
         </details>
+<br>
 
-12. We will also need to configure a timer, to keep track of when the samples are taken and 
+12. We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png).
+        <details>
+        <summary>**More on timers**</summary>
+        <br>
+        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx.<br>Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.
+        </details>
+<br>
 
-12.    Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+13. Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+<br>
 
 ### 5. Writing the code
 1. Now all the necessary initialisation has been taken care of its time to start adding in the code that will pull data from the ADC. To do this though, you must first understand that if any changes are made in the chip configuration page (where all the tasks in section 4 took place) the code will be regenerated. To stop any code you add to the main.c file from being over written you **must** put it in the correct place. These spots for use code are denoted as follows:<br>![Alt text](Images/image-16.png)
@@ -212,6 +221,7 @@ while(1)
 ```
 
 6. NOW WE NEED TO WRITE IT TO AN SD CARD AND MAKE SURE IT BEHAVES AS EXPECTED.
+<br>
 
 ### 6. Transferring the circuit to the payload kit
 1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you will need to adjust your code to account for another axes to now be resisting the effects of gravity.
