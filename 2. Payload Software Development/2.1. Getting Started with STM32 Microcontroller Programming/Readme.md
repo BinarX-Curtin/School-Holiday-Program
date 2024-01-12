@@ -50,7 +50,7 @@ CubeMX will generates code using either of ST’s hardware APIs (application pro
 Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube hardware abstraction layer (HAL) is a good way to start as it helps you understand the tight coupling between hardware and software in (microcontroller) embedded software development, and it allows you to familiarise yourself with the STM32Cube APIs which are usually still available for specific hardware functionality in high level software frameworks such as ARM Mbed or Zephyr. The graphical initialisation code generation offered by STM32CubeMX significantly reduces the barrier to getting started, and is useful for pin mapping and to figure out possible hardware configurations even if you’re using a higher level software framework.
 
 ### 2.1 Creating a project <!-- omit from toc -->
-1. Open STM32CubeIDE.<br><br>**IMPORTANT NOTE:** if you are using a lab computer you will have an older version of CubeMX. You will not be able to follow these steps and hence you must download [this](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming.ioc) file. Please skip to [step 3](#30-coding-in-c).
+1. Open STM32CubeIDE.<br><br>**IMPORTANT NOTE:** if you are using a lab computer you will have an older version of CubeMX. You will instead need to start from [this](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming/blank_ioc.ioc) file.
 2. Select "File>New>STM32 Project" to create a new STM32 project using CubeMX:
 
    ![Alt text](figures/STM32_CreateProject.png)
@@ -123,11 +123,11 @@ We've now finished the setup ready for peripheral additions. Now "ctl + s" to sa
 
 ## 3.0 Coding in C++
 
-### *The skip to step 3 people:* <!-- omit from toc -->
-You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Ask a subject matter expert (SME) to help if you are having issues. 
+### *People on lab machines with the older CubeMX:* <!-- omit from toc -->
+You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Ask a subject matter expert (SME) to help if you are having issues.<br>![Alt text](figures/STM32_Loading_Old_ioc.png)
+<br>
 
 ### 3.1 Variables <!-- omit from toc -->
-
 
 Variables hold information and allow for the programmer to store and manipulate data. Each variable may have a different type depending on the information you want to store and how you want to manipulate the data.
 
