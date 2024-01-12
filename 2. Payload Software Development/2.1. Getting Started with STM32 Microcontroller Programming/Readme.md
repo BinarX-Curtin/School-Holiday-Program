@@ -6,7 +6,6 @@
 - [1.0 What is a Microcontroller](#10-what-is-a-microcontroller)
 - [2.0 STM32CubeIDE](#20-stm32cubeide)
 - [3.0 Coding in C++](#30-coding-in-c)
-  - [*The skip to step 3 people:*](#the-skip-to-step-3-people)
 
 ## Objectives
 1. Understanding the purpose of a Microcontroller
@@ -124,12 +123,8 @@ We've now finished the setup ready for peripheral additions. Now "ctl + s" to sa
 
 ## 3.0 Coding in C++
 
-### *The skip to step 3 people:*
-You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Get a SME to help if you are having issues. 
-
-### What is code? <!-- omit from toc -->
-
-### why code? <!-- omit from toc -->
+### *The skip to step 3 people:* <!-- omit from toc -->
+You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Ask a subject matter expert (SME) to help if you are having issues. 
 
 ### Variables <!-- omit from toc -->
 
@@ -156,7 +151,12 @@ Variables hold information and allow for the programmer to store and manipulate 
 
 **Tips for variables**
 - ensure you name them with a meaningful name
-- ensure the variable type is appropriate for the use case  
+- ensure the variable type is appropriate for the use case
+- There are typically two styles of variable names:
+```C++
+int camelCase;
+char under_score;
+```
 
 Find out more [here.](https://www.w3schools.com/cpp/cpp_variables.asp)
 
