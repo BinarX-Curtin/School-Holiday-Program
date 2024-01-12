@@ -126,7 +126,7 @@ We've now finished the setup ready for peripheral additions. Now "ctl + s" to sa
 ### *The skip to step 3 people:* <!-- omit from toc -->
 You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Ask a subject matter expert (SME) to help if you are having issues. 
 
-### Variables <!-- omit from toc -->
+### 3.1 Variables <!-- omit from toc -->
 
 
 Variables hold information and allow for the programmer to store and manipulate data. Each variable may have a different type depending on the information you want to store and how you want to manipulate the data.
@@ -160,7 +160,7 @@ Variables hold information and allow for the programmer to store and manipulate 
 **Tips for variables**
 - ensure you name them with a meaningful name
 - ensure the variable type is appropriate for the use case
-- There are typically two styles of variable names:
+- There are typically two styles of naming variables:
 ```C++
 int camelCase;
 char under_score;
@@ -168,7 +168,7 @@ char under_score;
 
 Find out more [here.](https://www.w3schools.com/cpp/cpp_variables.asp)
 
-### Conditional Statements <!-- omit from toc -->
+### 3.1 Conditional Statements <!-- omit from toc -->
 
 Conditional statements allow for coders to have dynamic pathways throughout their code. The pathway is dependant on the dynamic variable values. Hence, there needs to be clearly defined rules to ensure consistency throughout the code. 
 
@@ -194,60 +194,57 @@ On the other hand, logic conditions allow for the comparison between singular nu
 | ==     |                 Equal to |
 | !=     |             NOT equal to |
 
-1. **```if``` Statements**
+**```if``` Statements**
     
-    If statements are the most common type of conditional statements as they see if the boolean value inside the brackets is true to proceed.
+If statements are the most common type of conditional statements as they see if the boolean value inside the brackets is true to proceed.
 
-    **Note:** the "if" statement sequentially checks each statement to be TRUE and follows that path first. Meaning if multiple statements would be TRUE it will enter the one closest to the top.
+**Note:** the "if" statement sequentially checks each statement to be TRUE and follows that path first. Meaning if multiple statements would be TRUE it will enter the one closest to the top.
 
-    **Example 1**
-    ```c++
-    if(a < b || a > b)
-    {
-        printf("a and b are not equal");
-    }
-    ```
-    *find which logic condition would simplify the above statement*
+**Example 1**
+```c++
+if(a < b || a > b)
+{
+    printf("a and b are not equal");
+}
+```
+*find which logic condition would simplify the above statement*
 
-    **Example 2**
-    ```c++
-    if(a > b)
-    {
-        printf("a > b");
-    }
-    else
-    {
-        printf("a <= b");
-    }
-    ```
+**Example 2**
+```c++
+if(a > b)
+{
+    printf("a > b");
+}
+else
+{
+    printf("a <= b");
+}
+```
 
-    **Example 3**
-    ```c++
-    if(a > b && a > c)
-    {
-        printf("a is the largest number");
-    }
-    else if(b > a && b > c)
-    {
-        printf("b is the largest number");
-    }
-    else
-    {
-        printf("c is the largest number");
-    }
-    
-    ```
-
-
-2. **SWITCH Statements**
+**Example 3**
+```c++
+if(a > b && a > c)
+{
+    printf("a is the largest number");
+}
+else if(b > a && b > c)
+{
+    printf("b is the largest number");
+}
+else
+{
+    printf("c is the largest number");
+}
+```
+**SWITCH Statements**
 
 These are unlikely to be used within this development but if you're interested they're described effectively [here](https://www.w3schools.com/cpp/cpp_switch.asp).
 
 
-### Loops <!-- omit from toc -->
+### 3.3 Loops <!-- omit from toc -->
 loops allow for the coder to further simplify operations that need to completed multiple times. 
 
-**WHILE**
+**WHILE Loops**
 
 A while loop allows for a piece of code to be continuously looped until a preset condition is met.
 A simple demonstration of a while loop is incrementing a number:
@@ -261,7 +258,7 @@ while (x <= 10)
 The previous code block first sets x to 0 then enters into the while loop where it checks if the statement (x < 10) is true. If the statement is true then the code inside the while loop will be run, which in this case is to
 increment x by one. Once the program reaches the bottom of the while loop it will jump back to the top and check if the previously mentioned statement is still true now that changes have been made. The while loop will continue to run and x will continue to be incremented until the while statement is no longer true; when x is greater than 10. If the while loop statement is not true the while loop will be skipped over. 
 
-**DO WHILE**
+**DO WHILE Loops**
 
 A do while loop is very similar to while loop with the key difference being that a do while loop will always run through the loop at least once even if the loop statement is not true/met. 
 For example:
@@ -274,7 +271,7 @@ do
 ```
 In the above code block example the program will first set x to 15, increment x by 1 and then check if the statement (x <= 10) is true. In this case as the do while statement is false the loop will only be ran once. 
 
-**FOR**
+**FOR Loops**
 
 A for loop is a method of looping code that allows the program to be looped a specific amount of times. Where a while loop and a do while loop can run on continuously until the loop's statements/conditions are met, a for loop can have a chosen number of loops.
 For example:
@@ -286,7 +283,7 @@ for (int x = 0; x < 5; x = x + 1)
 ```
 The for loop can be broken down into 3 main statements/conditions.
 
-   for (_statement1_; _statement2_; _statement3)
+for (_statement1_; _statement2_; _statement3_)
 
 statement1 is the starting condition of the loop, in the previous example x was intialised as an integer number and set to 0.
 
@@ -304,4 +301,3 @@ for (int x = 10; x > 5; x = x - 1)
     printf("Hello There");
 }
 ```
-
