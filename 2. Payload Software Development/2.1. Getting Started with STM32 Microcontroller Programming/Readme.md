@@ -147,7 +147,15 @@ Variables hold information and allow for the programmer to store and manipulate 
 
     ```c++
     string x = "BinarX";
+    char[20] = "AnotherString"
     ```
+
+    <details>
+    <summary>What does char[20] mean?</summary>
+    <br>
+    A char is a data type that holds characters, such as 'B', '1', 'n', 'a', or 'R'. However, the square brackets denote that this is an array (or vector) of 20 chars. You could change this number inside the square brackets to change how many characters the array can hold. In our case though it can hold up to 20 characters, which can be used to form a sentence or word. Hence, it is another form of string.
+    </details>
+<br>
 
 **Tips for variables**
 - ensure you name them with a meaningful name
