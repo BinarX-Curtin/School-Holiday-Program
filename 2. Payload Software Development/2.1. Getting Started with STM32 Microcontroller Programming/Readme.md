@@ -5,8 +5,6 @@
 - [Procedure](#procedure)
 - [1.0 What is a Microcontroller](#10-what-is-a-microcontroller)
 - [2.0 STM32CubeIDE](#20-stm32cubeide)
-  - [Navigating](#navigating)
-  - [](#)
 - [3.0 Coding in C++](#30-coding-in-c)
 
 ## Objectives
@@ -43,7 +41,7 @@ On the other hand, a microprocessor is just an integrated circuit that contains 
 <!-- From: AERO3001 Spacecraft Project Week 5 Laboratories 1 & 2
     Introduction to Microcontroller Embedded Software Development
     By: Robert Howie -->
-STM32CubeMX is a initialisation code generator for STM32 embedded software development provided by STMicroelectronics. It makes getting started with STM32 software much faster as you can generate code to configure the hardware quickly and easily from a graphical user interface instead of having to reading bit values from the reference manual.
+STM32CubeMX is an initialisation code generator for STM32 embedded software development provided by STMicroelectronics. It makes getting started with STM32 software much faster as you can generate code to configure the hardware quickly and easily from a graphical user interface instead of having to reading bit values from the reference manual.
 
 Software development with CubeMX isn’t as simple as a higher level software framework such as Arduino or RTOS (real-time operating system) and framework as ARM Mbed, but it significantly easier than starting from scratch without code generation, and, as a first party solution provided by ST, it does allow you to utilise all of the microcontroller functionality.
 
@@ -52,7 +50,7 @@ CubeMX will generates code using either of ST’s hardware APIs (application pro
 Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube hardware abstraction layer (HAL) is a good way to start as it helps you understand the tight coupling between hardware and software in (microcontroller) embedded software development, and it allows you to familiarise yourself with the STM32Cube APIs which are usually still available for specific hardware functionality in high level software frameworks such as ARM Mbed or Zephyr. The graphical initialisation code generation offered by STM32CubeMX significantly reduces the barrier to getting started, and is useful for pin mapping and to figure out possible hardware configurations even if you’re using a higher level software framework.
 
 ### 2.1 Creating a project <!-- omit from toc -->
-1. Open STM32CubeIDE
+1. Open STM32CubeIDE.<br><br>**IMPORTANT NOTE:** if you are using a lab computer you will have an older version of CubeMX. You will not be able to follow these steps and hence you must download THIS!! file. Please skip to step [3](#30-coding-in-c).
 2. Select "File>New>STM32 Project" to create a new STM32 project using CubeMX:
 
    ![Alt text](figures/STM32_CreateProject.png)
@@ -104,27 +102,24 @@ Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube ha
 
     ![Alt text](figures/STM32_ClockConfig.png)
 
-1. We want to utilize the HSE such that we need to select "HSE" under the "PLL Source Mux" and "PLLCLK" under "System Clock Mux". This allows us to have different clock speeds whilst maintaining an output clock tied to the HSE.
+2. We want to utilize the HSE such that we need to select "HSE" under the "PLL Source Mux" and "PLLCLK" under "System Clock Mux". This allows us to have different clock speeds whilst maintaining an output clock tied to the HSE.
 
     ![Alt text](figures/STM32_PSMSCM.png)
 
-2. Next we need to set the speed to 16MHz by writing it in the "Input frequency" text box
+3. Next we need to set the speed to 16MHz by writing it in the "Input frequency" text box
 
     ![Alt text](figures/STM32_HSEInputFreq.png)
 
-1. Lastly, change the *N to X10 to make the output from "System Clock Mux" equal 80MHz
+4. Lastly, change the *N to X10 to make the output from "System Clock Mux" equal 80MHz
    
    ![Alt text](figures/STM32_NStarValue.png)
 
-2. at the end should look like this:
+5. at the end should look like this:
 
     ![Alt text](figures/STM32_FinalCLKConfig.png)
 
-We've now finished the setup ready for peripheral additions.
-
-### Navigating
-
-### 
+We've now finished the setup ready for peripheral additions. Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+<br>
 
 ## 3.0 Coding in C++
 

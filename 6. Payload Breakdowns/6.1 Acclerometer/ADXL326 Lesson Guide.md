@@ -259,7 +259,7 @@ while(1)
 ```
 <br>
 
-7. NOW WE NEED TO WRITE IT TO AN SD CARD AND MAKE SURE IT BEHAVES AS EXPECTED.
+7. Now we need to save this data to the SD card. Hopefully you have your SD card working from [2.3 Manipulating and Storing Sensor Data](/2.%20Payload%20Software%20Development/2.3.%20Manipulating%20and%20Storing%20Sensor%20Data%20with%20a%20Microcontroller/Readme.md).
 <br>
 
 ### 6. Transferring the circuit to the payload kit
