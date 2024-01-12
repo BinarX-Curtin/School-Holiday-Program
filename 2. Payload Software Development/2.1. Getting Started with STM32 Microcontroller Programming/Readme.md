@@ -136,12 +136,14 @@ Variables hold information and allow for the programmer to store and manipulate 
    ```c++
    int x = 0;
    ```
+<br>
 
 2. **Arrays**
 
     ```c++
    int x[] = {0,1,2,3,4};
    ```
+<br>
 
 3. **Strings**
 
@@ -149,7 +151,6 @@ Variables hold information and allow for the programmer to store and manipulate 
     string x = "BinarX";
     char[20] = "AnotherString"
     ```
-
     <details>
     <summary>What does char[20] mean?</summary>
     <br>
