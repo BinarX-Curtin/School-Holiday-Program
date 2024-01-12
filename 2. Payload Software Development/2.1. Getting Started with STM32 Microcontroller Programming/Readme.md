@@ -6,6 +6,7 @@
 - [1.0 What is a Microcontroller](#10-what-is-a-microcontroller)
 - [2.0 STM32CubeIDE](#20-stm32cubeide)
 - [3.0 Coding in C++](#30-coding-in-c)
+  - [*The skip to step 3 people:*](#the-skip-to-step-3-people)
 
 ## Objectives
 1. Understanding the purpose of a Microcontroller
@@ -50,7 +51,7 @@ CubeMX will generates code using either of ST’s hardware APIs (application pro
 Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube hardware abstraction layer (HAL) is a good way to start as it helps you understand the tight coupling between hardware and software in (microcontroller) embedded software development, and it allows you to familiarise yourself with the STM32Cube APIs which are usually still available for specific hardware functionality in high level software frameworks such as ARM Mbed or Zephyr. The graphical initialisation code generation offered by STM32CubeMX significantly reduces the barrier to getting started, and is useful for pin mapping and to figure out possible hardware configurations even if you’re using a higher level software framework.
 
 ### 2.1 Creating a project <!-- omit from toc -->
-1. Open STM32CubeIDE.<br><br>**IMPORTANT NOTE:** if you are using a lab computer you will have an older version of CubeMX. You will not be able to follow these steps and hence you must download THIS!! file. Please skip to step [3](#30-coding-in-c).
+1. Open STM32CubeIDE.<br><br>**IMPORTANT NOTE:** if you are using a lab computer you will have an older version of CubeMX. You will not be able to follow these steps and hence you must download [this](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming.ioc) file. Please skip to [step 3](#30-coding-in-c).
 2. Select "File>New>STM32 Project" to create a new STM32 project using CubeMX:
 
    ![Alt text](figures/STM32_CreateProject.png)
@@ -102,7 +103,7 @@ Software development with STM32CubeMX (inside STM32CubeIDE) and the STM32Cube ha
 
     ![Alt text](figures/STM32_ClockConfig.png)
 
-2. We want to utilize the HSE such that we need to select "HSE" under the "PLL Source Mux" and "PLLCLK" under "System Clock Mux". This allows us to have different clock speeds whilst maintaining an output clock tied to the HSE.
+2. We want to utilize the HSE. This means we need to select "HSE" under the "PLL Source Mux" and "PLLCLK" under "System Clock Mux". This allows us to have different clock speeds whilst maintaining an output clock tied to the HSE.
 
     ![Alt text](figures/STM32_PSMSCM.png)
 
@@ -123,13 +124,15 @@ We've now finished the setup ready for peripheral additions. Now "ctl + s" to sa
 
 ## 3.0 Coding in C++
 
-### What is code? <!-- omit from toc -->
+### *The skip to step 3 people:*
+You'll need to load the file you have downloaded above in the STM32CubeIDE loaded onto the lab machines. Get a SME to help if you are having issues. 
 
-**BYTES**
+### What is code? <!-- omit from toc -->
 
 ### why code? <!-- omit from toc -->
 
 ### Variables <!-- omit from toc -->
+
 
 Variables hold information and allow for the programmer to store and manipulate data. Each variable may have a different type depending on the information you want to store and how you want to manipulate the data.
 
