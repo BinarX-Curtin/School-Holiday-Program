@@ -12,7 +12,6 @@
     - [4. Setting up the STM32 environment for the STM32L433CBT7](#4-setting-up-the-stm32-environment-for-the-stm32l433cbt7)
     - [5. Writing the code](#5-writing-the-code)
     - [6. Transferring the circuit to the payload kit](#6-transferring-the-circuit-to-the-payload-kit)
-    - [7. Interpretting the results from the code](#7-interpretting-the-results-from-the-code)
 
 ## Objectives
 1. Understand the components.
@@ -263,13 +262,34 @@ while(1)
 7. Now we need to save this data to the SD card. Hopefully you have your SD card working from [2.3 Manipulating and Storing Sensor Data](/2.%20Payload%20Software%20Development/2.3.%20Manipulating%20and%20Storing%20Sensor%20Data%20with%20a%20Microcontroller/Readme.md).
 <br>
 
+8. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed.<br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+<br>
+        <details>
+        <summary>**CHEATING!**</summary> 
+                <details>
+                <summary>**DO NOT DO IT!**</summary>
+                        <details>
+                        <summary>**YOU BETTER BE REALLY STRUGGLING!**</summary>
+                                <details>
+                                <summary>**ARE YOU SUPER CONFUSED WITH EVERYTHING?**</summary>
+                                        <details>
+                                        <summary>**GO FIGURE IT OUT!**</summary>
+                                                <details>
+                                                <summary>**FINE**</summary>
+                                                <br>
+                                                [here...](/6.%20Payload%20Breakdowns/6.1%20Acclerometer/Images/nothing.c)
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+
+
 ### 6. Transferring the circuit to the payload kit
 1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you will need to adjust your code to account for another axes to now be resisting the effects of gravity.
 <br>
 
-2. Once the circuit has been correctly transferred to the development kit, you will need to adjust and retest the code you previous developed in task 4.4. 
-<br>
+2. Ensure the code works as expected by testing it inside the nose cone under 'launch conditions' (shake load the development board and your developed circuit inside the nose cone). Then retreive the data and verify your code works as expected.
 
-### 7. Interpretting the results from the code
-1. Once you have recoreded the raw data from the payload you will need to think of a way to convert the raw ninary numbers into Gs. Note the accelerometer should read between +/- 16Gs.
-<br>
+3. Show off your work to a SME, you've built a working accelerometer circuit. See if they have any ideas for you to impliment in the code or circuit to improve the design.
