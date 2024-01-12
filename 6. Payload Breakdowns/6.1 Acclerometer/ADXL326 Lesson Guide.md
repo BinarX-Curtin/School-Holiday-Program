@@ -176,11 +176,11 @@
         <details>
         <summary>**More on timers**</summary>
         <br>
-        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx.<br>Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*
+        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx. Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*<br>*(for more on how to setup timers refer to [6.1 Timer Setup](/6.%20Payload%20Breakdowns/6.4%20Timer%20Setup/TimerSetup.md))*
         </details>
 <br>
 
-13. Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+1.  Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 <br>
 
 ### 5. Writing the code
