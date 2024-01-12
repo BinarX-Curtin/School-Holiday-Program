@@ -160,13 +160,15 @@ Variables hold information and allow for the programmer to store and manipulate 
 **Tips for variables**
 - ensure you name them with a meaningful name
 - ensure the variable type is appropriate for the use case
-- There are typically two styles of naming variables:
+- There are typically three styles of naming variables:
 ```C++
 int camelCase;
-char under_score;
+char snake_case;
+float PascalCase;
 ```
 
-Find out more [here.](https://www.w3schools.com/cpp/cpp_variables.asp)
+Find out more about variables [here.](https://www.w3schools.com/cpp/cpp_variables.asp)<br>
+Find out more about naming conventions [here.](https://khalilstemmler.com/blogs/camel-case-snake-case-pascal-case/#The-tldr)
 
 ### 3.1 Conditional Statements <!-- omit from toc -->
 
