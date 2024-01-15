@@ -290,7 +290,7 @@ for (_statement1_; _statement2_; _statement3_)
 
 statement1 is the starting condition of the loop, in the previous example x was intialised as an integer number and set to 0.
 
-statement2 is the ending condition of the loop, as seen in the previous example the loop will continue until x is greater than 3.
+statement2 is the ending condition of the loop, as seen in the previous example the loop will continue until x is greater than 5.
 
 statement3 is the incrementing value of the loop, once the loop reaches the bottom it will increment by the amount set by statement3, in the previous example x will be increased by one once it reaches the bottom of the loop.
 
