@@ -98,7 +98,7 @@
 <br>![Alt text](Images/image-18.png)
         <details>
         <summary>**Answers**</summary>
-        Your proposed solution should look something like this:
+        Your proposed solution should look something like this:<br>
                 ![Alt text](<Images/Circuit Diagrams.png>)
                 <br>
                 <details>
@@ -113,7 +113,7 @@
 1. Following your checked circuit diagram, connect all the components together on a breadboard.
 <br>
 
-2. Double check all your connections before proceeding to the next task. Verify with a subject matter expert if needed.
+2. Double check all your connections before proceeding to the next task. Verify with a subject matter expert (SME) if needed.
 <br>
 
 ### 4. Setting up the STM32 environment for the STM32L433CBT7
@@ -146,7 +146,7 @@
         <details>
         <summary>**What is DMA?**</summary>
         <br>
-        Direct Memory Access bypasses the need for the data to be handled through the CPU. This means that the data the ADC generates is sent directly to memory, which can then be accessed straight away by the CPU for use in the flashed code on the microcontroller. For further details refer to this link: https://wiki.st.com/stm32mcu/wiki/Getting_started_with_DMA 
+        Direct Memory Access bypasses the need for the data to be handled through the CPU. This means that the data the ADC generates is sent directly to memory. Once this data is sent straight to memory any onboard processes (accomplished by the CPU) can access the data immediately. For further details refer to this link: https://wiki.st.com/stm32mcu/wiki/Getting_started_with_DMA 
         </details>
 <br>
 
@@ -157,7 +157,7 @@
         <details>
         <summary>**ISR?? NVIC??**</summary>
         <br> 
-        - An ISR is a very handy tool embedded systems engineers use all the time. It breaks the flow of code to quickly execute a small line of code, typically a boolean flag to trigger something bigger in the main code. As it interupts the initial flow of code the commands executed inside an ISR have to be very simple and quick. If they are not it can cause more issues with the controller. For more details check out this link: https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/<br>
+        - An ISR is a very handy tool embedded systems engineers use all the time. It breaks the flow of code to quickly execute a small line of code. This is typically a boolean flag being set or reset. This means when the ISR ends and the program continues back in the main flow of code, the flag can trigger something that requires longer to process. As it interupts the main flow of code in the main loop, the commands executed inside an ISR have to be very simple and quick. If they are not it can cause more issues with the controller. For more details check out this link: https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/<br>
         - NVIC is a special ISR container developed by STMicro for their own chips. It is fairly complicated...for more details check out this link: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf<br>
         </details>
 <br>
@@ -175,7 +175,7 @@
         <details>
         <summary>**More on timers**</summary>
         <br>
-        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx. Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*<br>*(for more on how to setup timers refer to [6.1 Timer Setup](/6.%20Payload%20Breakdowns/6.4%20Timer%20Setup/TimerSetup.md))*
+        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx. Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*<br>*(for more on how to setup timers refer to [6.4 Timer Setup](/6.%20Payload%20Breakdowns/6.4%20Timer%20Setup/TimerSetup.md))*
         </details>
 <br>
 
@@ -262,7 +262,7 @@ while(1)
 7. Now we need to save this data to the SD card. Hopefully you have your SD card working from [2.3 Manipulating and Storing Sensor Data](/2.%20Payload%20Software%20Development/2.3.%20Manipulating%20and%20Storing%20Sensor%20Data%20with%20a%20Microcontroller/Readme.md).
 <br>
 
-8. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed.<br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+8. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
 <br>
         <details>
         <summary>**CHEATING!**</summary> 
