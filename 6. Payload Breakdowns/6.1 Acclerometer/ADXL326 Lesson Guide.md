@@ -287,9 +287,10 @@ while(1)
 
 
 ### 6. Transferring the circuit to the payload kit
-1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you will need to adjust your code to account for another axes to now be resisting the effects of gravity.
+1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you *may* need to adjust your code to account for another axes to now be resisting the effects of gravity.
 <br>
 
 2. Ensure the code works as expected by testing it inside the nose cone under 'launch conditions' (shake load the development board and your developed circuit inside the nose cone). Then retreive the data and verify your code works as expected.
+<br>
 
 3. Show off your work to a SME, you've built a working accelerometer circuit. See if they have any ideas for you to impliment in the code or circuit to improve the design.
