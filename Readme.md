@@ -23,7 +23,6 @@
 ### Before the First Day:
 - Create an Autodesk account and sign up for a Fusion360 education use license: https://www.autodesk.com/products/fusion-360/personal. (if you can't get a education use license, a personal license is applicable)
 - Sign up for a my.st.com account: https://www.st.com/content/st_com/en/user-registration.html.
-- Sign up for an Inkscape account (Optional for creating your posters/rocket stickers): https://inkscape.org/
 - Install Fusion 360 (https://www.autodesk.com/products/fusion-360/personal) on your Windows or Mac based laptop, if you're bringing one.
 - Install STM32CubeIDE on your Windows, Mac or Linux based laptop, if you're bringing one (https://www.st.com/en/development-tools/stm32cubeide.html).
 - Install Inkscape on your Windows or Mac based laptop, if you're bringing one (https://inkscape.org/en/release/)
