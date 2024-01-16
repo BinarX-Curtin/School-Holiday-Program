@@ -91,7 +91,7 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
 6. Then, set the prescaler to 256:
 
-    ![spi prescaler](figures/spi_prescaler.png)
+    ![spi prescaler](figures/SPI_prescaler.png)
 
    > *If your baud rate is showing up as more than 400 KBits/s. You may need to make changes in the "Clock Configuration" tab. Request assistance from the facilitators with this step.*
 
