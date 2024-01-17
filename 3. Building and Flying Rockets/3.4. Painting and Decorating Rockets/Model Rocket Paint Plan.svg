@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="Model Rocket Paint Plan.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="1.1533985"
+     inkscape:cx="449.97458"
+     inkscape:cy="492.89123"
+     inkscape:window-width="1918"
+     inkscape:window-height="2054"
+     inkscape:window-x="1910"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g11"
+       transform="translate(-1.2976505,16.057619)">
+      <path
+         id="path1-0"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.867137;stroke-dasharray:none;stroke-opacity:1"
+         d="M 95.086099,247.62664 V 75.597442 c 0,-12.781762 5.405521,-31.82916 11.211551,-37.836242 5.80604,6.007082 11.21155,25.05448 11.21155,37.836242 V 247.62664 Z"
+         sodipodi:nodetypes="cscscc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.433568;stroke-dasharray:none;stroke-opacity:1"
+         d="M 94.652529,101.33734 H 117.5092"
+         id="path1" />
+      <circle
+         id="path2"
+         style="fill:#000000;stroke:#000000;stroke-width:0.264583"
+         cx="117.27525"
+         cy="203.40688"
+         r="0.040829748" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;stroke-opacity:1"
+         d="m 153.93392,257.42162 v 10.05679 h -8.59694 L 117.5092,247.62664 117.27525,213.5856 Z"
+         id="path3"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;stroke-opacity:1"
+         d="m 58.661381,257.42162 v 10.05679 h 8.596938 l 27.82778,-19.85177 0.23395,-34.04104 z"
+         id="path3-9"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;stroke-opacity:1"
+         d="m 104.60586,160.35302 h 3.38357 v 21.97793 h -3.38357 z"
+         id="path5"
+         sodipodi:nodetypes="ccccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.13457;stroke-dasharray:none;stroke-opacity:1"
+       x="105.1397"
+       y="25.975527"
+       id="text5"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Stellar;-inkscape-font-specification:Stellar;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.13457"
+         x="105.1397"
+         y="25.975527"
+         id="tspan9">Model Rocket Paint Plan<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
+   id="tspan10">_____________</tspan> (name)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.9944px;font-family:Arial;-inkscape-font-specification:Arial;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-dasharray:none;stroke-opacity:1"
+       x="104.79116"
+       y="12.327692"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.9944px;font-family:Ailerons;-inkscape-font-specification:Ailerons;text-align:center;text-anchor:middle;stroke-width:0.5"
+         x="104.79116"
+         y="12.327692">BinarX Summer Holiday Program</tspan></text>
+  </g>
+</svg>
