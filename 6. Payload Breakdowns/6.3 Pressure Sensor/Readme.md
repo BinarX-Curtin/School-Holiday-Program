@@ -1,9 +1,7 @@
 ## Resources
 
 - Bosch Sensortec BMP390 Datasheet: https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf
-- Adafruit BMP3XX Library on GitHub: https://github.com/adafruit/Adafruit_BMP3XX (for reference, not used directly)
-- "Getting Started with STM32 - How to Use SPI" Digikey article by Shawn Hymel: https://www.digikey.com.au/en/maker/projects/getting-started-with-stm32-how-to-use-spi/09eab3dfe74c4d0391aaaa99b0a8ee17
-- STM32 SPI Gotcha article: http://efton.sk/STM32/gotcha/g21.html
+- "Getting Started with STM32 - I2C Example" Digikey article by Shawn Hymel: https://www.digikey.be/en/maker/projects/getting-started-with-stm32-i2c-example/ba8c2bfef2024654b5dd10012425fa23sk/STM32/gotcha/g21.html
 
 ## Payload Electronics Hardware
 
@@ -26,18 +24,11 @@
     ![pressure sensor pin assignments](figures/pressure_sensor_pin_assignments.png)
 
 
-2. Pressure Sensor SPI1 Configuration
+2. Pressure Sensor I2C Configuration
 
     ![pressure sensor i2c configuration](figures/pressure_sensor_i2c_configuration.png)
 
 3. Generate code
-
-<!-- 4. In "main.h" in "Private defines" user code section between "USER CODE BEGIN Private defines" and "USER CODE END Private defines":
-
-    ```c++
-    //write bit for BMP390 pressure sensor SPI communications (MSB)
-    #define BMP390_WB 0x80
-    ``` -->
 
 4. In "main.c in "PV" user code section between "USER CODE BEGIN PV" and "USER CODE END PV" add in the following constants defining addresses and bits to control some aspects of the pressure sensor (you will have to add some more later):
 
@@ -78,18 +69,18 @@
 
 6. In you "WHILE" user code section inside the while(1) loop, above "USER CODE END WHILE" add in the following to read the uncalibrated pressure value and print it to the terminal:
 
-```c++
-HAL_I2C_Master_Transmit(&hi2c1, BMP390_I2C_ADDR_SDO_0, &BMP390_TEMP_REG_ADDR, 1, HAL_MAX_DELAY);
-HAL_I2C_Master_Receive(&hi2c1, BMP390_I2C_ADDR_SDO_0, i2c_buf, BMP390_TEMP_NUM_BYTES, HAL_MAX_DELAY);
+    ```c++
+    HAL_I2C_Master_Transmit(&hi2c1, BMP390_I2C_ADDR_SDO_0, &BMP390_TEMP_REG_ADDR, 1, HAL_MAX_DELAY);
+    HAL_I2C_Master_Receive(&hi2c1, BMP390_I2C_ADDR_SDO_0, i2c_buf, BMP390_TEMP_NUM_BYTES, HAL_MAX_DELAY);
 
-temp = i2c_buf[0] | i2c_buf[1]<<8 | i2c_buf[2]<<16; //assemble bytes into one 32 bit variable to hold 24 bit value, there might be a better way to do this by typecasting
+    temp = i2c_buf[0] | i2c_buf[1]<<8 | i2c_buf[2]<<16; //assemble bytes into one 32 bit variable to hold 24 bit value, there might be a better way to do this by typecasting
 
-//    sprintf(string_buffer, "BMP390 serial number:%02X.\r\n", chip_id); //load serial string buffer with serial number
-sprintf(string_buffer, "Temp:%lu\r\n", temp); //load serial string buffer with serial number
-HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+    //    sprintf(string_buffer, "BMP390 serial number:%02X.\r\n", chip_id); //load serial string buffer with serial number
+    sprintf(string_buffer, "Temp:%lu\r\n", temp); //load serial string buffer with serial number
+    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
 
-HAL_Delay(500);
-```
+    HAL_Delay(500);
+    ```
 
 7. Now implement the calibration yourself, then add in the functionality to save the data to the microSD card from the previous session.
 
