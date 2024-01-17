@@ -91,7 +91,7 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
 6. Then, set the prescaler to 256:
 
-    ![spi prescaler](figures/spi_prescaler.png)
+    ![spi prescaler](figures/SPI_prescaler.png)
 
    > *If your baud rate is showing up as more than 400 KBits/s. You may need to make changes in the "Clock Configuration" tab. Request assistance from the facilitators with this step.*
 
@@ -565,16 +565,69 @@ Take the on the code you've previously developed in [2.2. Reading Sensors With a
 
 You'll probably want to keep saving the data to the microSD card until the battery is disconnected, so this code should go inside your main loop in the "WHILE" user code section (inside the "while (1)" loop)"
 
-# TODO 
+# 8.0 Example of Writing Temperature Data to the microSD Card
 
-https://deepbluembedded.com/stm32-adc-read-example-dma-interrupt-polling/
+1. Reopen CubeMX (double click on the .ioc) and enable the Temperature Sensor Channel on "IN17".
+
+2. Save and generate code.
+
+3. In the "PV" user variable section (around line 50) between the "USER CODE BEGIN PV" and "USER CODE END PV", add in the following to create a variable to hold the temperature and time values until we write it to the microSD card:
 
 ```c++
-// Calibrate The ADC On Power-Up For Better Accuracy
-HAL_ADCEx_Calibration_Start(&hadc1);
-
-HAL_TIM_PWM_.....
+static uint16_t temperature = 0; //variable to store temperature
+static uint32_t timestamp = 0; //variable to store timestamp for each temperature reading
 ```
+
+4. In the "2" user code section and between the "USER CODE BEGIN 2" and "USER CODE END 2" bookends add:
+
+    ```c++
+    HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED); //calibrate ADC to improve conversion accuracy
+    ```
+
+5. Scroll down to the "WHILE" user code section (inside the "while (1)" loop)", and add the following lines:
+
+    ```c++
+    //read temperature using ADC
+    HAL_ADC_Start(&hadc1); //activate ADC and start conversions
+	HAL_ADC_PollForConversion(&hadc1, 1); //wait until the conversion is complete, with a timeout of 1 ms
+	temperature = HAL_ADC_GetValue(&hadc1); //retrieve digital value from ADC and store in variable
+    timestamp = HAL_GetTick(); //gets the current elapsed time in ms using a HAL function
+	HAL_ADC_Stop(&hadc1); //deactivate ADC
+    ```
+    > *Read the comment at the end of each line to see what it does.*
+
+    This code will read the temperate and save the times of the reading in ms using a HAL function.
+
+6. Now add in the following to save the data to the microSD card:
+
+    ```c++
+    //write temperature to microSD card
+	fr = f_open(&f, "data.csv", FA_WRITE | FA_OPEN_APPEND);
+	if(fr == FR_OK) {
+	  sprintf(string_buffer, "Opened data.csv for writing (appending lines)\r\n");
+	  HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+	else {
+	  sprintf(string_buffer, "f_open error (%i)\r\n", fr);
+	  HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+
+	//Build data entry line, update as needed for your payload
+	sprintf(string_buffer, "%lu, %u\r\n", timestamp, temperature);
+	fr = f_write(&f, string_buffer, strlen(string_buffer), &bytes_written);
+	if (fr == FR_OK) {
+	  //sprintf(string_buffer, "Wrote %i bytes to data.csv.\r\n", bytes_written);
+	  //HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+	else {
+	  sprintf(string_buffer, "f_write error (%i)\r\n", fr);
+	  HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+
+	f_close(&f); // close the file
+
+	HAL_Delay(50); //50 ms delay
+    ```
 
 ## Extension
 

@@ -112,6 +112,8 @@ bottom of the screen you should see “Build Finished. 0 errors, 0 warnings.”
 
 ## 3.0 ADC Implementation
 
+TMP36 Temperature sensor datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/tmp35_36_37.pdf.
+
 1. Comment out the LED blink code in the while loop using:
 ```c++
 /*
