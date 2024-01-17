@@ -55,7 +55,46 @@
     
     ```
 
+## Constants for I2C Communication
 
+```c++
+//constants for BMP390 I2C addresses and register addresses
+static const uint8_t BMP390_I2C_ADDR_SDO_0 = 0x76<<1; // BMP390 I2C Address when SDO is low, shifted to the left one for use with the STM32 HAL
+static const uint8_t BMP390_I2C_ADDR_SDO_1 = 0x77<<1; // BMP390 I2C Address when SDO is high, shifted to the left one for use with the STM32 HAL
+static const uint8_t BMP390_CHIP_ID_REG_ADDR = 0x00; //BMP390 chip ID register address
+static const uint8_t BMP390_PRESSURE_REG_ADDR = 0x04; //BMP390 pressure register (start) address
+static const uint8_t BMP390_PRESSURE_NUM_BYTES = 3; //BMP390 number of bytes for pressure data
+static const uint8_t BMP390_TEMP_REG_ADDR = 0x07; //BMP390 temperature register (start) address
+static const uint8_t BMP390_TEMP_NUM_BYTES = 3; //BMP390 number of byts for temperature data
+static const uint8_t BMP390_PWR_CTRL_REG_ADDR = 0x1B; //BMP390 PWR_CTRL register for mode setting & pressure & temperature enable bits
+
+//constants for PWR_CTRL register
+static const uint8_t BMP390_NORMAL_MODE = 0x30; //bits to enable normal mode operation
+static const uint8_t BMP390_PRESS_EN = 0x01; //bits to enable pressure measurements
+static const uint8_t BMP390_TEMP_EN = 0x02; //bits to enable temperate measurements
+```
+
+## CubeMX Example
+
+![i2c cubemx example](figures/i2c_cube_mx_example.png)
+
+## Example wait for device ready
+(May not be required)
+```c++
+while(HAL_I2C_IsDeviceReady(&hi2c1, BMP390_I2C_ADDR_SDO_0, 1, HAL_MAX_DELAY));
+```
+
+## Example I2C Write
+```c++
+//create uint8_t (array) buffer to use for I2C communication
+uint8_t i2c_buf[20];
+
+//write bytes into I2C buffer for I2C write operation
+i2c_buf[0] = BMP390_PWR_CTRL_REG_ADDR; //PWR_CTRL register address
+i2c_buf[1] = BMP390_NORMAL_MODE | BMP390_PRESS_EN | BMP390_TEMP_EN; //assembly command byte using constants and bitwise or
+
+HAL_I2C_Master_Transmit(&hi2c1, BMP390_I2C_ADDR_SDO_0, i2c_buf, 2, HAL_MAX_DELAY); //I2C transmit
+```
 
 ## Extension
 
