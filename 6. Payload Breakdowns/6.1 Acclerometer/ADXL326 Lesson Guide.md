@@ -382,7 +382,7 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 }
 ```
 
-11. SD card file writing code:
+11. SD card file writing code will need data types that can access the function. These are declared once and need to be put in the USER CODE BEGIN 2 section.
 ```C++
 //FATFS VARIABLES
   FATFS* FatFs;
