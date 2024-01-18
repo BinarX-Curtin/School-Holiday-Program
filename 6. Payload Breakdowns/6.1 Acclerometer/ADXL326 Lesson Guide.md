@@ -153,7 +153,7 @@
 10.   Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](Images/image-14.png)
 <br>
 
-11. You will likely need to trigger the polling of your data collection by presing the user button (SW2 on your payload microcontroller). The pin that is attached to SW2 is an external interupt pin. This is shown on the schematic for the payload development kit. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as 'GPIO_EXTIx', as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
+11. You will likely need to trigger the polling of your data collection by pressing the user button (SW2 on your payload microcontroller). The pin that is attached to SW2 is an external interupt pin. This is shown on the schematic for the payload development kit. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as 'GPIO_EXTIx', as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
         <details>
         <summary>**Answer**</summary>
         <br> 
@@ -171,15 +171,15 @@
         </details>
 <br>
 
-1.  We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
-        <details>
-        <summary>**More on timers**</summary>
-        <br>
-        Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx. Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*<br>*(for more on how to setup timers refer to [6.4 Timer Setup](/6.%20Payload%20Breakdowns/6.4%20Timer%20Setup/TimerSetup.md))*
-        </details>
+13.  We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
+                <details>
+                <summary>**More on timers**</summary>
+                <br>
+                Check out this link for more on timers: https://www.steppeschool.com/pages/blog?p=stm32-timer-stm32cubemx. Notice how it has something called a prescaler? This is used to adjust the frequency the timer operates at. In our case it is scaled off the internal clock frequency, though for higher speeds we could use the external clocks put onto the payload development boards.<br><br>You will need to adjust this later to ensure that your sampling frequency is at least 2 times higher than that of the accelerometer...remember how we looked at the capacitors we used to set the bandwidth for the accelerometer? We need to be two times higher than that frequency.<br>*(refer to 2.3 for further reference)*<br>*(for more on how to setup timers refer to [6.4 Timer Setup](/6.%20Payload%20Breakdowns/6.4%20Timer%20Setup/TimerSetup.md))*
+                </details>
 <br>
 
-1.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+14.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 <br>
 
 ### 5. Writing the code
