@@ -311,7 +311,77 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 ```
 
-10. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+10. Setting up SD card function:
+```C++
+void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
+{
+	//CHECKING IF SYSTEM CAN BE MOUNTED
+	*fr = f_mount(FatFs, "", 1); //1=mount now
+	if (*fr != FR_OK)
+	{
+		sprintf(string_buffer, "File mount error: (%i)\r\n", *fr);
+		HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+		while(1); // stop here if there was an error
+	}
+
+	//Let's get some statistics from the SD card
+	DWORD free_clusters, free_sectors, total_sectors;
+	FATFS* getFreeFs;
+
+	//CHECKING IF SD CARD HAS FREE AVLIABLE MEMORY TO WORK WITH
+	*fr = f_getfree("", &free_clusters, &getFreeFs);
+
+	if (*fr != FR_OK)
+	{
+		sprintf(string_buffer, "f_getfree error: (%i)\r\n", *fr);
+	  	HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	  	while(1); // stop here if there was an error
+	}
+
+
+	//Formula comes from ChaN's documentation
+	total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
+	free_sectors = free_clusters * getFreeFs->csize;
+
+	sprintf(string_buffer, "SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
+	HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+
+
+	//OPENING THE DATA FILE
+	*fr = f_open(f, "data.csv", FA_WRITE | FA_OPEN_APPEND);
+	if(*fr == FR_OK)
+	{
+		sprintf(string_buffer, "Opened data.csv for writing (appending lines)\r\n");
+		HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+	//ERROR OPENING FILE
+	else
+	{
+		sprintf(string_buffer, "f_open error (%i)\r\n", *fr);
+		HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+
+	//WRITING DATA TO FILE
+	UINT bytes_written;
+
+	sprintf(string_buffer, "X, Y, Z, TICKS\r\n");
+	*fr = f_write(f, string_buffer, strlen(string_buffer), &bytes_written);
+	//COMPLETED WRITING DATA TO FILE
+	if (*fr == FR_OK)
+	{
+	    sprintf(string_buffer, "Wrote %i bytes to data.csv.\r\n", bytes_written);
+	    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+	//ERROR WRITING DATA TO FILE
+	else
+	{
+		sprintf(string_buffer, "f_write error (%i)\r\n", *fr);
+	    HAL_UART_Transmit(&huart1, (uint8_t *)string_buffer, strlen(string_buffer), 10); //transmit serial_string with a 10ms timeout using USART1
+	}
+}
+```
+
+11. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
 <br>
         <details>
         <summary>**CHEATING!**</summary> 
