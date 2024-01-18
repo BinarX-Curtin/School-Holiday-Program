@@ -273,6 +273,7 @@ while(1)
                 if(is the SD card open?)
                 {
                         //IF IT IS NOT OPEN, THEN OPEN IT
+                        //MAYBE USE THE SD CARD FUNCTION GIVEN HERE
                 }
 
                 /*
@@ -381,7 +382,27 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 }
 ```
 
-11. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+11. SD card file writing code:
+```C++
+//FATFS VARIABLES
+  FATFS* FatFs;
+  FATFS Fat_act;
+
+  FIL* f;
+  FIL f_act;
+
+  FRESULT* fr;
+  FRESULT fr_act;
+
+  FatFs = &Fat_act;
+  f = &f_act;
+  fr = &fr_act;
+
+  UINT bytes_written;
+```
+<br>
+
+1.  Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
 <br>
         <details>
         <summary>**CHEATING!**</summary> 
