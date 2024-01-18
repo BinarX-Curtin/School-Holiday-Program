@@ -262,7 +262,58 @@ while(1)
 7. Now we need to save this data to the SD card. Hopefully you have your SD card working from [2.3 Manipulating and Storing Sensor Data](/2.%20Payload%20Software%20Development/2.3.%20Manipulating%20and%20Storing%20Sensor%20Data%20with%20a%20Microcontroller/Readme.md).
 <br>
 
-8. Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+8. A hint on how the program will likely work, written in psuedo-code:
+```C++
+//MAIN WHILE LOOP
+while(1)
+{
+        //CHECKS THAT WE WANT TO OPEN THE SD CARD USING A FLAG
+        if(the flag check denotes 'write to SD card' is true)
+        {
+                if(is the SD card open?)
+                {
+                        //IF IT IS NOT OPEN, THEN OPEN IT
+                }
+
+                /*
+                READING FROM THE ADC AND STORING IT TO THE SD CARD HAPPEN HERE. 
+                YOU WILL ALSO HAVE YOUR TIMER TICK COUNTERS SET UP HERE AS WELL.
+                YOU CAN ALSO HAVE DEBUGGING LINES TO THE TERMINAL HERE, TO HELP YOU IDENTIFY WHERE THE MAIN CODE LOGIC IS.
+                */
+        }
+
+        //IF WE KNOW THE ABOVE STATEMENT IS FOR WRITING DATA TO THE SD CARD, WE KNOW THAT THIS SECTION OF THE CODE MUST BE FOR??
+        //STOPPING THE SD CARD WRITING 
+        else
+        {
+                if(is the SD card open?)
+                {
+                        //IF IT IS OPEN, THEN CLOSE IT
+                        //WE AREN'T WRITING TO IT ANYMORE AND THEREFORE WE CLOSE IT TO STOP DATA CORRUPTION
+                }
+
+                /*
+                MAYBE SET OUR TIMING VARIABLES BACK TO ZERO, INCASE WE CHANGE THE FLAG STATUS BACK TO 'YES WE WANT TO WRITE DATA TO THE SD CARD'.
+                YOU CAN ALSO OUTPUT DEBUGGING LINES TO THE TERMINAL, TO HELP YOU IDENTIFY WHERE THE MAIN CODE LOGIC IS.
+                */
+        }
+}
+```
+
+<br>
+
+9. Setting up the ISR can be a bit tricky. I will show you how to do this below. The flag mentioned in the above set of code can be set and reset using this below line of code. Remember that bitflipping macro we defined in step 3? Well this is how we use it. We flip the flag at the zero'th position. What is 1 XOR 0? and 0 XOR 0? How is this important?
+```C++
+// USER CODE BEGIN 4
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	bitflip(exit_flag, 0);
+}
+```
+
+<br>
+
+1.   Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
 <br>
         <details>
         <summary>**CHEATING!**</summary> 
