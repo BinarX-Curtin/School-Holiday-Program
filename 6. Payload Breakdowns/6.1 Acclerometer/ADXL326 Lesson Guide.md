@@ -120,29 +120,29 @@
 1. You will now need to setup an STM32cubeIDE project to interface with the ADXL326 using the payload development board. This board utilises the STM32L433CBT7 microcontroller. To verify this, you can read the writing on the top of the chip in the centre of the board.
 <br>
 
-1. First you'll need to open up STM32cubeIDE and start a new project:<br>
+2. First you'll need to open up STM32cubeIDE and start a new project:<br>
 ![Alt text](Images/image-6.png)
 <br>
 
-2. You'll need to select the correct board next. The microcontroller onboard the payload development kit is a 'STM32L433CBT7'. Once you have found the correct board, click 'Next'.<br>![Alt text](Images/image-7.png)
+3. You'll need to select the correct board next. The microcontroller onboard the payload development kit is a 'STM32L433CBT7'. Once you have found the correct board, click 'Next'.<br>![Alt text](Images/image-7.png)
 <br>
 
-3. Next you can name the project what you would like, and select the C++ programming language option. Then you can select finish.<br>![Alt text](Images/image-8.png)
+4. Next you can name the project what you would like, and select the C++ programming language option. Then you can select finish.<br>![Alt text](Images/image-8.png)
 <br>
 
-4. You will then be presented with the pinout for the microcontroller you'll be running. This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Trace Asynchronous Sw' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](Images/image-9.png)
+5. You will then be presented with the pinout for the microcontroller you'll be running. This gives you direct control over the capabilites the chip will have initialised.<br>The most important thing to set up is the ability to talk to the microcontroller, we need to tell the code how to communicate with the chip. For this we will select the 'system core' tab, then the 'SYS' tab where we will select the 'Trace Asynchronous Sw' option for debugging. This tells the chip what method of communication we will be using for debugging the chip.<br>![Alt text](Images/image-9.png)
 <br>
 
-5. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller. This communication will occur through the STLINK-V3 debuggers.<br>![Alt text](Images/image-10.png)
+6. Next, we need to let the chip know how it will be flashed. For this we will select the 'Connectivity' tab, then the 'USART1' tab where you'll select the mode as 'Asynchronous'. This is letting the microcontroller know we will be using the USART1 pins to communicate from the laptop to the microcontroller. This communication will occur through the STLINK-V3 debuggers.<br>![Alt text](Images/image-10.png)
 <br>
 
-6. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram.<br>![Alt text](Images/image-11.png)
+7. As we have three *analog* inputs, we know we have to initilise the ADC. To do this go to the 'Analog' tab, select the 'ADC1' tab and chose the same pins you have marked down in your circuit diagram.<br>![Alt text](Images/image-11.png)
 <br> 
 
-7. Because we have three seperate data lines going into one ADC, we need to set up a method of polling all the values from the ADC at once. First, we need to let the ADC know there are three converions occuring. This setting can be found in the "Configuration" window and the value you need to change is the "Number Of Conversion".<br>After this, you'll need to allocate the different ADC channels to the generated "Rank" settings. This is detailed in the image bellow.<br>![Alt text](Images/image-12.png)
+8. Because we have three seperate data lines going into one ADC, we need to set up a method of polling all the values from the ADC at once. First, we need to let the ADC know there are three converions occuring. This setting can be found in the "Configuration" window and the value you need to change is the "Number Of Conversion".<br>After this, you'll need to allocate the different ADC channels to the generated "Rank" settings. This is detailed in the image bellow.<br>![Alt text](Images/image-12.png)
 <br>
 
-8.  Next, we need to change the Direct Memory Access settings (DMA settings) by adding a DMA request for ADC1.<br>![Alt text](Images/image-13.png)
+9.  Next, we need to change the Direct Memory Access settings (DMA settings) by adding a DMA request for ADC1.<br>![Alt text](Images/image-13.png)
         <details>
         <summary>**What is DMA?**</summary>
         <br>
@@ -150,19 +150,10 @@
         </details>
 <br>
 
-9.   Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](Images/image-14.png)
+10.   Finally, we need to go back to 'Parameter Settings' and ensure the following continous conversion settings are selected:<br>![Alt text](Images/image-14.png)
 <br>
 
-10. You will likely need to trigger the polling of your data collection by presing the user button (SW2 on your payload microcontroller). To do this you will need to access an interupt service routine (ISR). To access this service you will need to use the 'NVIC' settings, which are found under the 'system core' tab again.<br>![Alt text](Images/image-15.png)
-        <details>
-        <summary>**ISR?? NVIC??**</summary>
-        <br> 
-        - An ISR is a very handy tool embedded systems engineers use all the time. It breaks the flow of code to quickly execute a small line of code. This is typically a boolean flag being set or reset. This means when the ISR ends and the program continues back in the main flow of code, the flag can trigger something that requires longer to process. As it interupts the main flow of code in the main loop, the commands executed inside an ISR have to be very simple and quick. If they are not it can cause more issues with the controller. For more details check out this link: https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/<br>
-        - NVIC is a special ISR container developed by STMicro for their own chips. It is fairly complicated...for more details check out this link: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf<br>
-        </details>
-<br>
-
-11. Now that the interupt services are active you need to select the correct pin that is attached to SW2. This is shown on the schematic for the payload development kit. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as 'GPIO_EXTIx', as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
+11. You will likely need to trigger the polling of your data collection by presing the user button (SW2 on your payload microcontroller). The pin that is attached to SW2 is an external interupt pin. This is shown on the schematic for the payload development kit. Can you find the pin that the switch is attached to? <br>Once you have found the pin you will need to select it as 'GPIO_EXTIx', as it is an external interupt. You can label the pin "USER_BUTTON" for ease later on.<br>![Alt text](Images/image-19.png)
         <details>
         <summary>**Answer**</summary>
         <br> 
@@ -171,7 +162,16 @@
         </details>
 <br>
 
-12. We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
+12. Now you will need to configure the microcontroller by telling it you are using an external interupt. To do this you will need to access an interupt service routine (ISR). To access this service you will need to use the 'NVIC' settings, which are found under the 'system core' tab again.<br>![Alt text](Images/image-15.png)
+        <details>
+        <summary>**ISR?? NVIC??**</summary>
+        <br> 
+        - An ISR is a very handy tool embedded systems engineers use all the time. It breaks the flow of code to quickly execute a small line of code. This is typically a boolean flag being set or reset. This means when the ISR ends and the program continues back in the main flow of code, the flag can trigger something that requires longer to process. As it interupts the main flow of code in the main loop, the commands executed inside an ISR have to be very simple and quick. If they are not it can cause more issues with the controller. For more details check out this link: https://www.makeuseof.com/isr-programming-and-how-interrupts-help-write-better-code/<br>
+        - NVIC is a special ISR container developed by STMicro for their own chips. It is fairly complicated...for more details check out this link: https://www.st.com/resource/en/product_training/STM32G4-System-Nested_Vectored_Interrupt_Control_NVIC.pdf<br>
+        </details>
+<br>
+
+1.  We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
         <details>
         <summary>**More on timers**</summary>
         <br>
@@ -179,7 +179,7 @@
         </details>
 <br>
 
-1.  Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+1.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 <br>
 
 ### 5. Writing the code
