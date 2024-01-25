@@ -318,7 +318,18 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 ```
 
-10. Setting up SD card function:
+10. Now, you do not want to have the SD card setup outside the while loop in your main function. So we can setup a function in the user begin 5 code section. Be aware that this function takes in the pointers to your filesystem variables. Meaning you will need to set up pointers to the variables. For more on pointers refer to this link: https://www.w3schools.com/cpp/cpp_pointers.asp <br><br> Here is an example of how you would set up a pointer to the FATFS variable:
+
+```C++
+FATFS *FatFs;   //A pointer to any FATFS variables
+FATFS Fat_act;  //The actual usable FATFS variable the pointer will point to
+
+FatFs = &Fat_act;       //Pointing the pointer to the memory address of the variable we just created
+
+```
+
+<br>
+
 ```C++
 void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 {
@@ -388,7 +399,7 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 }
 ```
 
-11. SD card file writing code will need data types that can access the function. These are declared once and need to be put in the USER CODE BEGIN 2 section.
+1.  SD card file writing code will need data types that can access the function. These are declared once and need to be put in the USER CODE BEGIN 2 section.
 ```C++
 //FATFS VARIABLES
   FATFS* FatFs;
