@@ -421,23 +421,23 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 
 12.  Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
                 <details>
-                <summary>**Cheating**</summary>
+                <summary>**CHEATING!!**</summary>
                 <br>
                 <details>
-                <summary>**Don't do it!**</summary>
+                <summary>**DO NOT DO IT!**</summary>
                 <br>
                 <details>
-                <summary>**You better be struggling**</summary>
+                <summary>**YOU BETTER BE STRUGGLING**</summary>
                 <br>
                 <details>
                 <summary>**FINE...**</summary>
                 <br>
-                content
+                [Here...](Images/nothing.c)
+                <br>
                 </details>
                 </details>
                 </details>
                 </details>
-
 
 ### 6. Transferring the circuit to the payload kit
 1. Now transfer the accelerometer to the payload development kit. Keeping in mind the direction of the accelerometer, as you *may* need to adjust your code to account for another axes to now be resisting the effects of gravity.
