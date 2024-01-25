@@ -190,6 +190,7 @@
 
 2. First of all we must include the required header files for the project. As we will be using integers, I/O, and strings, the following header files have been used:
 <br>
+
 ```C++
 /*USER CODE BEGIN Includes*/
 #include "stdio.h"
