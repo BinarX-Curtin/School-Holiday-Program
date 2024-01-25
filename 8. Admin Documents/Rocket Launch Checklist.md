@@ -32,6 +32,8 @@
 - [ ] Laptop
 - [ ] Laptop Charger
 
+**GENERAL NOTE: ENSURE THAT THE 12V BATTERY, CAMERAS, ALTIMETERS, AND ANY OTHER ELECTRICAL EQUIPMENT HAVE BEEN CHARGED AND/OR TESTED**
+
 ## Student Checklist
 - [ ] Rocket Body
 - [ ] Rocket Nose Cone
