@@ -26,6 +26,7 @@
 - [ ] Bag of Sand
 - [ ] Sunscreen Bottle
 - [ ] Tool Kit (*ensure different allen key sizes are included*)
+- [ ] Multimeter
 - [ ] SD Card Readers (*x 2*)
 - [ ] Large 12V battery
 - [ ] 12VDC to 240VAC Inverter (*with adequate wiring to connect to the battery*)
