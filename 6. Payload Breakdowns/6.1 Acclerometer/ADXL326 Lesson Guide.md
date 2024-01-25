@@ -328,7 +328,7 @@ FatFs = &Fat_act;       //Pointing the pointer to the memory address of the vari
 
 ```
 
-<br>
+<br>Here is the actual function we will setup in the Begin User Code 5 section:
 
 ```C++
 void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
@@ -399,7 +399,7 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 }
 ```
 
-1.  SD card file writing code will need data types that can access the function. These are declared once and need to be put in the USER CODE BEGIN 2 section.
+11.  This is the completed lines of code that declare and initialise the SD card file writing data types that can access the function. These are declared once and need to be put in the USER CODE BEGIN 2 section.
 ```C++
 //FATFS VARIABLES
   FATFS* FatFs;
@@ -419,28 +419,13 @@ void SD_Write_Start(FATFS *FatFs, FIL *f, FRESULT *fr)
 ```
 <br>
 
-1.  Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
+12.  Go nuts! See if you can now develop working code to measure values with time stamps from an accelerometer. If you get really stuck, here is the code I developed. However, this is a rare opportunity to test your ability to solve a new and complicated problem. Do not use this resource, unless you are completely stuck. The SMEs in your sessions **WILL** be able to help you, rely on them before relying on this resource. <br><br>**DO NOT CHEAT, USE YOUR BRAIN, THIS IS A VALUABLE EXERCISE TO LEARN FROM**
 <br>
-        <details>
-        <summary>**CHEATING!**</summary> 
                 <details>
-                <summary>**DO NOT DO IT!**</summary>
-                        <details>
-                        <summary>**YOU BETTER BE REALLY STRUGGLING!**</summary>
-                                <details>
-                                <summary>**ARE YOU SUPER CONFUSED WITH EVERYTHING?**</summary>
-                                        <details>
-                                        <summary>**GO FIGURE IT OUT!**</summary>
-                                                <details>
-                                                <summary>**FINE**</summary>
-                                                <br>
-                                                [here...](/6.%20Payload%20Breakdowns/6.1%20Acclerometer/Images/nothing.c)
-</details>
-</details>
-</details>
-</details>
-</details>
-</details>
+                <summary>**Cheating**</summary>
+                <br> 
+                Test
+                </details>
 
 
 ### 6. Transferring the circuit to the payload kit
