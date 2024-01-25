@@ -171,7 +171,9 @@
         </details>
 <br>
 
-13.  We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
+13. Finally for the interupt you will need to enable the internal pullup resistor for the switch. This will show the pin 'HIGH' (or '1') until the button is pressed. For more on internal pullup resistors refer to this link: https://learn.sparkfun.com/tutorials/pull-up-resistors/all <br><br>To do this however, we need to go to the 'System Core' tab, then select 'GPIO'. Under GPIO we need to select the external interupt pin we configured and select 'Pull-up'.<br>![Alt text](Images/image-23.png)
+
+14.  We will also need to configure a timer, to keep track of when the samples are taken. This is important for us when we process and interpret the data later. To do this you will need to select the 'Timers' tab and then select 'TIM1'. Here you can set the clock source to be 'Internal Clock'.<br>![Alt text](Images/image-21.png)
                 <details>
                 <summary>**More on timers**</summary>
                 <br>
@@ -179,7 +181,7 @@
                 </details>
 <br>
 
-14.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
+15.   Now "ctl + s" to save the configuration. It will then ask you if you would like to generate code, select 'Yes'. It will then ask if you would like the C/C++ perspective, select 'Yes' again.
 <br>
 
 ### 5. Writing the code
