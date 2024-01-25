@@ -226,7 +226,6 @@
 <br>
 
 4. Next we need a variable that is capable of holding three numbers. We also need a buffer variable that can store the data for it to be transmitted over UART for debugging.
-<br>
         <details>
         <summary>**Why is it a 32 bit integer?**</summary>
         <br> 
