@@ -30,7 +30,7 @@ Paint Pallet: Small paint pallet: https://www.frontlinehobbies.com.au/ak-interac
 
 Hobby Knives: Artesania Modelling Cutter No.1 Modelling Tool [27019]: https://www.frontlinehobbies.com.au/artesania-modelling-cutter-no.1
 
-Spray Paint for basecoating rockets, water based preferred
+Spray Paint for basecoating rockets, water based preferred, alternative: airbrush
 
 Masking Tape
 
