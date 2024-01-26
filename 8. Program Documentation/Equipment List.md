@@ -40,9 +40,15 @@ PVA Glue: https://www.bunnings.com.au/selleys-100ml-aquadhere-pva-wood-glue-inte
 
 Sanding Block: https://www.bunnings.com.au/paint-partner-cork-sanding-block-2-pack_p0328975
 
-Sandpaper: Rocket Wet And Dry Sanding Sheets - 6 Pack For Hand or Machine Sanding (1x 120 grit, 2x 240 grit, 2x 400 grit & 1x 600 grit). (The dark grey silicon carbide abrasive paper works much better than the white ones).
+Sandpaper: Rocket Wet And Dry Sanding Sheets - 6 Pack For Hand or Machine Sanding (1x 120 grit, 2x 240 grit, 2x 400 grit & 1x 600 grit). (The dark grey silicon carbide abrasive paper works is greatly preferred).
 
+Soldering Handy-Hands: Third hand with Magnifying glass: https://core-electronics.com.au/third-hand-and-magnifying-glass.html (magnifying glass is not particularly useful)
 
+Heat Proof Soldering Mat: https://core-electronics.com.au/insulated-silicone-soldering-mat.html (ESD safe alternative would be a good improvement)
 
+Tweezers
 
+Needle Nosed Pliers
+
+1.27mm hex key: Hex L-Key with Standard Tip, 1.3 mm Size, 2-7/8" Overall Length: https://www.mcmaster.com/6958A23/
 
