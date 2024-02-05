@@ -1,3 +1,5 @@
+## LED Resistor Sizing Activity Develope by Jacob Cook
+
 - Explain task outcomes - get an LED to light up without breaking anything.
 - Explain how a breadboard is wired up - power rails, component connections
 - Explain how to use wire cutters and strippers to make jumper cables (if using pre-terminated jumper wires this can be skipped)
