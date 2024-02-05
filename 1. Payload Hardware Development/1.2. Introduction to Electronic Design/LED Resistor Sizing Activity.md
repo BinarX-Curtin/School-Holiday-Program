@@ -1,4 +1,4 @@
-## LED Resistor Sizing Activity Develope by Jacob Cook
+## LED Resistor Sizing Activity Developed by Jacob Cook
 
 - Explain task outcomes - get an LED to light up without breaking anything.
 - Explain how a breadboard is wired up - power rails, component connections
