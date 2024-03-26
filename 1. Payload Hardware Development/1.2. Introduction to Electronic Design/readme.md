@@ -3,13 +3,11 @@
 - [Requirements](#requirements)
 - [Resources](#resources)
 - [Procedure](#procedure)
-- [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
-- [2.0 C Code Fundamentals](#20-c-code-fundamentals)
-- [3.0 ADC Implementation](#30-adc-implementation)
-- [4.0 Extension](#40-extension)
+- [1.0 Watch the introduction by Fergus](#10-watch-the-introduction-by-fergus)
+- [2.0 Follow the hands on demonstration with Jacob](#20-follow-the-hands-on-demonstration-with-jacob)
 
 ## Objectives
-1. Familiarise ourselves with the funadmentals of electrical circuits.
+1. Familiarise ourselves with the fundamentals of electrical circuits.
 2. Familiarise ourselves with how to wire up basic digital ICs (integrated circuits) including decoupling capacitors.
 4. Build a basic circuit to turn an LED on and off.
 5. Wire up a temperature sensor for future use with the microcontroller.
@@ -27,6 +25,7 @@
 
 ## Procedure
 ## 1.0 Watch the introduction by Fergus
-
-## 2.0 Follow the hands on demonstration with Jacob
+![Alt text](1.2_AmplifyingVoltage.jpg)
+![Alt text](1.2_CalculateResistorValueforLED.JPG)
+![Alt text](1.2_VoltageDivider.jpg)
 

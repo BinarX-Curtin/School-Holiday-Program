@@ -8,10 +8,10 @@ Kyle said the height of the rocket with camera was modelled to 240ish feet appro
 - [Objectives](#objectives)
 - [Requirements](#requirements)
 - [Resources](#resources)
-- [Lesson Plan](#lesson-plan)
+- [Session Plan](#session-plan)
 - [Procedure](#procedure)
-- [1.0 Introduction to Trajectory Modelling ](#10-intro-to-trajectory-modelling)
-- [2.0 Introduction to OpenRocket UI](#20-intro-to-openrocket-ui)
+- [1.0 Introduction to Trajectory Modelling](#10-introduction-to-trajectory-modelling)
+- [2.0 Introduction to OpenRocket UI](#20-introduction-to-openrocket-ui)
 - [3.0 Open Rocket Sequence of Operations](#30-open-rocket-sequence-of-operations)
 - [4.0 Flight Simulation and Data Analysis](#40-flight-simulation-and-data-analysis)
 
@@ -30,13 +30,19 @@ Kyle said the height of the rocket with camera was modelled to 240ish feet appro
 - Civil Aviation Safety Regulations: https://www.legislation.gov.au/F1998B00220/latest/text
 
 ## Session Plan
-    Session Start                                       - 0930
+Session Start                                       - 0930
+
 Introduction to trajectory modelling                    - 0930-0940
+
 Introduction OpenRocket UI                              - 0940-1000
+
 Input rocket into OpenRocket                            - 1000-1045
+
 Flight simulation and data analysis                     - 1045-1055
+
 Close out                                               - 1055-1100
-    Session End                                         - 1100 
+
+Session End                                         - 1100 
 
 ## Procedure
 ## 1.0 Introduction to Trajectory Modelling 
