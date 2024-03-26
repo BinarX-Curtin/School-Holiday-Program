@@ -1,1 +1,1 @@
-![Pin Labels](BinarX Rocket Payload Microcontroller Board Pin Labels.png)
+![Pin Labels](BinarX_Rocket_Payload_Microcontroller_Board_Pin_Labels.png)
