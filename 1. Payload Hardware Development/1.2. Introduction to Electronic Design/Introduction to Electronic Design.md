@@ -26,52 +26,7 @@
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
 
 ## Procedure
-## 1.0 STM32IDE Project Initialisation
-To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
+## 1.0 Watch the introduction by Fergus
 
----
+## 2.0 Follow the hands on demonstration with Jacob
 
-Staff:
-Meg
-Fergus
-Will
-
-Session Objectives:
-
-Understand the basics of electronic design principles and block diagrams.
-Create and interpret block diagrams for simple electronic circuits.
-
-
-Activity outline:
-
-Materials Needed (do a full BOM from the electronics component):
-
-Whiteboard and markers (or a computer with a projector for digital presentations)
-Handouts with example block diagrams
-Basic electronic components (e.g., resistors, capacitors, LEDs)
-Breadboards and jumper wires
-Multimeter (optional)
-
-Lesson Outline:
-
-Introduction 
-
-POWERPOINT
-Engagement
-
-	- Explain
-		○ Current divides around branches (water analogy)
-		○ Ohms law
-		○ Power (voltage x current)
-	- How to wire up a basic digital chip
-		○ Power
-		○ Ground
-		○ Decoupling Capacitor (little power supply buffer - look for a good analogy)
-		○ Explain 2 circuits - resistor/divider (aka voltage divider) and Op-Amp (the swiss army knife of electrical components) amplifier
-	- Explain schematics
-	- Explain breadboard
-	- Explain protoboard
-
-MD
-- circuit diagram of LED
-- circuit diagram of Temp sensor
