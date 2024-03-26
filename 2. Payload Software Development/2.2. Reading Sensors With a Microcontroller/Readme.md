@@ -68,7 +68,7 @@ To begin our journey into learning how these complex devices are used, we first 
 
     You’re pinout view should look like this:
 
-![Alt text](figures/green_pinout.png)
+![Alt text](figures/STM32_final_pinout.png)
 
 9.	Look down in the “Parameter Settings” (Middle bottom pane) for “USART1” and make a note of the “Baud Rate” in your notebook. We’ll need to set our serial console viewer to the same settings to receive the messages later. 
 
