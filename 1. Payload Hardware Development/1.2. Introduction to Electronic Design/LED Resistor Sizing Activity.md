@@ -1,0 +1,27 @@
+## LED Resistor Sizing Activity Developed by Jacob Cook
+
+- Explain task outcomes - get an LED to light up without breaking anything.
+- Explain how a breadboard is wired up - power rails, component connections
+- Explain how to use wire cutters and strippers to make jumper cables (if using pre-terminated jumper wires this can be skipped)
+- Explain where the power and ground is on the development board, connect using jumper wires to the power and ground of the breadboard.
+- Explain how to use a multimeter to measure voltage. Measure the dev board voltage at the breadboard. Once measured, ensure that the students have unplugged the USB to the development board while prototyping. Explain that this is to prevent damage to the development board.
+- Explain the LED circuit using a circuit diagram. Translate the circuit from a diagram to a breadboard plan.
+- Get the students to pick their favourite LED colour (this means they need to calculate the circuit values themselves).
+- Review equations from previous lesson - Ohm's law, LED circuit, voltage and current in a series connected circuit.
+- Note that the maximum current for the LED should be between 5 and 10 milliamps. Explain that too little current will cause the LED to remain off, and too much will break it. Mention that this keeps the brightness to a decent level. Explain current supply limits of components (microcontroller GPIO pins = ~20 milliamps, power supply higher). Explain that we need a way to limit the current coming out of the supply because of these limits.
+- Explain how a resistor limits the current flowing through it (perhaps use the "water in a hose" analogy). Call back to series circuit configuration and how this circuit topology means that the current flowing through all the components is the same, which is how this circuit ensures that the LED has a desired current passing through it.
+- Explain how to calculate current in a resistor using Ohm's law and voltage at circuit nodes. (voltage out minus voltage in, all divided by the resistance in ohms). On the schematic indicate the nodes, resistance, and how that relates to the equation.
+- Indicate that we are missing the voltage at the node between the resistor and the LED. How do we calculate this?
+- Explain what forward voltage in an LED is (the voltage that the LED needs to turn on). Explain how this relates to voltage nodes in the circuit (V_forward = V_in - V_out).
+- Explain how to set the multimeter into diode mode (if the students have access to the lab meters). Get the students to measure the forward voltage of the LED.
+- Get them to observe that it only works in one direction. Explain that this means the component is polarised. Get them to find the longer leg of the LED and the small flat side of the plastic lens. Explain how these indicate the positive (anode) and negative (cathode) of the component.
+- Using the forward voltage they have measured and the circuit diagram, get them to calculate voltage drop to determine the LED input voltage. (input voltage minus output voltage equals voltage drop. Output voltage is ground, which is zero. Therefore, input voltage minus zero equals voltage drop.)
+- Get them to write the voltage on the node of their circuit diagram.
+- Get them to add this voltage back into the resistance equation from eariler. Explain how to rearrange the equation to calculate resistance value of the resistor.
+- Some LEDs will not have a standard value of resistor that will give the correct resistance. Explain how to add resistors together to make new values. Call back to previous activity on equations.
+- Get the students to draw a diagram of their circuit. Get the students to translate this diagram to a breadboard wiring diagram.
+- Get the students to insert components into the breadboard in the way they have drawn the diagram.
+- Explain how to check for short circuits using the multimeter. Get the students to touch the probes together to make the multimeter beep. Get the students to check the power rails of their breadboard. Tell them that no beep is good.
+- If the circuit isn't shorted out, allow the students to plug in the dev board to the USB power.
+- Provide assistance to students that have not been able to get the LED to light up. Vast majority will be issues with breadboard not being wired up correctly. Prompt students to verify breadboard wiring against their diagram so they can solve it themselves.
+- Extension task - Get students to wire up multiple LEDs. Get students to add a variable resistor to change the brightness.
