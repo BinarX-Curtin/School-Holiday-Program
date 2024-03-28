@@ -6,7 +6,9 @@
 - [2.0 Follow the hands on demonstration with Jacob](#20-follow-the-hands-on-demonstration-with-jacob)
 
 ## Objectives
-1. 
+1. Build a basic circuit to turn an LED on and off.
+5. Wire up a temperature sensor for future use with the microcontroller.
+6. Use a multimeter to measure voltages in our circuits.
 
 ## Requirements
 1. 

@@ -4,14 +4,10 @@
 - [Resources](#resources)
 - [Procedure](#procedure)
 - [1.0 Watch the introduction by Fergus](#10-watch-the-introduction-by-fergus)
-- [2.0 Follow the hands on demonstration with Jacob](#20-follow-the-hands-on-demonstration-with-jacob)
 
 ## Objectives
 1. Familiarise ourselves with the fundamentals of electrical circuits.
 2. Familiarise ourselves with how to wire up basic digital ICs (integrated circuits) including decoupling capacitors.
-4. Build a basic circuit to turn an LED on and off.
-5. Wire up a temperature sensor for future use with the microcontroller.
-6. Use a multimeter to measure voltages in our circuits.
 
 ## Requirements
 1. STM32CubeIDE installed on device
