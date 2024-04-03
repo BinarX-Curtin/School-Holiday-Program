@@ -21,6 +21,9 @@
 
 ## Procedure
 ## 1.0 Watch the introduction by Fergus
+
+The link to the YouTube Video is here: [Session 1.2](https://www.youtube.com/watch?v=cN42YvpWoTo&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=5&pp=iAQB) - Intro to Electronic Design
+
 ![Alt text](1.2_AmplifyingVoltage.jpg)
 ![Alt text](1.2_CalculateResistorValueforLED.JPG)
 ![Alt text](1.2_VoltageDivider.jpg)
