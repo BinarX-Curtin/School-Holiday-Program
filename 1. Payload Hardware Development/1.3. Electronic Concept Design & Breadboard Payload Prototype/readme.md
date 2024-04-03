@@ -3,7 +3,7 @@
 - [Requirements](#requirements)
 - [Resources](#resources)
 - [Procedure](#procedure)
-- [2.0 Follow the hands on demonstration with Jacob](#20-follow-the-hands-on-demonstration-with-jacob)
+- [1.0 Follow the hands on demonstration with Jacob](#10-follow-the-hands-on-demonstration-with-jacob)
 
 ## Objectives
 1. Build a basic circuit to turn an LED on and off.
@@ -11,10 +11,12 @@
 6. Use a multimeter to measure voltages in our circuits.
 
 ## Requirements
-1. 
+1. Electronic components: Breadboard, resistors, solidcore wire/ standard male-male jumpers, LED.
+2. Multimeter
+3. Pen and paper 
 
 ## Resources
-- 
+-  BinarX youtube walkthrough with Jacob - [Session 1.3](placeholder)
 
 ## Procedure
-## 2.0 Follow the hands on demonstration with Jacob
+## 1.0 Follow the hands on demonstration with Jacob
