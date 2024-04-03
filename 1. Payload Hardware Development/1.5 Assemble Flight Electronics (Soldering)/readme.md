@@ -19,7 +19,7 @@
 1. Soldering station.
 
 ## Resources
-
+- BinarX youtube walkthrough with Athena - [Guide to soldering](placeholder)
 
 ## Procedure
 
