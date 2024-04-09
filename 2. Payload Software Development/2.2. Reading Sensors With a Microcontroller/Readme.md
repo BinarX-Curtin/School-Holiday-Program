@@ -36,7 +36,7 @@
 ## 1.0 STM32IDE Project Initialisation
 To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
 
-1.	Open the STM32CubeIDE file we were working on in the [previous session (3.1)](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming)
+1.	Open the STM32CubeIDE file we were working on in the [previous session (2.1)](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming)
 
 5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
 
