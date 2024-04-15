@@ -16,7 +16,7 @@
 3. Pen and paper 
 
 ## Resources
--  BinarX youtube walkthrough with Jacob - [Session 1.3](placeholder)
+-  BinarX youtube walkthrough with Jacob - [Session 1.3](https://youtu.be/c4AYyQy6dpM?si=3i30rcex_vjnUiQZ)
 
 ## Procedure
 ## 1.0 Follow the hands on demonstration with Jacob
