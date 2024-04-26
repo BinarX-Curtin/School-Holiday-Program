@@ -19,8 +19,10 @@
 ## Resources
 - STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
 - Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- Video lecture: https://youtu.be/QDZch9NWOLA?si=7ZM8Gp8QA2N_u2sA
 
 ## Procedure
+- Watch the video lecture on YouTube: https://youtu.be/QDZch9NWOLA?si=7ZM8Gp8QA2N_u2sA
 
 ### Software debugging tips <!-- omit from toc -->
 - Observe bug, what is the signs or symptoms of the bug.
