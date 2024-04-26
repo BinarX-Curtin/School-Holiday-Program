@@ -28,6 +28,7 @@ Kyle said the height of the rocket with camera was modelled to 240ish feet appro
 ## Resources
 - OpenRocket User Guide: https://wiki.openrocket.info/User%27s_Guide
 - Civil Aviation Safety Regulations: https://www.legislation.gov.au/F1998B00220/latest/text
+- YouTube Video Lecture: https://youtu.be/GyBRIacy0BE?si=tkczEmqQ_6JIFUi2
 
 ## Session Plan
 Session Start                                       - 0930
