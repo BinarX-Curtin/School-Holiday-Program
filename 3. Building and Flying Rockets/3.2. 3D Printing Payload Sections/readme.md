@@ -12,7 +12,7 @@
 1. 
 
 ## Resources
-- 
+- YouTube Video Lecture: https://youtu.be/6pKb7wf8bqw?si=93Lp1burQHwOIvxX
 
 ## Procedure
 ## 1.0 Watch Daniel explain additive manufacturing
