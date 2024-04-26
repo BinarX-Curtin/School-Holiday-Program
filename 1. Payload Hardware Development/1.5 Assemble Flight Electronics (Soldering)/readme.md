@@ -1,4 +1,4 @@
- Session 18: Payload Hardware Testing and Debugging <!-- omit from toc -->
+ Session 13: Soldering <!-- omit from toc -->
 
 ### Table of Contents <!-- omit from toc -->
 - [Objectives](#objectives)
