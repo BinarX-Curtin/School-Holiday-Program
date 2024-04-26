@@ -20,6 +20,7 @@
 ## Resources
 - STM32MCU Basics: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32MCU_basics
 - C++ Tutorials: https://www.w3schools.com/cpp/default.asp
+- YouTube Video Lecture: https://youtu.be/cRbmg2F2xm0?si=3JR37FhCTWfWc0bi
 
 ## Procedure
 ## 1.0 What is a Microcontroller
