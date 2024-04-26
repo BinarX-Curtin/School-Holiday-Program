@@ -31,6 +31,7 @@
 - Insert STL file into Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-insert-a-mesh-body-into-Fusion-360.html
 - Exporting as STL from Fusion 360: https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-export-an-STL-file-from-Fusion-360.html
 - PrusaSlicer custom support guide: https://help.prusa3d.com/article/modifier-meshes-custom-supports-and-other-magic_114258
+- YouTube Video Lecture: https://youtu.be/hq9fF7W6Cfc?si=wOfX9TvTxt-JZ9n4
 
 ## Procedure
 
