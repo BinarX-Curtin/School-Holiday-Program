@@ -10,6 +10,7 @@
 ## Resources
 - Powerpoint presentation link: https://curtin-my.sharepoint.com/:p:/g/personal/251611e_curtin_edu_au/Ea4lxVE6Y3ZEk20ubDZ159UBhjhbIf3WWGxbRQB2LBdstA?e=dcnxfj
 - Handout link (notes sheet from powerpoint): https://curtin-my.sharepoint.com/:b:/g/personal/251611e_curtin_edu_au/Ed66jXXHaNVAoyTH0j-sK7YBp9nynSk3R9N_jeGcqQFqRw?e=pvcXuE
+- YouTube Video Lecture: https://youtu.be/fGzyj_nOeww?si=_yEhhBjPA1nrjRUZ
 
 ## Procedure
 - Speak to presentation (notes are included in powerpoint file)
