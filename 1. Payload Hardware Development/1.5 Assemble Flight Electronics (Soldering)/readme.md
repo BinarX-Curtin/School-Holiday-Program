@@ -24,4 +24,4 @@
 ## Procedure
 
 ### 1.0 Watch Athena's guide to soldering
-
+[Guide to soldering](placeholder)
