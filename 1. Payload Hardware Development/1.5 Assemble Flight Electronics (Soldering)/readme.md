@@ -1,4 +1,4 @@
- Session 13: Soldering <!-- omit from toc -->
+# Session 13: Soldering <!-- omit from toc -->
 
 ### Table of Contents <!-- omit from toc -->
 - [Objectives](#objectives)
