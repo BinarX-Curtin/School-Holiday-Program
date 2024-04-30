@@ -21,6 +21,7 @@
 - [Coding in STM32CubeIDE](https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step)
 
 ## Procedure
+- Watch the video lecture on YouTube: https://youtu.be/QDZch9NWOLA?si=7ZM8Gp8QA2N_u2sA
 
 ### Video Walkthrough 
 Watch Charlie go through his first HAB launch and debugging tips and tricks [here](https://www.youtube.com/watch?v=QDZch9NWOLA&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=9).
