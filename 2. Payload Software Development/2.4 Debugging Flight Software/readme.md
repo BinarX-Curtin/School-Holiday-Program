@@ -17,8 +17,8 @@
 1. STM32L432KC Microcontroller with usb a to micro usb cable
 
 ## Resources
-- STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
-- Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- [STM32L4 Datasheet link](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [Coding in STM32CubeIDE](https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step)
 
 ### General Debugging Process <!-- omit from toc -->
 - **Observe bug.** Record the signs and/or symptoms of the bug.

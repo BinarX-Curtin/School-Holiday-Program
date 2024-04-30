@@ -18,10 +18,11 @@
 3. USB-A to USB-C cable
 
 ## Resources
-- STM32MCU Basics: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32MCU_basics
-- C++ Tutorials: https://www.w3schools.com/cpp/default.asp
+- [STM32MCU Basics](https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32MCU_basics)
+- [C++ Tutorials](https://www.w3schools.com/cpp/default.asp)
 
 ## Procedure
+Watch the online walkthrough with Will [here](https://www.youtube.com/watch?v=cRbmg2F2xm0&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=10)
 ## 1.0 What is a Microcontroller
 A microcontroller is a small computer on a single integrated circuit. A microcontroller contains one or more CPUs along with memory and programmable input/output peripherals.
 

@@ -5,7 +5,6 @@
 - [Requirements](#requirements)
 - [Resources](#resources)
 - [Procedure](#procedure)
-  - [1.0 Watch Athena's guide to soldering](#10-watch-athenas-guide-to-soldering)
 
 
 ## Objectives
@@ -19,9 +18,9 @@
 1. Soldering station.
 
 ## Resources
-- BinarX youtube walkthrough with Athena - [Guide to soldering](placeholder)
+- Soldering guide ([Makerspaces](https://www.makerspaces.com/how-to-solder/))
 
 ## Procedure
 
-### 1.0 Watch Athena's guide to soldering
-
+### 1.0 Watch Athena's guide to soldering <!-- omit from toc -->
+BinarX youtube walkthrough with Athena - [Guide to soldering](https://www.youtube.com/watch?v=4w1aexhTjbs&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=1)

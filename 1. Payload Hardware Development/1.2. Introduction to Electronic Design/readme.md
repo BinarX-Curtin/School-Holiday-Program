@@ -3,24 +3,22 @@
 - [Requirements](#requirements)
 - [Resources](#resources)
 - [Procedure](#procedure)
-- [1.0 Watch the introduction by Fergus](#10-watch-the-introduction-by-fergus)
 
 ## Objectives
 1. Familiarise ourselves with the fundamentals of electrical circuits.
 2. Familiarise ourselves with how to wire up basic digital ICs (integrated circuits) including decoupling capacitors.
 
 ## Requirements
-1. STM32CubeIDE installed on device
-2. Pen and paper
-3. STM32L432KC Microcontroller with usb a to micro usb cable
+1. Pen and paper.
+2. Electronic device and stable internet connection.
+
 
 ## Resources
-- STM32L4 Datasheet link: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
-- What is an ADC: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
-- Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- [STM32L4 Datasheet](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [What is an ADC](https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us)
 
 ## Procedure
-## 1.0 Watch the introduction by Fergus
+### Watch the introduction by Fergus <!-- omit from toc -->
 
 The link to the YouTube Video is here: [Session 1.2](https://www.youtube.com/watch?v=cN42YvpWoTo&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=5&pp=iAQB) - Intro to Electronic Design
 

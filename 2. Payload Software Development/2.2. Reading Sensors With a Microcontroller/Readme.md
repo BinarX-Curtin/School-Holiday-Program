@@ -4,6 +4,7 @@
 - [Objectives](#objectives)
 - [Requirements](#requirements)
 - [Resources](#resources)
+- [Component Links](#component-links)
 - [Procedure](#procedure)
 - [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
 - [2.0 C Code Fundamentals](#20-c-code-fundamentals)
@@ -22,15 +23,15 @@
 1. BinarX Rocket Payload Controller Microcontroller Board with STM32L433CBT7 microcontroller
 
 ## Resources
-- STM32L4 reference manual: https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
-- What is an ADC article by SparkFun Electronics: https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us.
-- Coding in STM32CubeIDE: https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step
+- [STM32L4 reference manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf) 
+- What is an ADC article ([SparkFun Electronics](https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us):)
+- [Coding in STM32CubeIDE](https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step)
 
 ## Component Links
-- Red LED: https://www.altronics.com.au/p/z0751a-red-800mcd-3mm-led/
-- Blue LED: https://www.altronics.com.au/p/z0869-blue-1000mcd-5mm-led/
-- White LED: https://www.altronics.com.au/p/z0876e-white-22500mcd-5mm-led/
-- UV LED: https://www.altronics.com.au/p/z0883-uv-1600mcd-5mm-clear-led/
+- [Red LED](https://www.altronics.com.au/p/z0751a-red-800mcd-3mm-led/)
+- [Blue LED](https://www.altronics.com.au/p/z0869-blue-1000mcd-5mm-led/)
+- [White LED](https://www.altronics.com.au/p/z0876e-white-22500mcd-5mm-led/)
+- [UV LED](https://www.altronics.com.au/p/z0883-uv-1600mcd-5mm-clear-led/)
 
 ## Procedure
 ## 1.0 STM32IDE Project Initialisation
@@ -112,7 +113,7 @@ bottom of the screen you should see “Build Finished. 0 errors, 0 warnings.”
 
 ## 3.0 ADC Implementation
 
-TMP36 Temperature sensor datasheet: https://www.analog.com/media/en/technical-documentation/data-sheets/tmp35_36_37.pdf.
+TMP36 Temperature sensor [datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/tmp35_36_37.pdf).
 
 1. Comment out the LED blink code in the while loop using:
 ```c++

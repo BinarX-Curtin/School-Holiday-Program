@@ -5,9 +5,9 @@
 2. Write sensor data to the SD card in a format that will be readable by the data processing software you will develop in the future.
 
 # Resources:
-- Tutorial by kiwih: "Tutorial: An SD card over SPI using STM32CubeIDE and FatFS" https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/.
-- "SPI Signal Names" by SparkFun Electronics: https://www.sparkfun.com/spi_signal_names
-- STM32L4 HAL Documentation: https://www.st.com/resource/en/user_manual/um1884-description-of-stm32l4l4-hal-and-lowlayer-drivers-stmicroelectronics.pdf
+- [Tutorial by kiwih](https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/): "Tutorial: An SD card over SPI using STM32CubeIDE and FatFS".
+- "SPI Signal Names" ([SparkFun Electronics](https://www.sparkfun.com/spi_signal_names))
+- [STM32L4 HAL Documentation](https://www.st.com/resource/en/user_manual/um1884-description-of-stm32l4l4-hal-and-lowlayer-drivers-stmicroelectronics.pdf)
 
 # Required Software & Equipment
 - BinarX Rocket Payload Microcontroller Board
@@ -65,7 +65,7 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
     ![SPI2 section](figures/spi2_section.png)
 
-3. In the middle pane, click on the "Mode" drop down at the top and change the mode to "Full Duplex Master" to configure the SPI2 subsystem as an SPI controller in full duplex mode. (Note that in SMT32CubeIDE the former term "master" is used instead of the up-to-date term "controller". For more information on the recent changes to SPI signal naming, please see this article by SparkFun Electronics: https://www.sparkfun.com/spi_signal_names.)
+3. In the middle pane, click on the "Mode" drop down at the top and change the mode to "Full Duplex Master" to configure the SPI2 subsystem as an SPI controller in full duplex mode. (Note that in SMT32CubeIDE the former term "master" is used instead of the up-to-date term "controller". For more information on the recent changes to SPI signal naming, please see [this article](https://www.sparkfun.com/spi_signal_names) by SparkFun Electronics.)
 
     In the second drop down ("Hardware NSS Signal") select "Disable" as the library we will be using to write to the MicroSD card controls the chip select line from software (requiring it to be configures as a GPIO output, not configured through the SPI2 peripheral). (Note that "slave select" and the abbreviations "SS" or "NSS" are the former terms for "chip select" with the abbreviation "CS".)
 
@@ -73,7 +73,7 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 
     ![spi mode options](figures/spi2_mode_options.png)
 
-   If you would like more information on SPI signal names and why they have changed recently, you can read this SparkFun Electronics article : https://www.sparkfun.com/spi_signal_names.
+   If you would like more information on SPI signal names and why they have changed recently, you can [read this](https://www.sparkfun.com/spi_signal_names) SparkFun Electronics article.
 
 4. To match up with the pin mapping shown above in the "Microcontroller Input-Output Connections" part of the schematic we need to configure
 
@@ -156,7 +156,7 @@ Our initialisation code has now been generated and we're nearly ready to begin u
 
 The FATFS library as provided by ST is designed for use with microcontrollers' internal flash memory. We need to make some changes in order to use it with the microSD card. Luckily for us, someone else has made most of the changes for us, and we just need to configure a couple of options, and provide the pin labels used for our microSD card.
 
-This part is based on kiwih's tutorial here: https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/ and builds upon code written by ChaN (http://elm-chan.org/fsw/ff/).
+This part is based on kiwih's tutorial [here](https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/)  and builds upon code written by [ChaN](http://elm-chan.org/fsw/ff/).
 
 1. In the "Project Explorer" pane on the left hand side of STM32CubeIDE there should now be a new "Middlewares" directory (below a new "FATFS" directory).
 
