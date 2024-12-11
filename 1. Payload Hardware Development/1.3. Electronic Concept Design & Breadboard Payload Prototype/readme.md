@@ -2,7 +2,8 @@
 - [Objectives](#objectives)
 - [Requirements](#requirements)
 - [Resources](#resources)
-- [Procedure](#procedure)
+- [In class Procedure](#in-class-procedure)
+- [Online Procedure](#online-procedure)
 
 ## Objectives
 1. Build a basic circuit to turn an LED on and off.
@@ -22,6 +23,9 @@
 - Simple LED Circuit ([Instructables](https://www.instructables.com/Simple-Basic-LED-Circuit-How-to-Use-LEDs/))
 - [Pinmap](/1.%20Payload%20Hardware%20Development/BinarX_Rocket_Payload_Microcontroller_Board_Pin_Labels.png)
 
-## Procedure
+## In class Procedure
+
+
+## Online Procedure
 ### 1.0 Follow the hands on demonstration with Jacob <!-- omit from toc -->
 BinarX youtube walkthrough with Jacob - [Session 1.3](https://youtu.be/c4AYyQy6dpM?si=3i30rcex_vjnUiQZ)

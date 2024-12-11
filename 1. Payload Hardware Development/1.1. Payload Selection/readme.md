@@ -2,7 +2,8 @@
 - [Objectives](#objectives)
 - [Requirements](#requirements)
 - [Resources](#resources)
-- [Procedure](#procedure)
+- [In class Procedure](#in-class-procedure)
+- [Online Procedure](#online-procedure)
 
 ## Objectives
 1. Understand the roles of a payload development team.
@@ -21,8 +22,10 @@
 - [Low-Noise Negative Bias Generator Datasheet](https://www.ti.com/lit/ds/symlink/lm7705.pdf)
 - [Pressure Sensor Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf)
 
-## Procedure
+## In class Procedure
 
+
+## Online Procedure
 ### Watch Session 1.1 Part 1 about Team Roles <!-- omit from toc -->
 
 [Session 1.1 Part 1](https://www.youtube.com/watch?v=qVKfAMUXbC4&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS&index=1&pp=iAQB) - Team roles
