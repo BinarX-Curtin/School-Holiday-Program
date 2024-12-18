@@ -26,15 +26,13 @@ Watch the online walkthrough with Will [here](https://www.youtube.com/watch?v=cR
 ## 1.0 What is a Microcontroller
 A microcontroller is a small computer on a single integrated circuit. A microcontroller contains one or more CPUs along with memory and programmable input/output peripherals.
 
-On the other hand, a microprocessor is just an integrated circuit that contains all the functions of a central processing unit of a computer.
+This is reminiscent to a city where different parts of the microcontroller are responsible for different operations. Also, different cities vary in size, complexity and functionality just as microcontrollers do. Furthermore, each city may use a multitude of languages to communicate information across it's information dense network. The only thing a city doesn't have is a datasheet rich of highly detailed technical information of how these small subsystems interconnect with the outside world.
 
-### Microcontroller vs Microprocessor <!-- omit from toc -->
-| Heading        |                                                                                                                                     Microcontroller                                                                                                                                      |                                                                                                                                                                                  Microprocessor |
-| :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Functionality  | A microcontroller is an integrated circuit designed to perform a specific task in an embedded system. It typically includes a processor, memory and input/output peripherals on a single chip. it's designed to be an all-in-one solution for controlling devices in an embedded system. | A microprocessor is essentially the CPU or processing unit of a computer system. It therefore, doesn't include the additional features a microcontroller has such as memory or I/O peripherals. |
-| Applications   |                                                          Used in devices where automation of a specific task is needed. Such as home appliances, automobiles, medical devices, space craft, and other various embedded systems.                                                          |                                                                                                  Utilized when there is a high computing demand in devices such as, PC's, smartphones, servers. |
-| Complexity     |                                                                                             A less complex processor but depending on the additional features could be a more complex chip.                                                                                              |                                                                                               Due to the one dimensional purpose the processing side of this chip is considerably more complex. |
-| Memory/Storage |                                                                             Has small amounts of onboard memory and storage, limited but typically sufficient for the application it is designed to perform.                                                                             |                                                                                        Relies on external memory and storage allowing for greater capacity in a larger and more complex system. |
+Below is an example of a block diagram of a Atmega32U (The Arduino Micro's brain)
+
+
+<!-- Image of block diagram here -->
+<!-- Add more linking ideas -->
 
 
 ## 2.0 STM32CubeIDE

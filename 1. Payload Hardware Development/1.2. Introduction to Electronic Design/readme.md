@@ -19,9 +19,6 @@
 - [STM32L4 Datasheet](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 - [What is an ADC](https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us)
 
-## In class Procedure
-
-
 ## Online Procedure
 ### Watch the introduction by Fergus <!-- omit from toc -->
 

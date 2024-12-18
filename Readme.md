@@ -54,17 +54,17 @@
 - Bring your lunch from home. There is no microwave or fridge available.
 - Bring a hat, sunscreen and water bottle with a lid that seals.
 - Bring a USB flash drive.
-- Bring a Microsoft Windows or Mac based laptop if you can. (this is optional as lab computers will be made available at Curtin for participants)
+- Bring a Microsoft Windows or Mac based laptop if you can (this is optional as lab computers will be made available at Curtin for participants).
 - Bring a set of headphones.
 - Bring some pen and paper (or a tablet & stylus).
 
 ### Before the First Day:
-- Create an Autodesk account and sign up for a Fusion360 education use license: https://www.autodesk.com/products/fusion-360/personal. (if you can't get a education use license, a personal license is applicable)
-- Sign up for a my.st.com account: https://www.st.com/content/st_com/en/user-registration.html.
-- Install Fusion 360 (https://www.autodesk.com/products/fusion-360/personal) on your Windows or Mac based laptop, if you're bringing one.
-- Install STM32CubeIDE on your Windows, Mac or Linux based laptop, if you're bringing one (https://www.st.com/en/development-tools/stm32cubeide.html).
-- Install Inkscape on your Windows or Mac based laptop, if you're bringing one (https://inkscape.org/en/release/)
-- If you would like to, and with parental or carer consent, sign up for a Discord account to communicate online with the other participants and the program facilitators: https://discord.com/.
+- Create an Autodesk account and sign up for a Fusion360 [education use license](https://www.autodesk.com/au/support/account/education/students-educators/get-started) (if you can't get a education use license, a personal license is applicable).
+- Sign up for a [my.st.com account](https://www.st.com/content/st_com/en/user-registration.html).
+- Install [Fusion 360](https://www.autodesk.com/products/fusion-360/personal) on your Windows or Mac based laptop, if you're bringing one.
+- Install [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html) on your Windows, Mac or Linux based laptop, if you're bringing one.
+- Install [Inkscape](https://inkscape.org/en/release/) on your Windows or Mac based laptop, if you're bringing one.
+- If you would like to, and with parental or carer consent, sign up for a [Discord](https://discord.com/) account to communicate online with the other participants and the program facilitators.
 - Purchase a black 100% cotton t-shirt in your size, pre-wash and dry it, and bring it to the program. Please write your name on the tag.
 
 ### Parental or Carer Permission

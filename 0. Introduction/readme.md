@@ -1,19 +1,16 @@
 ### Table of Contents <!-- omit from toc -->
 - [Objectives](#objectives)
-- [Requirements](#requirements)
 - [Resources](#resources)
 - [Procedure](#procedure)
-- [1.0 STM32IDE Project Initialisation](#10-stm32ide-project-initialisation)
 
 ## Objectives
-1. 
-
-## Requirements
-1. 
+1. Understand who is facilitating the program.
+2. Learn about what Binar is and all the avenues it encompasses.
+3. Develop an understanding of where BinarX fits within the program. 
 
 ## Resources
-- 
+- [Binar Website](https://www.binarspace.com/)
+- [BinarX](https://www.binarspace.com/binarx/)
 
 ## Procedure
-## 1.0 STM32IDE Project Initialisation
-To begin our journey into learning how these complex devices are used, we first need to set up our devices for the correct functionality. Hence, we use STMCubeIDE to modify the pin functionalities.
+Watch and read through all slides on Summer Holiday Intro PowerPoint.

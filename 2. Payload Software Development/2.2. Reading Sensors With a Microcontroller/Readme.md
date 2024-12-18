@@ -24,7 +24,7 @@
 
 ## Resources
 - [STM32L4 reference manual](https://www.st.com/resource/en/reference_manual/rm0394-stm32l41xxx42xxx43xxx44xxx45xxx46xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf) 
-- What is an ADC article ([SparkFun Electronics](https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us):)
+- What is an ADC article ([SparkFun Electronics](https://learn.sparkfun.com/tutorials/analog-to-digital-conversion/all#:~:text=An%20Analog%20to%20Digital%20Converter,the%20analog%20world%20around%20us))
 - [Coding in STM32CubeIDE](https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_STM32_:_STM32_step_by_step)
 
 ## Component Links
@@ -39,7 +39,7 @@ To begin our journey into learning how these complex devices are used, we first 
 
 1.	Open the STM32CubeIDE file we were working on in the [previous session (2.1)](/2.%20Payload%20Software%20Development/2.1.%20Getting%20Started%20with%20STM32%20Microcontroller%20Programming)
 
-5.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
+2.	Expand the “Analog” category on the left side of the window and click on “ADC1”.
 
     This is the configuration for the built in analogue to digital converter “ADC1”. This hardware peripheral measures analogue voltages and digitises them, storing the conversion result in a register for use in software. This allows you to write software that can respond to changing voltages or values from sensors that output their result as an analogue voltage level.
 

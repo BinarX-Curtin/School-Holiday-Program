@@ -22,9 +22,6 @@
 - [Low-Noise Negative Bias Generator Datasheet](https://www.ti.com/lit/ds/symlink/lm7705.pdf)
 - [Pressure Sensor Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf)
 
-## In class Procedure
-
-
 ## Online Procedure
 ### Watch Session 1.1 Part 1 about Team Roles <!-- omit from toc -->
 

@@ -23,9 +23,6 @@
 - BinarX youtube walkthrough with Athena - [Guide to soldering](https://www.youtube.com/watch?v=4w1aexhTjbs&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS)
 - PowerPoint Presentation - [How to Solder](https://github.com/BinarX-Curtin/School-Holiday-Program/blob/main/1.%20Payload%20Hardware%20Development/1.5%20Assemble%20Flight%20Electronics%20(Soldering)/Soldering%20Summary.pptx)
 
-## In class Procedure
-
-
 ## Online Procedure
 ### 1.0 Watch Athena's guide to soldering <!-- omit from toc -->
 - [Guide to soldering YouTube](https://www.youtube.com/watch?v=4w1aexhTjbs&list=PLhmx0ZGiO2sNXqH09_9cT4NBlGAUTOnFS)
