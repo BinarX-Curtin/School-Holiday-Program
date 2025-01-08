@@ -31,8 +31,7 @@
 #ifndef __ICM42670_H__
 #define __ICM42670_H__
 
-#include <i2cdev.h>
-#include <esp_err.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -351,12 +350,26 @@ typedef enum {
 } icm42670_mreg_number_t;
 
 /**
- * Device descriptor
+ * @brief A datatype for a function pointer for writing to the mmc5983ma device.
+ *
+ */
+typedef uint32_t (*icm42670_write_ptr)(const uint8_t *write_buf,
+                                        const uint32_t len);
+
+/**
+ * @brief A datatype for a function pointer for reading from the mmc5983ma
+ * device.
+ *
+ */
+typedef uint32_t (*icm42670_read_ptr)(uint8_t *read_buf, const uint32_t len);
+
+/**
+ * @brief device descriptor
  */
 typedef struct
 {
-    i2c_dev_t i2c_dev;
-    // TODO: add more vars for configuration
+    icm42670_write_ptr write_command;
+    icm42670_read_ptr read_command;
 } icm42670_t;
 
 /**
@@ -367,70 +380,70 @@ typedef struct
  * @param port I2C port
  * @param sda_gpio SDA GPIO pin
  * @param scl_gpio SCL GPIO pin
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_init_desc(icm42670_t *dev, uint8_t addr, i2c_port_t port, gpio_num_t sda_gpio, gpio_num_t scl_gpio);
+uint32_t icm42670_init_desc(icm42670_t *dev, uint8_t addr, i2c_port_t port, gpio_num_t sda_gpio, gpio_num_t scl_gpio);
 
 /**
  * @brief Free device descriptor
  *
  * @param dev Device descriptor
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_free_desc(icm42670_t *dev);
+uint32_t icm42670_free_desc(icm42670_t *dev);
 
 /**
  * @brief Initialize device
  *
  * @param dev Device descriptor
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_init(icm42670_t *dev);
+uint32_t icm42670_init(icm42670_t *dev);
 
 /**
  * @brief Set device power mode
  *
  * @param dev Device descriptor
  * @param enable_idle bool to enable idle mode
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_idle_pwr_mode(icm42670_t *dev, bool enable_idle);
+uint32_t icm42670_set_idle_pwr_mode(icm42670_t *dev, bool enable_idle);
 
 /**
  * @brief Set gyro power mode
  *
  * @param dev Device descriptor
  * @param pwr_mode struct of type icm42670_gyro_pwr_mode_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_gyro_pwr_mode(icm42670_t *dev, icm42670_gyro_pwr_mode_t pwr_mode);
+uint32_t icm42670_set_gyro_pwr_mode(icm42670_t *dev, icm42670_gyro_pwr_mode_t pwr_mode);
 
 /**
  * @brief Set accel power mode
  *
  * @param dev Device descriptor
  * @param pwr_mode struct of type icm42670_accel_pwr_mode_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_accel_pwr_mode(icm42670_t *dev, icm42670_accel_pwr_mode_t pwr_mode);
+uint32_t icm42670_set_accel_pwr_mode(icm42670_t *dev, icm42670_accel_pwr_mode_t pwr_mode);
 
 /**
  * @brief Set clock source in LP mode
  *
  * @param dev Device descriptor
  * @param clock_source struct of type icm42670_lp_clock_source_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_low_power_clock(icm42670_t *dev, icm42670_lp_clock_source_t clock_source);
+uint32_t icm42670_set_low_power_clock(icm42670_t *dev, icm42670_lp_clock_source_t clock_source);
 
 /**
  * @brief Read temperature from device
  *
  * @param dev Device descriptor
  * @param[out] temperature temperature, degree C
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_read_temperature(icm42670_t *dev, float *temperature);
+uint32_t icm42670_read_temperature(icm42670_t *dev, float *temperature);
 
 /**
  * @brief Read 16-bit raw data registers (accelerometer and gyro values)
@@ -438,88 +451,88 @@ esp_err_t icm42670_read_temperature(icm42670_t *dev, float *temperature);
  * @param dev Device descriptor
  * @param data_register data register to read from
  * @param[out] data accel or gyro data
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_read_raw_data(icm42670_t *dev, uint8_t data_register, int16_t *data);
+uint32_t icm42670_read_raw_data(icm42670_t *dev, uint8_t data_register, int16_t *data);
 
 /**
  * @brief Performs a soft-reset
  *
  * @param dev Device descriptor
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_reset(icm42670_t *dev);
+uint32_t icm42670_reset(icm42670_t *dev);
 
 /**
  * @brief Wipes the FIFO
  *
  * @param dev Device descriptor
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_flush_fifo(icm42670_t *dev);
+uint32_t icm42670_flush_fifo(icm42670_t *dev);
 
 /**
  * @brief Set the measurement FSR (Full Scale Range) of the gyro
  *
  * @param dev Device descriptor
  * @param range struct of type icm42670_gyro_fsr_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_gyro_fsr(icm42670_t *dev, icm42670_gyro_fsr_t range);
+uint32_t icm42670_set_gyro_fsr(icm42670_t *dev, icm42670_gyro_fsr_t range);
 
 /**
  * @brief Set the measurement ODR (Output Data Rate) of the gyro
  *
  * @param dev Device descriptor
  * @param odr struct of type icm42670_gyro_odr_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_gyro_odr(icm42670_t *dev, icm42670_gyro_odr_t odr);
+uint32_t icm42670_set_gyro_odr(icm42670_t *dev, icm42670_gyro_odr_t odr);
 
 /**
  * @brief Set the measurement FSR (Full Scale Range) of the accelerometer
  *
  * @param dev Device descriptor
  * @param range struct of type icm42670_accel_fsr_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_accel_fsr(icm42670_t *dev, icm42670_accel_fsr_t range);
+uint32_t icm42670_set_accel_fsr(icm42670_t *dev, icm42670_accel_fsr_t range);
 
 /**
  * @brief Set the measurement ODR (Output Data Rate) of the accelerometer
  *
  * @param dev Device descriptor
  * @param odr struct of type icm42670_accel_odr_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_accel_odr(icm42670_t *dev, icm42670_accel_odr_t odr);
+uint32_t icm42670_set_accel_odr(icm42670_t *dev, icm42670_accel_odr_t odr);
 
 /**
  * @brief Set the digital Low-Pass-Filter (LPF) of the temperature sensor
  *
  * @param dev Device descriptor
  * @param lpf_bw struct of type icm42670_temp_lfp_t (bandwidth)
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_temp_lpf(icm42670_t *dev, icm42670_temp_lfp_t lpf_bw);
+uint32_t icm42670_set_temp_lpf(icm42670_t *dev, icm42670_temp_lfp_t lpf_bw);
 
 /**
  * @brief Set the digital Low-Pass-Filter (LPF) of the gyro
  *
  * @param dev Device descriptor
  * @param lpf_bw struct of type icm42670_gyro_lfp_t (bandwidth)
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_gyro_lpf(icm42670_t *dev, icm42670_gyro_lfp_t lpf_bw);
+uint32_t icm42670_set_gyro_lpf(icm42670_t *dev, icm42670_gyro_lfp_t lpf_bw);
 
 /**
  * @brief Set the digital Low-Pass-Filter (LPF) of the accelerometer
  *
  * @param dev Device descriptor
  * @param lpf_bw struct of type icm42670_accel_lfp_t (bandwidth)
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_accel_lpf(icm42670_t *dev, icm42670_accel_lfp_t lpf_bw);
+uint32_t icm42670_set_accel_lpf(icm42670_t *dev, icm42670_accel_lfp_t lpf_bw);
 
 /**
  * @brief Set the averaging filter of the accelerometer (ONLY IN LOW POWER MODE (LPM))
@@ -527,9 +540,9 @@ esp_err_t icm42670_set_accel_lpf(icm42670_t *dev, icm42670_accel_lfp_t lpf_bw);
  *
  * @param dev Device descriptor
  * @param avg struct of type icm42670_accel_avg_t (averaging)
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_accel_avg(icm42670_t *dev, icm42670_accel_avg_t avg);
+uint32_t icm42670_set_accel_avg(icm42670_t *dev, icm42670_accel_avg_t avg);
 
 /**
  * @brief Configures the behaviour of an interrupt pin
@@ -537,9 +550,9 @@ esp_err_t icm42670_set_accel_avg(icm42670_t *dev, icm42670_accel_avg_t avg);
  * @param dev Device descriptor
  * @param int_pin interrupt pin (1 or 2)
  * @param config struct of type icm42670_int_config_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_config_int_pin(icm42670_t *dev, uint8_t int_pin, icm42670_int_config_t config);
+uint32_t icm42670_config_int_pin(icm42670_t *dev, uint8_t int_pin, icm42670_int_config_t config);
 
 /**
  * @brief Configures the sources for an interrupt
@@ -547,9 +560,9 @@ esp_err_t icm42670_config_int_pin(icm42670_t *dev, uint8_t int_pin, icm42670_int
  * @param dev Device descriptor
  * @param int_pin interrupt pin (1 or 2)
  * @param sources struct of type icm42670_int_source_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_set_int_sources(icm42670_t *dev, uint8_t int_pin, icm42670_int_source_t sources);
+uint32_t icm42670_set_int_sources(icm42670_t *dev, uint8_t int_pin, icm42670_int_source_t sources);
 
 /**
  * @brief Configures the Wake on Motion (WoM) behaviour
@@ -557,45 +570,45 @@ esp_err_t icm42670_set_int_sources(icm42670_t *dev, uint8_t int_pin, icm42670_in
  *
  * @param dev Device descriptor
  * @param config struct of type icm42670_wom_config_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_config_wom(icm42670_t *dev, icm42670_wom_config_t config);
+uint32_t icm42670_config_wom(icm42670_t *dev, icm42670_wom_config_t config);
 
 /**
  * @brief Enable or Disable Wake on Motion (WoM)
  *
  * @param dev Device descriptor
  * @param enable true to enable, false to disable
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_enable_wom(icm42670_t *dev, bool enable);
+uint32_t icm42670_enable_wom(icm42670_t *dev, bool enable);
 
 /**
  * @brief Get the status of the internal clock
  *
  * @param dev Device descriptor
  * @param mclk_rdy true if internal clock is running
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_get_mclk_rdy(icm42670_t *dev, bool *mclk_rdy);
+uint32_t icm42670_get_mclk_rdy(icm42670_t *dev, bool *mclk_rdy);
 
 /**
  * @brief Get the output data rate (ODR) of the accel
  *
  * @param dev Device descriptor
  * @param odr pointer to icm42670_accel_odr_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_get_accel_odr(icm42670_t *dev, icm42670_accel_odr_t *odr);
+uint32_t icm42670_get_accel_odr(icm42670_t *dev, icm42670_accel_odr_t *odr);
 
 /**
  * @brief Get the status of the accel averaging
  *
  * @param dev Device descriptor
  * @param avg pointer to icm42670_accel_avg_t
- * @return `ESP_OK` on success
+ * @return Number of bytes written to the device.
  */
-esp_err_t icm42670_get_accel_avg(icm42670_t *dev, icm42670_accel_avg_t *avg);
+uint32_t icm42670_get_accel_avg(icm42670_t *dev, icm42670_accel_avg_t *avg);
 
 #ifdef __cplusplus
 }

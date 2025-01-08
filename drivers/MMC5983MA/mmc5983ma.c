@@ -20,8 +20,8 @@ uint32_t Mmc5983maRead(const mmc5983ma_t *magnetometer, uint8_t *read_buf,
   return magnetometer->read_command(read_buf, len);
 }
 
-uint8_t GetPid(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[1] = {PRODUCT_ID};
+uint8_t GetMMC5983ID(const mmc5983ma_t *magnetometer) {
+  uint8_t write_buf[1] = {MMC5983MA_ADDRESS};
   uint8_t read_buf[1] = {0};
 
   Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
