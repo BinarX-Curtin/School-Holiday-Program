@@ -20,7 +20,7 @@ uint32_t Mmc5983maRead(const mmc5983ma_t *magnetometer, uint8_t *read_buf,
   return magnetometer->read_command(read_buf, len);
 }
 
-uint8_t GetMMC5983ID(const mmc5983ma_t *magnetometer) {
+uint8_t GetMmc5983maID(const mmc5983ma_t *magnetometer) {
   uint8_t write_buf[1] = {MMC5983MA_ADDRESS};
   uint8_t read_buf[1] = {0};
 
@@ -31,12 +31,12 @@ uint8_t GetMMC5983ID(const mmc5983ma_t *magnetometer) {
 }
 
 uint32_t MagneticFieldMeasurement(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {INTERNAL_CONTROL_0, (INT_MEAS_DONE_EN | TM_M)};
+  uint8_t write_buf[2] = {MMC5983MA_CONTROL_0, (INT_MEAS_DONE_EN | TM_M)};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
 
 uint32_t TemperatureMeasurement(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {INTERNAL_CONTROL_0, (INT_MEAS_DONE_EN | TM_T)};
+  uint8_t write_buf[2] = {MMC5983MA_CONTROL_0, (INT_MEAS_DONE_EN | TM_T)};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
 
@@ -68,22 +68,27 @@ uint8_t GetTemp(const mmc5983ma_t *magnetometer) {
   return *read_buf;
 }
 
-uint32_t ClearMagFieldInt(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {STATUS, MEAS_M_DONE};
+uint32_t Mmc5984maClearMagFieldInt(const mmc5983ma_t *magnetometer) {
+  uint8_t write_buf[2] = {MMC5983MA_STATUS, MEAS_M_DONE};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
 
-uint32_t ClearTempInt(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {STATUS, MEAS_T_DONE};
+uint32_t Mmc5984maClearTempInt(const mmc5983ma_t *magnetometer) {
+  uint8_t write_buf[2] = {MMC5983MA_STATUS, MEAS_T_DONE};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
 
-uint32_t Set(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {INTERNAL_CONTROL_0, MAG_SET};
+uint32_t Mmc5984maSet(const mmc5983ma_t *magnetometer) {
+  uint8_t write_buf[2] = {MMC5983MA_CONTROL_0, MAG_SET};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
 
-uint32_t Reset(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[2] = {INTERNAL_CONTROL_0, MAG_RESET};
+uint32_t Mmc5984maReset(const mmc5983ma_t *magnetometer) {
+  uint8_t write_buf[2] = {MMC5983MA_CONTROL_0, MAG_RESET};
+  return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
+}
+
+uint32_t Mmc5983maEditRegister(const mmc5983ma_t *magnetometer, const uint8_t ctrlReg, const uint8_t settings) {
+  uint8_t write_buf[2] = {ctrlReg, settings};
   return Mmc5983maWrite(magnetometer, write_buf, sizeof(write_buf));
 }
