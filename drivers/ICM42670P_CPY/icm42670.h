@@ -350,14 +350,13 @@ typedef enum {
 } icm42670_mreg_number_t;
 
 /**
- * @brief A datatype for a function pointer for writing to the mmc5983ma device.
+ * @brief A datatype for a function pointer for writing to the icm42670 device.
  *
  */
-typedef uint32_t (*icm42670_write_ptr)(const uint8_t *write_buf,
-                                        const uint32_t len);
+typedef uint32_t (*icm42670_write_ptr)(const uint8_t *write_buf, const uint32_t len);
 
 /**
- * @brief A datatype for a function pointer for reading from the mmc5983ma
+ * @brief A datatype for a function pointer for reading from the icm42670
  * device.
  *
  */
@@ -371,6 +370,28 @@ typedef struct
     icm42670_write_ptr write_command;
     icm42670_read_ptr read_command;
 } icm42670_t;
+
+
+/**
+ * @brief Write data to register.
+ *
+ * @param icm 6-axis motion sensor read/write interface.
+ * @param write_buf Pointer to buffer to write.
+ * @param len Length of message.
+ * @return uint32_t Number of bytes written.
+ */
+uint32_t Icm42670Write(icm42670_t *icm, uint8_t *write_buf, uint16_t len);
+
+/**
+ * @brief Eead data from register.
+ *
+ * @param icm 6-axis motion sensor read/write interface.
+ * @param write_buf Pointer to buffer to read.
+ * @param len Length of message.
+ * @return uint32_t Number of bytes read.
+ */
+uint32_t Icm42670Write(icm42670_t *icm, uint8_t *read_buff, uint16_t len);
+
 
 /**
  * @brief Initialize device descriptor

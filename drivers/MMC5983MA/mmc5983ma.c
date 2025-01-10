@@ -41,7 +41,7 @@ uint32_t TemperatureMeasurement(const mmc5983ma_t *magnetometer) {
 }
 
 field_axes_t GetField(const mmc5983ma_t *magnetometer) {
-  uint8_t write_buf[1] = {X_OUT_0};
+  uint8_t write_buf[1] = {MMC5983MA_XOUT_0};
 
   uint8_t read_buf[6] = {0};
 
