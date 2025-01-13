@@ -45,7 +45,7 @@ Watch Hans explain the fundamentals to 3D design [here](https://www.youtube.com/
 
 ## 1.0 Fusion 360 Project Installation
 
-1. Download the project attached to the github lesson named "Green Eggs Rocket with Simplified Payload Section v63.f3z"
+1. Download the project attached to the github lesson named "Green Eggs Rocket with Simplified Payload Section v65.f3z"
 
 1. Create a new project. 
    
