@@ -197,188 +197,14 @@ static const char *TAG = "icm42670";
 #define ICM42670_DATA_RDY_INT_BITS  0x01 // ICM42670_REG_INT_STATUS_DRDY<0>
 #define ICM42670_DATA_RDY_INT_SHIFT 0    // ICM42670_REG_INT_STATUS_DRDY<0>
 
-#define ICM42670_ST_INT_BITS          0x80 // ICM42670_REG_INT_STATUS<7>
-#define ICM42670_ST_INT_SHIFT         7    // ICM42670_REG_INT_STATUS<7>
-#define ICM42670_FSYNC_INT_BITS       0x40 // ICM42670_REG_INT_STATUS<6>
-#define ICM42670_FSYNC_INT_SHIFT      6    // ICM42670_REG_INT_STATUS<6>
-#define ICM42670_PLL_RDY_INT_BITS     0x20 // ICM42670_REG_INT_STATUS<5>
-#define ICM42670_PLL_RDY_INT_SHIFT    5    // ICM42670_REG_INT_STATUS<5>
-#define ICM42670_RESET_DONE_INT_BITS  0x10 // ICM42670_REG_INT_STATUS<4>
-#define ICM42670_RESET_DONE_INT_SHIFT 4    // ICM42670_REG_INT_STATUS<4>
-#define ICM42670_FIFO_THS_INT_BITS    0x04 // ICM42670_REG_INT_STATUS<2>
-#define ICM42670_FIFO_THS_INT_SHIFT   2    // ICM42670_REG_INT_STATUS<2>
-#define ICM42670_FIFO_FULL_INT_BITS   0x02 // ICM42670_REG_INT_STATUS<1>
-#define ICM42670_FIFO_FULL_INT_SHIFT  1    // ICM42670_REG_INT_STATUS<1>
-#define ICM42670_AGC_RDY_INT_BITS     0x01 // ICM42670_REG_INT_STATUS<0>
-#define ICM42670_AGC_RDY_INT_SHIFT    0    // ICM42670_REG_INT_STATUS<0>
 
-#define ICM42670_SMD_INT_BITS    0x08 // ICM42670_REG_INT_STATUS2<3>
-#define ICM42670_SMD_INT_SHIFT   3    // ICM42670_REG_INT_STATUS2<3>
-#define ICM42670_WOM_X_INT_BITS  0x04 // ICM42670_REG_INT_STATUS2<2>
-#define ICM42670_WOM_X_INT_SHIFT 2    // ICM42670_REG_INT_STATUS2<2>
-#define ICM42670_WOM_Y_INT_BITS  0x02 // ICM42670_REG_INT_STATUS2<1>
-#define ICM42670_WOM_Y_INT_SHIFT 1    // ICM42670_REG_INT_STATUS2<1>
-#define ICM42670_WOM_Z_INT_BITS  0x01 // ICM42670_REG_INT_STATUS2<0>
-#define ICM42670_WOM_Z_INT_SHIFT 0    // ICM42670_REG_INT_STATUS2<0>
 
-#define ICM42670_STEP_DET_INT_BITS      0x20 // ICM42670_REG_INT_STATUS3<5>
-#define ICM42670_STEP_DET_INT_SHIFT     5    // ICM42670_REG_INT_STATUS3<5>
-#define ICM42670_STEP_CNT_OVF_INT_BITS  0x10 // ICM42670_REG_INT_STATUS3<4>
-#define ICM42670_STEP_CNT_OVF_INT_SHIFT 4    // ICM42670_REG_INT_STATUS3<4>
-#define ICM42670_TILT_DET_INT_BITS      0x08 // ICM42670_REG_INT_STATUS3<3>
-#define ICM42670_TILT_DET_INT_SHIFT     3    // ICM42670_REG_INT_STATUS3<3>
-#define ICM42670_FF_DET_INT_BITS        0x04 // ICM42670_REG_INT_STATUS3<2>
-#define ICM42670_FF_DET_INT_SHIFT       2    // ICM42670_REG_INT_STATUS3<2>
-#define ICM42670_LOWG_DET_INT_BITS      0x02 // ICM42670_REG_INT_STATUS3<1>
-#define ICM42670_LOWG_DET_INT_SHIFT     1    // ICM42670_REG_INT_STATUS3<1>
-
-#define CHECK(x)                                                                                                       \
-    do                                                                                                                 \
-    {                                                                                                                  \
-        esp_err_t __;                                                                                                  \
-        if ((__ = x) != ESP_OK)                                                                                        \
-            return __;                                                                                                 \
-    }                                                                                                                  \
-    while (0)
-#define CHECK_ARG(VAL)                                                                                                 \
-    do                                                                                                                 \
-    {                                                                                                                  \
-        if (!(VAL))                                                                                                    \
-            return ESP_ERR_INVALID_ARG;                                                                                \
-    }                                                                                                                  \
-    while (0)
-
-static inline esp_err_t write_register(icm42670_t *dev, uint8_t reg, uint8_t value)
-{
-    CHECK_ARG(dev);
-
-    return i2c_dev_write_reg(&dev->i2c_dev, reg, &value, 1);
+uint32_t Icm42670Write(icm42670_t *icm, uint8_t *write_buf, uint16_t len) {
+    return icm->write_command(write_buf, len);
 }
 
-static inline esp_err_t read_register(icm42670_t *dev, uint8_t reg, uint8_t *value)
-{
-    CHECK_ARG(dev && value);
-
-    return i2c_dev_read_reg(&dev->i2c_dev, reg, value, 1);
-}
-
-static inline esp_err_t read_register_16(icm42670_t *dev, uint8_t upper_byte_reg, int16_t *value)
-{
-    CHECK_ARG(dev && value);
-
-    esp_err_t err;
-    uint8_t reg_0, reg_1;
-    err = read_register(dev, upper_byte_reg, &reg_1);
-    err = read_register(dev, upper_byte_reg + 1, &reg_0);
-    *value = reg_0 | (reg_1 << 8);
-
-    return err;
-}
-
-static inline esp_err_t manipulate_register(icm42670_t *dev, uint8_t reg_addr, uint8_t mask, uint8_t shift,
-    uint8_t value)
-{
-    CHECK_ARG(dev);
-
-    uint8_t reg;
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, read_register(dev, reg_addr, &reg));
-    reg = (reg & ~mask) | (value << shift);
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, reg_addr, reg));
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-
-    return ESP_OK;
-}
-
-static inline esp_err_t read_mreg_register(icm42670_t *dev, icm42670_mreg_number_t mreg_num, uint8_t reg,
-    uint8_t *value)
-{
-    CHECK_ARG(dev && value);
-
-    bool mclk_rdy;
-    CHECK(icm42670_get_mclk_rdy(dev, &mclk_rdy));
-    if (!mclk_rdy)
-    {
-        ESP_LOGE(TAG, "MCLK not running, required to access MREG");
-        return ESP_ERR_INVALID_RESPONSE;
-    }
-
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_BLK_SEL_R, mreg_num));
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_MADDR_R, reg));
-    ets_delay_us(10); // Wait for 10us until MREG write is complete
-    I2C_DEV_CHECK(&dev->i2c_dev, read_register(dev, ICM42670_REG_M_R, value));
-    ets_delay_us(10);
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-
-    return ESP_OK;
-}
-
-static inline esp_err_t write_mreg_register(icm42670_t *dev, icm42670_mreg_number_t mreg_num, uint8_t reg,
-    uint8_t value)
-{
-    CHECK_ARG(dev);
-
-    bool mclk_rdy;
-    CHECK(icm42670_get_mclk_rdy(dev, &mclk_rdy));
-    if (!mclk_rdy)
-    {
-        ESP_LOGE(TAG, "MCLK not running, required to access MREG");
-        return ESP_ERR_INVALID_RESPONSE;
-    }
-
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_BLK_SEL_W, mreg_num));
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_MADDR_W, reg));
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_M_W, value));
-    ets_delay_us(10); // Wait for 10us until MREG write is complete
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-
-    return ESP_OK;
-}
-
-static inline esp_err_t manipulate_mreg_register(icm42670_t *dev, icm42670_mreg_number_t mreg_num, uint8_t reg_addr,
-    uint8_t mask, uint8_t shift, uint8_t value)
-{
-    CHECK_ARG(dev);
-
-    uint8_t reg;
-    CHECK(read_mreg_register(dev, mreg_num, reg_addr, &reg));
-    reg = (reg & ~mask) | (value << shift);
-    CHECK(write_mreg_register(dev, mreg_num, reg_addr, reg));
-
-    return ESP_OK;
-}
-///////////////////////////////////////////////////////////////////////////////
-
-esp_err_t icm42670_init_desc(icm42670_t *dev, uint8_t addr, i2c_port_t port, gpio_num_t sda_gpio, gpio_num_t scl_gpio)
-{
-    CHECK_ARG(dev);
-
-    if (addr != ICM42670_I2C_ADDR_GND && addr != ICM42670_I2C_ADDR_VCC)
-    {
-        ESP_LOGE(TAG, "Invalid I2C address `0x%x`: must be one of 0x%x, 0x%x", addr, ICM42670_I2C_ADDR_GND,
-            ICM42670_I2C_ADDR_VCC);
-        return ESP_ERR_INVALID_ARG;
-    }
-
-    dev->i2c_dev.port = port;
-    dev->i2c_dev.addr = addr;
-    dev->i2c_dev.cfg.sda_io_num = sda_gpio;
-    dev->i2c_dev.cfg.scl_io_num = scl_gpio;
-    dev->i2c_dev.timeout_ticks = 0; // set to default
-#if HELPER_TARGET_IS_ESP32
-    dev->i2c_dev.cfg.master.clk_speed = I2C_FREQ_HZ;
-#endif
-
-    return i2c_dev_create_mutex(&dev->i2c_dev);
-}
-
-esp_err_t icm42670_free_desc(icm42670_t *dev)
-{
-    CHECK_ARG(dev);
-
-    return i2c_dev_delete_mutex(&dev->i2c_dev);
+uint32_t Icm42670Read(icm42670_t *icm, uint8_t *read_buf, uint16_t len) {
+    return icm->read_command(write_buf, len);
 }
 
 esp_err_t icm42670_init(icm42670_t *dev)
@@ -387,9 +213,7 @@ esp_err_t icm42670_init(icm42670_t *dev)
     uint8_t reg;
 
     // check who_am_i register
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, read_register(dev, ICM42670_REG_WHO_AM_I, &reg));
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
+    read_register(dev, ICM42670_REG_WHO_AM_I, &reg));
     if (reg != 0x67)
     {
         ESP_LOGE(TAG, "Error initializing ICM42670, who_am_i register did not return 0x67");
@@ -652,31 +476,6 @@ esp_err_t icm42670_set_int_sources(icm42670_t *dev, uint8_t int_pin, icm42670_in
     }
 
     return ESP_OK;
-}
-
-esp_err_t icm42670_config_wom(icm42670_t *dev, icm42670_wom_config_t config)
-{
-    CHECK_ARG(dev);
-
-    CHECK(manipulate_register(dev, ICM42670_REG_WOM_CONFIG, ICM42670_WOM_INT_DUR_BITS, ICM42670_WOM_INT_DUR_SHIFT,
-        config.trigger));
-    CHECK(manipulate_register(dev, ICM42670_REG_WOM_CONFIG, ICM42670_WOM_INT_MODE_BITS, ICM42670_WOM_INT_MODE_SHIFT,
-        config.logical_mode));
-    CHECK(manipulate_register(dev, ICM42670_REG_WOM_CONFIG, ICM42670_WOM_MODE_BITS, ICM42670_WOM_MODE_SHIFT,
-        config.reference));
-
-    // WoM threshold values
-    CHECK(write_mreg_register(dev, ICM42670_MREG1_RW, ICM42670_REG_ACCEL_WOM_X_THR, config.wom_x_threshold));
-    CHECK(write_mreg_register(dev, ICM42670_MREG1_RW, ICM42670_REG_ACCEL_WOM_Y_THR, config.wom_y_threshold));
-    CHECK(write_mreg_register(dev, ICM42670_MREG1_RW, ICM42670_REG_ACCEL_WOM_Z_THR, config.wom_z_threshold));
-
-    return ESP_OK;
-}
-
-esp_err_t icm42670_enable_wom(icm42670_t *dev, bool enable)
-{
-    CHECK_ARG(dev);
-    return manipulate_register(dev, ICM42670_REG_WOM_CONFIG, ICM42670_WOM_EN_BITS, ICM42670_WOM_EN_SHIFT, enable);
 }
 
 esp_err_t icm42670_get_mclk_rdy(icm42670_t *dev, bool *mclk_rdy)

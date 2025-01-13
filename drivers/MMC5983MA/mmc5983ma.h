@@ -30,7 +30,7 @@ extern "C" {
 #define MMC5983MA_YOUT_1      0x03 // LSB of Y-Axis
 #define MMC5983MA_ZOUT_0      0x04 // MSB of Z-Axis
 #define MMC5983MA_ZOUT_1      0x05 // LSB of Z-Axis
-#define MMC5983MA_XYZOUT_2    0x06 // Xout[7:6], Yout[5:4], Zout[3:2]
+#define MMC5983MA_XYZOUT_2    0x06 // Last 2 bits of each 18-bit reading
 #define MMC5983MA_TOUT        0x07 // 8-bit Temperature reading 
 #define MMC5983MA_STATUS      0x08 // Measurement Boolean Status [OTP[4],Temp[1],Meas[0]]
 #define MMC5983MA_CONTROL_0   0x09 // Main Measurement Control Register
@@ -70,7 +70,7 @@ typedef enum {
   MSET_500 = 0b101,
   MSET_1000 = 0b110,
   MSET_2000 = 0b111
-} mmc5983ma_measurement_amout_t;
+} mmc5983ma_measurement_amount_t;
 
 
 // Values to write to registers.
@@ -128,7 +128,7 @@ typedef struct {
  * @param len Length of message.
  * @return uint32_t Number of bytes written.
  */
-uint32_t MMC5983MAWrite(const mmc5983ma_t *magnetometer, uint8_t *write_buf,
+uint32_t Mmc5983maWrite(const mmc5983ma_t *magnetometer, uint8_t *write_buf,
                         uint16_t len);
 
 /**
@@ -139,7 +139,7 @@ uint32_t MMC5983MAWrite(const mmc5983ma_t *magnetometer, uint8_t *write_buf,
  * @param len Number of bytes to read.
  * @return uint32_t Number of bytes read.
  */
-uint32_t MMC5983MARead(const mmc5983ma_t *magnetometer, uint8_t *read_buf,
+uint32_t Mmc5983maRead(const mmc5983ma_t *magnetometer, uint8_t *read_buf,
                        uint16_t len);
 
 /**
@@ -148,7 +148,7 @@ uint32_t MMC5983MARead(const mmc5983ma_t *magnetometer, uint8_t *read_buf,
  * @param magnetometer Magnetometer read/write interface.
  * @return uint8_t Product ID.
  */
-uint8_t GetMMC5983ID(const mmc5983ma_t *magnetometer);
+uint8_t GetMmc5983maID(const mmc5983ma_t *magnetometer);
 
 /**
  * @brief Perform a magnetic field measurement.
@@ -213,6 +213,16 @@ uint32_t Set(const mmc5983ma_t *magnetometer);
  * @return uint32_t The number of bytes written to the device.
  */
 uint32_t Reset(const mmc5983ma_t *magnetometer);
+
+/**
+ * @brief Allow the user to update any of the 4 control registers using the datasheet as a guide.
+ *
+ * @param magnetometer Magnetometer read/write interface
+ * @param ctrlReg is the register address you want to edit
+ * @param settings is the 8-bit value you want to update the registers settings with
+ * @return uint32_t The number of bytes written to the device.
+ */
+uint32_t Mmc5983maEditRegister(const mmc5983ma_t *magnetometer, const uint8_t ctrlReg, const uint8_t settings);
 
 #ifdef __cplusplus
 }
