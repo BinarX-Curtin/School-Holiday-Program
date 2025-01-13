@@ -15,11 +15,17 @@
 3. Electronic device and stable internet connection.
 
 ## Resources
-- [Accellerometer Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL326.pdf)
+
+Payload Datasheets:
+- [Accelerometer Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADXL326.pdf)
 - [Thermopile Datasheet](https://au.mouser.com/datasheet/2/18/Amphenol_08192019_AAS-920-698A-Thermometrics-ZTP-1-1627819.pdf)
+- [3-Axis Magnetometer](https://www.memsic.com/Public/Uploads/uploadfile/files/20220119/MMC5983MADatasheetRevA.pdf)
+- [6-Axis Inertial Measurement Unit (combination Accelerometer and Gyroscope)](https://invensense.tdk.com/wp-content/uploads/2021/07/ds-000451_icm-42670-p-datasheet.pdf)
+- [Pressure Sensor Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf)
+
+Support Chip Datasheets:
 - [OpAmp Datasheet](https://www.ti.com/lit/ds/symlink/opa388.pdf)
 - [Low-Noise Negative Bias Generator Datasheet](https://www.ti.com/lit/ds/symlink/lm7705.pdf)
-- [Pressure Sensor Datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp390-ds002.pdf)
 
 ## Procedure
 
