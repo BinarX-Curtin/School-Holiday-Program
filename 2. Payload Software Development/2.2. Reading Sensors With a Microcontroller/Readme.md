@@ -160,7 +160,7 @@ sensor_temp = HAL_ADC_GetValue(&hadc1);
     Lastly, similar to the LED blink function a delay is added to reduce the amount of messages sent to the computer.
 
 ```c++
-sprintf(*serial_string, "Current Temperature: %d \r\n", sensor_temp); //Assign string buffer to the temperature value
+sprintf(serial_string, "Current Temperature: %d \r\n", sensor_temp); //Assign string buffer to the temperature value
 
 HAL_UART_Transmit(&huart1, (uint8_t *)serial_string, sizeof(serial_string), 10); //transmit serial_string with a 10ms timeout using USART1
 HAL_Delay(500);
