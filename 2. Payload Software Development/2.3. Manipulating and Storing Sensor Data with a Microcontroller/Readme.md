@@ -78,7 +78,7 @@ Starting from an existing STM32l433CBT7 STM32 project in STM32CubeIDE, follow th
 4. To match up with the pin mapping shown above in the "Microcontroller Input-Output Connections" part of the schematic we need to configure
 
     - "PB15" as "SPI2_MOSI",
-    - "PB14" as "SPI_MISO" and
+    - "PB14" as "SPI2_MISO" and
     - "PB13" as "SPI2_SCK".
 
     Depending on how you have configured the other pins on the microcontroller, it's likely that "PB15" and "PB14" are configured correctly when you enable SPI2, but you'll have to manually click on "PB13" and select "SPI2_SCK" from the list of pin functionalities:
