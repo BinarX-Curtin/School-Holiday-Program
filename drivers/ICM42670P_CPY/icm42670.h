@@ -419,7 +419,7 @@ uint32_t icm42670_free_desc(icm42670_t *dev);
  * @param dev Device descriptor
  * @return Number of bytes written to the device.
  */
-uint32_t icm42670_init(icm42670_t *dev);
+uint32_t icm42670_init(icm42670_t *icm);
 
 /**
  * @brief Set device power mode
@@ -428,7 +428,7 @@ uint32_t icm42670_init(icm42670_t *dev);
  * @param enable_idle bool to enable idle mode
  * @return Number of bytes written to the device.
  */
-uint32_t icm42670_set_idle_pwr_mode(icm42670_t *dev, bool enable_idle);
+uint32_t icm42670_set_idle_pwr_mode(icm42670_t *icm);
 
 /**
  * @brief Set gyro power mode

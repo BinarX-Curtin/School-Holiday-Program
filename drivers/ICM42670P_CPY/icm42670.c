@@ -207,67 +207,51 @@ uint32_t Icm42670Read(icm42670_t *icm, uint8_t *read_buf, uint16_t len) {
     return icm->read_command(write_buf, len);
 }
 
-esp_err_t icm42670_init(icm42670_t *dev)
-{
-    CHECK_ARG(dev);
+uint32_t manipulate_register(icm42670_t *icm, uint8_t reg_addr, uint8_t mask, uint8_t shift,
+    uint8_t value) {
     uint8_t reg;
+    Icm42670Write(icm,reg_addr,sizeof(reg_addr));
+    Icm42670Read(icm,reg,sizeof(reg));
+    reg = (reg & ~mask) | (value << shift);
+    return Icm42670Write(icm, (uint16_t) ((reg_addr << 7) | reg), sizeof(uint16_t));
+
+}
+void Icm42670_init(icm42670_t *icm) {
+    uint8_t write_buf[1] = {ICM42670_REG_WHO_AM_I};
+    uint8_t read_buf[1] = {0};
 
     // check who_am_i register
-    read_register(dev, ICM42670_REG_WHO_AM_I, &reg));
-    if (reg != 0x67)
+    Icm42670Write(icm, write_buf, sizeof(write_buf));
+    Icm42670Read(icm, read_buf, sizeof(read_buf));
+    if (read_buf != 0x67)
     {
-        ESP_LOGE(TAG, "Error initializing ICM42670, who_am_i register did not return 0x67");
-        return ESP_ERR_INVALID_RESPONSE;
+        //debugWrite("Error: ICM42670 did not return the correct WHOAMI.")
+        return 0;
     }
-    ESP_LOGD(TAG, "Init: Chip ICM42670 detected");
-
     // flush FIFO
-    CHECK(icm42670_flush_fifo(dev));
+    Icm42670_flush_fifo(icm);
     // perform signal path reset
-    CHECK(icm42670_reset(dev));
-    ESP_LOGD(TAG, "Init: Soft-Reset performed");
-
-    // wait 10ms
-    vTaskDelay(pdMS_TO_TICKS(10));
+    Icm42670_reset(icm);
 
     // set device in IDLE power state
-    CHECK(icm42670_set_idle_pwr_mode(dev, true));
-
-    // wait 10ms
-    vTaskDelay(pdMS_TO_TICKS(10));
+    Icm42670_set_idle_pwr_mode(icm,true);
 
     // check if internal clock is running
-    bool mclk_rdy = false;
-    CHECK(icm42670_get_mclk_rdy(dev, &mclk_rdy));
+    bool mclk_rdy = Icm42670_get_mclk_rdy(icm);
     if (!mclk_rdy)
     {
-        ESP_LOGE(TAG, "Error initializing icm42670, Internal clock not running");
-        return ESP_ERR_INVALID_RESPONSE;
+        //debugWrite("Error initializing icm42670, Internal clock not running");
+        return 0;
     }
-    ESP_LOGD(TAG, "Init: Internal clock running");
-
-    return ESP_OK;
 }
 
-esp_err_t icm42670_set_idle_pwr_mode(icm42670_t *dev, bool enable_idle)
-{
-    CHECK_ARG(dev);
-
-    CHECK(manipulate_register(dev, ICM42670_REG_PWR_MGMT0, ICM42670_IDLE_BITS, ICM42670_IDLE_SHIFT,
-        (uint8_t)enable_idle));
-
-    return ESP_OK;
+uint32_t Icm42670_set_idle_pwr_mode(icm42670_t *icm, bool idle_power) {
+    return manipulate_register(icm, ICM42670_REG_PWR_MGMT0, ICM42670_IDLE_BITS, ICM42670_IDLE_SHIFT, (uint8_t)idle_power); 
 }
 
-esp_err_t icm42670_set_gyro_pwr_mode(icm42670_t *dev, icm42670_gyro_pwr_mode_t pwr_mode)
+esp_err_t Icm42670_set_gyro_pwr_mode(icm42670_t *dev, icm42670_gyro_pwr_mode_t pwr_mode)
 {
-    CHECK_ARG(dev);
-
-    CHECK(manipulate_register(dev, ICM42670_REG_PWR_MGMT0, ICM42670_GYRO_MODE_BITS, ICM42670_GYRO_MODE_SHIFT, pwr_mode));
-    // no register writes should be performed within the next 200us
-    ets_delay_us(300);
-
-    return ESP_OK;
+    return manipulate_register(icm, ICM42670_REG_PWR_MGMT0, ICM42670_GYRO_MODE_BITS, ICM42670_GYRO_MODE_SHIFT, pwr_mode);
 }
 
 esp_err_t icm42670_set_accel_pwr_mode(icm42670_t *dev, icm42670_accel_pwr_mode_t pwr_mode)
@@ -323,40 +307,26 @@ esp_err_t icm42670_read_raw_data(icm42670_t *dev, uint8_t data_register, int16_t
     return ESP_OK;
 }
 
-esp_err_t icm42670_read_temperature(icm42670_t *dev, float *temperature)
+void icm42670_read_temperature(icm42670_t *dev, float *temperature)
 {
-    CHECK_ARG(dev && temperature);
+    uint8_t write_buf[1] = {ICM42670_REG_TEMP_DATA1};
+    uint8_t read_buf[2] = {0};
 
-    int16_t reg;
-    CHECK(icm42670_read_raw_data(dev, ICM42670_REG_TEMP_DATA1, &reg));
+    Icm42670Write(icm, write_buf, sizeof(write_buf));
+    Icm42670Read(icm, read_buf, sizeof(read_buf));
+
+    uint16_t reg = (read_buf[0] << 8) | read_buf[1];
     *temperature = (reg / 128.0) + 25;
-
-    return ESP_OK;
 }
 
-esp_err_t icm42670_reset(icm42670_t *dev)
-{
-    CHECK_ARG(dev);
-
-    uint8_t reg = 1 << ICM42670_SOFT_RESET_DEVICE_CONFIG_SHIFT;
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_SIGNAL_PATH_RESET, reg));
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-
-    return ESP_OK;
+esp_err_t icm42670_reset(icm42670_t *dev) {
+    uint8_t write_buf[2] = {ICM42670_REG_SIGNAL_PATH_RESET, (1<<ICM42670_SOFT_RESET_DEVICE_CONFIG_SHIFT)};
+    return Icm42670Write(icm, write_buf, sizeof(write_buf));
 }
 
-esp_err_t icm42670_flush_fifo(icm42670_t *dev)
-{
-    CHECK_ARG(dev);
-
-    uint8_t reg = 1 << ICM42670_FIFO_FLUSH_SHIFT;
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, write_register(dev, ICM42670_REG_SIGNAL_PATH_RESET, reg));
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-    ets_delay_us(2); // flush is done within 1.5us
-
-    return ESP_OK;
+esp_err_t icm42670_flush_fifo(icm42670_t *dev) {
+    uint8_t write_buf[2] = {ICM42670_REG_SIGNAL_PATH_RESET, (1<<ICM42670_FIFO_FLUSH_SHIFT)};
+    return Icm42670Write(icm, write_buf, sizeof(write_buf));
 }
 
 esp_err_t icm42670_set_gyro_fsr(icm42670_t *dev, icm42670_gyro_fsr_t range)
@@ -478,20 +448,19 @@ esp_err_t icm42670_set_int_sources(icm42670_t *dev, uint8_t int_pin, icm42670_in
     return ESP_OK;
 }
 
-esp_err_t icm42670_get_mclk_rdy(icm42670_t *dev, bool *mclk_rdy)
+bool icm42670_get_mclk_rdy(icm42670_t *icm)
 {
-    CHECK_ARG(dev && mclk_rdy);
+    bool mclk_rdy = false;
+    uint8_t write_buf[1] = {ICM42670_REG_MCLK_RDY};
+    uint8_t read_buf[1] = {0};
+    
+    Icm42670Write(icm, write_buf, sizeof(write_buf));
+    Icm42670Read(icm, read_buf, sizeof(read_buf));
 
-    uint8_t reg;
-    I2C_DEV_TAKE_MUTEX(&dev->i2c_dev);
-    I2C_DEV_CHECK(&dev->i2c_dev, read_register(dev, ICM42670_REG_MCLK_RDY, &reg));
-    I2C_DEV_GIVE_MUTEX(&dev->i2c_dev);
-    if ((reg & ICM42670_MCLK_RDY_BITS) >> ICM42670_MCLK_RDY_SHIFT)
-        *mclk_rdy = true;
-    else
-        *mclk_rdy = false;
+    if ((read_buf & ICM42670_MCLK_RDY_BITS) >> ICM42670_MCLK_RDY_SHIFT)
+        mclk_rdy = true;
 
-    return ESP_OK;
+    return mclk_rdy;
 }
 
 esp_err_t icm42670_get_accel_odr(icm42670_t *dev, icm42670_accel_odr_t *odr)
