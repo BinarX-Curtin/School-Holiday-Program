@@ -25,3 +25,7 @@
 ## Procedure
 ### 1.0 Follow the hands on demonstration with Jacob <!-- omit from toc -->
 BinarX youtube walkthrough with Jacob - [Session 1.3](https://youtu.be/c4AYyQy6dpM?si=3i30rcex_vjnUiQZ)
+
+The goal is to create this circuit:
+
+![LED and Temperature Sensor Circuit](1_3-Circuit_Diagram.png)
