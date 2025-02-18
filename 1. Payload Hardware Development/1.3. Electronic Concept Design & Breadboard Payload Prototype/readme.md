@@ -28,4 +28,4 @@ BinarX youtube walkthrough with Jacob - [Session 1.3](https://youtu.be/c4AYyQy6d
 
 The goal is to create this circuit:
 
-![LED and Temperature Sensor Circuit](1_3-Circuit_Diagram.png)
+![LED and Temperature Sensor Circuit](figures/1_3-Circuit_Diagram.png)

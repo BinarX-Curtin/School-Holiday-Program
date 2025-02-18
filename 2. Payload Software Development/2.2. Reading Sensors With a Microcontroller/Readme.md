@@ -82,6 +82,7 @@ You’re now finished configuring STM32 for the rest of the session!
 This section aims to complete the "Hello World" of micro controllers which is blinking an LED. 
 
 **LAB INSTRUCTORS WILL SHOW PHYSICAL CIRCUIT**
+![Circuit](figures/2_2-Circuit_Diagram.png)
 
 1.	Look at the left hand project file explorer tab and open *PROJECT NAME* -> core -> src -> main.c.
 
